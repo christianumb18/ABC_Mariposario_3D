@@ -337,7 +337,6 @@ La mariposa emerge y el jugador recupera movilidad aérea en tercera persona.
 * alimentación;
 * búsqueda de planta hospedera;
 * postura de huevos;
-* eventos de quiz contextuales.
 
 ### Propósito educativo
 
@@ -762,7 +761,6 @@ El sonido debe reforzar:
 * ambiente natural;
 * aleteo;
 * sonido leve al alimentarse;
-* sonido de acierto en quizzes;
 * retroalimentación de desbloqueo;
 * señal de peligro por depredador;
 * transición de metamorfosis.
@@ -802,7 +800,6 @@ El juego guardará automáticamente cuando:
 * se complete una etapa;
 * se desbloquee una especie;
 * se registre nueva entrada en enciclopedia;
-* se complete un quiz relevante;
 * se alcance un punto biológico importante, como planta hospedera o transición de fase.
 
 ## 19.4. Checkpoints
@@ -821,7 +818,6 @@ La dificultad debe ser progresiva, justa y comprensible.
 
 * primeras especies: dificultad baja;
 * especies posteriores: mayor exigencia en supervivencia, exploración y conocimiento;
-* quizzes: breves, nunca excesivos;
 * depredadores: amenaza real pero legible.
 
 ## 20.3. Fracaso
@@ -863,7 +859,6 @@ Cada etapa del ciclo funciona como segmento natural de sesión.
 * sistema de interacción contextual;
 * sistema de puntos y XP;
 * sistema de horas de vuelo (opcional);
-* gestor de quizzes contextuales;
 * sistema de enciclopedia;
 * sistema de desbloqueo de especies;
 * HUD adaptable;
@@ -888,7 +883,7 @@ Se recomienda organizar el proyecto en módulos:
 
 ## 22.3. Datos escalables
 
-La información de especies, quizzes y contenido enciclopédico debe almacenarse en estructuras escalables, de preferencia externas o desacopladas de la lógica principal, para permitir crecimiento del catálogo sin reescribir sistemas base.
+La información de especies y contenido enciclopédico debe almacenarse en estructuras escalables, de preferencia externas o desacopladas de la lógica principal, para permitir crecimiento del catálogo sin reescribir sistemas base.
 
 \---
 
