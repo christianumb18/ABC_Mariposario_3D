@@ -167,7 +167,7 @@ El jugador accede a una galería de mariposas. Algunas estarán disponibles y ot
 
 ## 7.4. Inicio de juego
 
-Tras seleccionar la especie, el jugador entra al mapa del bioma previamente seleccionado y puede ir explorando, va logrando tarea, misiones o etapas una tras otra.
+Tras seleccionar la especie, el jugador entra al mapa del bioma previamente seleccionado y puede ir explorando, va logrando tarea, misiones o etapas una tras otra (el desarrollo de las misiones o tareas dependen de la disponibilidad o tiempo).
 
 \---
 
@@ -358,7 +358,7 @@ Conectar la adultez con reproducción, polinización, relación planta-especie y
 
 ### Larva
 
-* desplazamiento terrestre;
+* desplazamiento terrestre, la mecanica es similiar ala mariposa en relación al jostick y movimiento de la cámara (en ajustes el usuario podrá cambiar la sensibilidad);
 * orientación por superficie;
 * velocidad reducida;
 * movilidad vulnerable.
@@ -484,7 +484,7 @@ El juego manejará tres formas de progreso:
 
 ### Puntos
 
-Se obtienen por acciones correctas, respuestas acertadas e interacciones valiosas.
+Se obtienen por acciones correctas o interacciones valiosas. ej: posarse en la flor hospedera correcta, de lo contrario puede perder vida o puntos.
 
 ### XP
 
@@ -502,7 +502,6 @@ Ejemplo base de sistema:
 
 * descubrir especie: +10 puntos
 * leer o activar ficha educativa: +5 puntos
-* responder bien un mini quiz: +20 puntos
 * completar una etapa: +30 puntos
 * completar ciclo de vida completo: +50 puntos
 * polinizar o alimentarse correctamente: +10 puntos
@@ -528,7 +527,7 @@ El desbloqueo será progresivo.
 
 ### Regla general
 
-El jugador inicia con una especie disponible. Al completar ciclos, responder correctamente eventos educativos y alcanzar umbrales de puntos/XP, desbloquea nuevas mariposas.
+El jugador inicia con una especie disponible. Al completar ciclos, recorrer correctamente el mapa y alcanzar umbrales de puntos/XP, desbloquea nuevas mariposas.
 
 ### Catálogo
 
@@ -551,18 +550,18 @@ La enciclopedia es uno de los principales sistemas de recompensa y consolidació
 
 ## 12.3. Contenido por entrada
 
-Cada entrada de enciclopedia podrá incluir:
+Cada entrada de enciclopedia podría incluir:
 
 * nombre común;
 * nombre científico;
 * imagen o modelo representativo;
 * etapa del ciclo;
 * planta hospedera;
-* alimentación;
+* alimentación (opcional);
 * región o hábitat;
-* curiosidades;
-* amenazas naturales;
-* observaciones del ciclo de vida.
+* curiosidades (opcional);
+* amenazas naturales (opcional);
+* observaciones del ciclo de vida (opcional).
 
 ## 12.4. Enciclopedia de larvas
 
@@ -588,37 +587,6 @@ Ejemplos:
 * al descubrir una planta hospedera;
 * al completar la crisálida;
 * al cerrar el ciclo.
-
-## 13.3. Mini quizzes
-
-Cada evento educativo podrá activar un mini quiz de **1 o 2 preguntas como máximo**.
-
-### Justificación
-
-Este límite mantiene el ritmo del juego y evita romper la experiencia por exceso de lectura.
-
-## 13.4. Recompensa educativa
-
-Responder correctamente:
-
-* otorga puntos;
-* aporta XP;
-* contribuye al desbloqueo de especies;
-* refuerza el progreso de enciclopedia.
-
-Responder incorrectamente:
-
-* no debe castigar severamente;
-* puede mostrar la respuesta correcta con una explicación breve;
-* mantiene el foco pedagógico por encima del castigo.
-
-## 13.5. Tipo de preguntas
-
-* selección múltiple;
-* verdadero/falso;
-* relación simple entre especie y planta;
-* identificación de etapa;
-* pregunta breve contextual.
 
 \---
 
@@ -816,7 +784,7 @@ Toda acción importante debe tener feedback visual:
 
 ## 19.1. Estrategia recomendada
 
-Se recomienda **guardado automático**, o tambien manual habilitado en el menú.
+Se recomienda **guardado automático**, o tambien manual habilitado en el botón de configuración.
 
 ## 19.2. Razones de diseño
 
@@ -924,25 +892,6 @@ La información de especies, quizzes y contenido enciclopédico debe almacenarse
 
 \---
 
-# 23\. Riesgos de diseño
-
-## 23.1. Riesgo de sobrecarga de mecánicas
-
-Si cada etapa agrega demasiadas acciones, el juego puede perder claridad.
-
-## 23.2. Riesgo de saturación educativa
-
-Demasiado texto o demasiadas preguntas romperían el ritmo jugable.
-
-## 23.3. Riesgo de complejidad técnica móvil
-
-El vuelo, la cámara y el rendimiento deben cuidarse especialmente en Android.
-
-## 23.4. Riesgo de inconsistencia entre especies
-
-El catálogo deberá definirse con criterio para no prometer más contenido del que el equipo puede producir con calidad.
-
-\---
 
 # 24\. Criterios de éxito del diseño
 
@@ -962,7 +911,7 @@ El diseño se considerará exitoso si logra que:
 
 **Mariposario – Ciclo de Vida Lepidoptera** está concebido como una experiencia educativa interactiva en la que la jugabilidad y el contenido biológico avanzan juntos. El jugador no solo observa el ciclo de vida de una mariposa, sino que lo encarna, lo recorre, lo sobrevive y lo comprende.
 
-La decisión de diseñar el juego en tercera persona, con control directo de mariposa y larva, progresión por especies, quizzes contextuales breves, sistema de puntos, XP, horas de vuelo y enciclopedia desbloqueable, permite construir una experiencia clara, escalable y pedagógicamente consistente.
+La decisión de diseñar el juego en tercera persona, con control directo de mariposa y larva, progresión por especies, sistema de puntos, XP, horas de vuelo y enciclopedia desbloqueable, permite construir una experiencia clara, escalable y pedagógicamente consistente.
 
 Este documento establece la base de diseño para que el equipo de ingeniería, arte, UI, contenido y QA pueda implementar el videojuego con una visión común, coherente y técnicamente viable.
 
@@ -976,7 +925,6 @@ Este documento establece la base de diseño para que el equipo de ingeniería, a
 * Estilo visual: low poly educativo
 * Progresión: desbloqueo progresivo de especies
 * Recompensas: puntos, XP y horas de vuelo(opcional)
-* Sistema educativo: mini quizzes contextuales de 1 o 2 preguntas
 * HUD principal: vida, energía, estamina, puntos e interacción contextual
 * Enciclopedia: sí, desbloqueable y asociada al progreso
 * Derrota: reinicio desde checkpoint
