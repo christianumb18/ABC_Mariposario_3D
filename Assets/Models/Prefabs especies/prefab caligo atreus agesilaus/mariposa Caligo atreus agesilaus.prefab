@@ -1101,6 +1101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7247038364978049343}
   - component: {fileID: 6194853291403130154}
+  - component: {fileID: 7187634828861029014}
   m_Layer: 0
   m_Name: mariposa Caligo atreus agesilaus
   m_TagString: Untagged
@@ -1149,6 +1150,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7187634828861029014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8059603109167803269}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fc0a1cb38596c498963ee3c119e0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButterflyController
+  leftWingStart: {fileID: 6709459371102544641}
+  leftWingEnd: {fileID: 8010535368792491297}
+  rightWingStart: {fileID: 5631107652225382215}
+  rightWingEnd: {fileID: 4816105881861552926}
+  data: {fileID: 11400000, guid: f2eb8fb70cc432c4e9231b5c14b26e6e, type: 2}
+  m_Jump: 0
+  Hinput: 0
+  Vinput: 0
 --- !u!1 &8300700679533448431
 GameObject:
   m_ObjectHideFlags: 0
