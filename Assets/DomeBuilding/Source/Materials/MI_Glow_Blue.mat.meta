@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ed8096ee6336b1c4fa02b84b8ec6a473
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200765
+  packageName: Dome Building
+  packageVersion: 1.0
+  assetPath: Assets/DomeBuilding/Source/Materials/MI_Glow_Blue.mat
+  uploadId: 447025

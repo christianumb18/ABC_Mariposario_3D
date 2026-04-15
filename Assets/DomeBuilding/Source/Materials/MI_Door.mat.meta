@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 414d167e42945bd4d9080d2b4b280c05
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200765
+  packageName: Dome Building
+  packageVersion: 1.0
+  assetPath: Assets/DomeBuilding/Source/Materials/MI_Door.mat
+  uploadId: 447025
