@@ -21,8 +21,4 @@ public class ButterflyData : ScriptableObject
     [Range(1f, 20f)] public float turnSpeed = 4f;
     [Range(0f, 3f)] public float bobAmplitude = 0.3f; // oscilación vertical suave
     [Range(0.1f, 5f)] public float bobFrequency = 1.2f;
-
-    [Header("Apariencia / Efectos")]
-    public Color wingTint = Color.white;   // Tint aplicado al material de las alas
-    public GameObject trailEffect;         // Partículas opcionales de estela
 }

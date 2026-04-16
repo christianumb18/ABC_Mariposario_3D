@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bc5b5d69a0d954c409d3aba8cd71ab34
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200765
+  packageName: Dome Building
+  packageVersion: 1.0
+  assetPath: Assets/DomeBuilding/Source/Materials/MI_Metal1.mat
+  uploadId: 447025

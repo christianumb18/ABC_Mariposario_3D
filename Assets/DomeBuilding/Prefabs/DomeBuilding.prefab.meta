@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: dc95fe51857fe304492553ff824dd631
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200765
+  packageName: Dome Building
+  packageVersion: 1.0
+  assetPath: Assets/DomeBuilding/Prefabs/DomeBuilding.prefab
+  uploadId: 447025

@@ -19,12 +19,12 @@ public class ButterflyController : MonoBehaviour
     [Header("Datos de especie")]
     public ButterflyData data;
 
-    [Header("Alas")]
-    public Transform leftWing;
-    public Transform rightWing;
-
     // ── Estado interno ─────────────────────────────────────────────
     private Vector3 _moveDir = Vector3.forward;
+    private const float GROUND_HOVER_Y = 0.5f;     // Altura mínima sobre el suelo
+
+    // ── Componentes ────────────────────────────────────────────────
+    private Rigidbody _rb;
 
     // ═══════════════════════════════════════════════════════════════
 
@@ -39,6 +39,11 @@ public class ButterflyController : MonoBehaviour
         if (data == null) return;
         HandleMovement();
         BobVertically();
+    }
+
+    private void FixedUpdate()
+    {
+        PreventGroundPenetration();
     }
 
     // ───────────────────────────────────────────────────────────────
@@ -98,11 +103,24 @@ public class ButterflyController : MonoBehaviour
     public void Initialize(ButterflyData newData)
     {
         data = newData;
-        foreach (var r in GetComponentsInChildren<Renderer>())
+    }
+
+    /// <summary>Impide que la mariposa se entierre en el suelo.</summary>
+    private void PreventGroundPenetration()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
         {
-            var mat = r.material;
-            if (mat.HasProperty("_Color"))
-                mat.color = data.wingTint;
+            float targetY = hit.point.y + GROUND_HOVER_Y;
+            if (transform.position.y < targetY)
+            {
+                Vector3 pos = transform.position;
+                pos.y = Mathf.Lerp(pos.y, targetY, Time.fixedDeltaTime * 8f);
+                _rb.MovePosition(pos);
+
+                // Cancela velocidad negativa en Y
+                if (_rb.linearVelocity.y < 0f)
+                    _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
+            }
         }
     }
 }

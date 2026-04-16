@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 02be59e2775af85479f27a3e3d72e59f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 200765
+  packageName: Dome Building
+  packageVersion: 1.0
+  assetPath: Assets/DomeBuilding/Source/Materials/MI_Glass.mat
+  uploadId: 447025
