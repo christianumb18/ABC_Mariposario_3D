@@ -15,10 +15,11 @@ public class ButterflyData : ScriptableObject
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
     public GameObject prefabEgg;         // Prefab 3D del huevo en escena
     public GameObject prefabCaterpillar;         // Prefab 3D de la oruga en escena
+    [Range(0.1f, 2f)] public float scale = 0.25f;
 
     [Header("Vuelo")]
     [Range(1f, 20f)] public float flightSpeed = 6f;
     [Range(1f, 20f)] public float turnSpeed = 4f;
-    [Range(0f, 3f)] public float bobAmplitude = 0.3f; // oscilación vertical suave
-    [Range(0.1f, 5f)] public float bobFrequency = 1.2f;
+    [Range(0f, 3f)] public float bobAmplitude = 0.5f; // oscilación vertical suave
+    [Range(0.1f, 5f)] public float bobFrequency = 1.5f;
 }

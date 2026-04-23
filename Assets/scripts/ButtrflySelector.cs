@@ -44,7 +44,7 @@ public class ButterflySelector : MonoBehaviour
 
         // Carga la primera especie automaticamente al iniciar
         if (species.Count > 0)
-            SelectSpecies(species[1]);
+            SelectSpecies(species[0]);
     }
 
     // ── Construye los botones del menu ────────────────────────────

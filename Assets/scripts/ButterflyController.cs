@@ -3,30 +3,59 @@
 /// <summary>
 /// Controlador de vuelo de la mariposa integrado con la camara orbital (FixedTouchField).
 ///
-/// CAMBIO PRINCIPAL:
-///   HandleMovement ya NO proyecta camForward sobre el plano horizontal.
 ///   Usa los 3 ejes de la camara tal como ButterflyInput los posiciona cada frame,
 ///   de modo que Vinput empuja en la direccion real de la camara (incluida su Y),
 ///   permitiendo subir y bajar naturalmente con el joystick.
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class ButterflyController : MonoBehaviour
 {
     // ── Input (escrito por ButterflyInput cada frame) ──────────────
-    [HideInInspector] public float Hinput;    // Joystick X  (-1..1)
-    [HideInInspector] public float Vinput;    // Joystick Y  (-1..1)
-    [HideInInspector] public float VertInput; // Subir/bajar dedicado (-1..1) — opcional
+    [HideInInspector] public float Hinput;
+    [HideInInspector] public float Vinput;
+    [HideInInspector] public float VertInput;
 
     [Header("Datos de especie")]
     public ButterflyData data;
 
     // ── Estado interno ─────────────────────────────────────────────
     private Vector3 _moveDir = Vector3.forward;
-    private const float GROUND_HOVER_Y = 0.5f;     // Altura mínima sobre el suelo
-
-    // ── Componentes ────────────────────────────────────────────────
     private Rigidbody _rb;
 
+    // ── Constantes ─────────────────────────────────────────────────
+    private const float GROUND_HOVER_Y = 0.5f;
+
+    // ── Constantes de colision ─────────────────────────────────────
+    private const float COLLISION_RAY = 2f;    // longitud de cada rayo
+    private const float COLLISION_HOVER = 0.5f;  // margen minimo al rebotar
+    private const float COLLISION_PUSH = 8f;    // velocidad de separacion
+
+    // Direcciones que se comprueban cada FixedUpdate.
+    // Combina los 6 ejes cardinales con 4 diagonales hacia abajo
+    // para cubrir suelo, techo, paredes y esquinas inclinadas.
+    private static readonly Vector3[] RAY_DIRECTIONS =
+    {
+        Vector3.down,                           // suelo
+        Vector3.up,                             // techo
+        Vector3.forward,                        // frente
+        Vector3.back,                           // detras
+        Vector3.left,                           // izquierda
+        Vector3.right,                          // derecha
+        new Vector3( 1f, -1f,  0f).normalized,  // diagonal abajo-derecha
+        new Vector3(-1f, -1f,  0f).normalized,  // diagonal abajo-izquierda
+        new Vector3( 0f, -1f,  1f).normalized,  // diagonal abajo-frente
+        new Vector3( 0f, -1f, -1f).normalized,  // diagonal abajo-detras
+    };
     // ═══════════════════════════════════════════════════════════════
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _rb.useGravity = false;
+        _rb.linearDamping = 2f;
+        _rb.angularDamping = 8f;
+        _rb.freezeRotation = true;
+    }
 
     private void Start()
     {
@@ -43,7 +72,7 @@ public class ButterflyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PreventGroundPenetration();
+        PreventCollisions();
     }
 
     // ───────────────────────────────────────────────────────────────
@@ -60,9 +89,6 @@ public class ButterflyController : MonoBehaviour
         Vector3 camForward = cam.transform.forward; // tiene componente Y segun inclinacion
         Vector3 camRight = cam.transform.right;   // siempre horizontal (sin roll)
 
-        // Vinput -> avanza/retrocede en la direccion a la que apunta la camara (con Y).
-        // Hinput -> desplaza lateralmente.
-        // VertInput -> subida/bajada pura en espacio mundo (boton Q/E o segundo eje).
         Vector3 input = camForward * Vinput
                       + camRight * Hinput
                       + Vector3.up * VertInput;
@@ -86,7 +112,7 @@ public class ButterflyController : MonoBehaviour
     }
 
     // ───────────────────────────────────────────────────────────────
-    // BOB VERTICAL PASIVO (solo cuando el jugador no mueve el joystick)
+    // BOB VERTICAL PASIVO
     // ───────────────────────────────────────────────────────────────
     private void BobVertically()
     {
@@ -98,29 +124,55 @@ public class ButterflyController : MonoBehaviour
     }
 
     // ───────────────────────────────────────────────────────────────
-    // API publica
+    // API PUBLICA
     // ───────────────────────────────────────────────────────────────
     public void Initialize(ButterflyData newData)
     {
         data = newData;
+        transform.localScale = Vector3.one * data.scale;
+    }
+    
+    // ───────────────────────────────────────────────────────────────
+    // PREVENCION DE COLISIONES EN TODAS LAS DIRECCIONES
+    // ───────────────────────────────────────────────────────────────
+    private void PreventCollisions()
+    {
+        foreach (Vector3 dir in RAY_DIRECTIONS)
+        {
+            if (!Physics.Raycast(transform.position, dir, out RaycastHit hit, COLLISION_RAY))
+                continue;
+
+            // Si la mariposa esta mas cerca del obstaculo que el margen de seguridad
+            if (hit.distance < COLLISION_HOVER)
+            {
+                // Empuja en la direccion opuesta al obstaculo
+                Vector3 pushDir = -dir;
+                transform.position = Vector3.Lerp(
+                    transform.position,
+                    hit.point + pushDir * COLLISION_HOVER,
+                    Time.fixedDeltaTime * COLLISION_PUSH
+                );
+
+                // Cancela la componente de velocidad que va HACIA el obstaculo
+                // para que no "luche" contra el empuje
+                float velocityToward = Vector3.Dot(_rb.linearVelocity, dir);
+                if (velocityToward > 0f)
+                    _rb.linearVelocity -= dir * velocityToward;
+            }
+        }
     }
 
-    /// <summary>Impide que la mariposa se entierre en el suelo.</summary>
-    private void PreventGroundPenetration()
+    // ───────────────────────────────────────────────────────────────
+    // GIZMOS — visualiza los rayos en el editor
+    // ───────────────────────────────────────────────────────────────
+    private void OnDrawGizmosSelected()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, 2f))
+        foreach (Vector3 dir in RAY_DIRECTIONS)
         {
-            float targetY = hit.point.y + GROUND_HOVER_Y;
-            if (transform.position.y < targetY)
-            {
-                Vector3 pos = transform.position;
-                pos.y = Mathf.Lerp(pos.y, targetY, Time.fixedDeltaTime * 8f);
-                _rb.MovePosition(pos);
-
-                // Cancela velocidad negativa en Y
-                if (_rb.linearVelocity.y < 0f)
-                    _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, 0f, _rb.linearVelocity.z);
-            }
+            // Verde = rayo libre, rojo = rayo tocando algo
+            bool hit = Physics.Raycast(transform.position, dir, COLLISION_RAY);
+            Gizmos.color = hit ? Color.red : Color.green;
+            Gizmos.DrawRay(transform.position, dir * COLLISION_RAY);
         }
     }
 }

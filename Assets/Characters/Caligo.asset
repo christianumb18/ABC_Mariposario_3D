@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
-  m_Name: Caligo agelissus
+  m_Name: Caligo
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
   speciesName: Caligo
   description: Caligo description
   icon: {fileID: 0}
-  prefabButterfly: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-  prefabEgg: {fileID: 5231071203785947652, guid: 044d3f703cdea6149ad8e71a6654cd31, type: 3}
-  prefabCaterpillar: {fileID: 6121644364617462306, guid: 2e3b3929125342f4ca99628a2136c2f7, type: 3}
-  flightSpeed: 12
-  turnSpeed: 4.9
-  bobAmplitude: 0.2
-  bobFrequency: 2
-  wingTint: {r: 0.21568629, g: 0.21568629, b: 0.21568629, a: 0}
-  trailEffect: {fileID: 0}
+  prefabButterfly: {fileID: 6885700414733911391, guid: b627cb3194513c943bfe783505b4ed2a, type: 3}
+  prefabEgg: {fileID: 5331980137712306466, guid: a5b97bcf580f6c84ba936466bf6ea583, type: 3}
+  prefabCaterpillar: {fileID: 7688535396130257905, guid: 884795c8c971c264b992f7b70096bc6c, type: 3}
+  scale: 0.25
+  flightSpeed: 6
+  turnSpeed: 4
+  bobAmplitude: 0.5
+  bobFrequency: 1.5
