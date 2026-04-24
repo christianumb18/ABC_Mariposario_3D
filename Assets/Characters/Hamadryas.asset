@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
+  m_Name: Hamadryas
+  m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
+  speciesName: Mariposa
+  description: Una hermosa mariposa.
+  icon: {fileID: 0}
+  prefabButterfly: {fileID: 5523758805550789290, guid: 25011fa5ed491524b878fb1351a24a2c, type: 3}
+  prefabEgg: {fileID: 8146540911981327765, guid: 15d5add0ca763b242be17d25e41a902f, type: 3}
+  prefabCaterpillar: {fileID: 5478460815616594600, guid: cdc0c82ab5d5a2040a2bcf999628ace3, type: 3}
+  flightSpeed: 6
+  turnSpeed: 4
+  bobAmplitude: 0.3
+  bobFrequency: 1.2

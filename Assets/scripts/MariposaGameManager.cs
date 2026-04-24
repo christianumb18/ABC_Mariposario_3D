@@ -1,57 +1,82 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Adjunta a un GameObject vacio "GameManager".
-/// Solo coordina el menu y escucha cambios de especie.
-/// La instanciacion del prefab la hace ButterflySelector.
+/// Singleton que persiste entre escenas.
+/// 
+/// /// ESCENA DE SELECCION:
+///   - ButterflySelectionUI llama a ButterflyGameManager.Instance.SelectSpecies(data)
+///   - Luego llama a ButterflyGameManager.Instance.LoadMariposario()
+///   /// ESCENA DEL MARIPOSARIO:
+///   - MariposarioSpawner lee ButterflyGameManager.Instance.SelectedSpecies
+///     e instancia el prefab correcto.
 /// </summary>
 public class MariposarioGameManager : MonoBehaviour
 {
+    // ── Singleton ──────────────────────────────────────────────────
+    public static MariposarioGameManager Instance { get; private set; }
+
+    // ── Nombre de las escenas (ajusta segun tu proyecto) ──────────
+    [Header("Nombres de escenas")]
+    public string selectionSceneName = "SeleccionMariposa";
+    public string mariposarioSceneName = "MapaMariposario";
+
+    // ── Dato persistente ───────────────────────────────────────────
+    /// <summary>Especie que el jugador eligio. Disponible en cualquier escena.</summary>
+    public ButterflyData SelectedSpecie { get; private set; }
+
     [Header("Referencias")]
-    public ButterflySelector selector;      // ButterflySpawnPoint
     public ButterflyUserControl cameraInput;   // Main Camera
 
-    [Header("HUD")]
-    public GameObject hudCanvas;
-
     public static bool IsMenuOpen { get; private set; }
+
+    public ButterflyData fallbackSpecies;
 
     // ═══════════════════════════════════════════════════════════════
 
     private void Start()
     {
-        if (selector != null)
-            selector.onSpeciesSelected += OnSpeciesSelected;
+        // Solo para testing: carga la primera especie si no hay ninguna seleccionada
+        if (SelectedSpecie == null && fallbackSpecies != null)
+            SelectedSpecie = fallbackSpecies;
     }
 
-    private void Update()
+    private void Awake()
     {
-        //if (Input.GetKeyDown(KeyCode.Tab))
-        //    ToggleMenu();
+        // Patron singleton: si ya existe una instancia, destruye el duplicado
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);  // <-- sobrevive al cambio de escena
     }
 
-    private void ToggleMenu()
+    /// <summary>
+    /// Guarda la especie elegida. Llamar desde ButterflySelectionUI.
+    /// </summary>
+    public void SelectSpecies(ButterflyData data)
     {
-        IsMenuOpen = !IsMenuOpen;
-
-        if (selector != null)
-            selector.ToggleMenu();
-
-        if (cameraInput != null)
-            cameraInput.enabled = !IsMenuOpen;
-
-        if (hudCanvas != null)
-            hudCanvas.SetActive(!IsMenuOpen);
+        SelectedSpecie = data;
+        Debug.Log($"[ButterflyGameManager] Especie guardada: {data.speciesName}");
     }
 
-    private void OnSpeciesSelected(ButterflyData data)
+    /// <summary>Carga la escena del mariposario.</summary>
+    public void LoadMariposario()
     {
-        Debug.Log($"[GameManager] Especie activa: {data.speciesName}");
+        if (SelectedSpecie == null)
+        {
+            Debug.LogWarning("[ButterflyGameManager] No hay especie seleccionada.");
+            return;
+        }
+        SceneManager.LoadScene(mariposarioSceneName);
     }
 
-    private void OnDestroy()
+    /// <summary>Vuelve a la pantalla de seleccion.</summary>
+    public void LoadSelectionScene()
     {
-        if (selector != null)
-            selector.onSpeciesSelected -= OnSpeciesSelected;
+        SceneManager.LoadScene(selectionSceneName);
     }
 }
