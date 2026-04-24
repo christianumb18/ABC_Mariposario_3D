@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
   speciesName: Caligo
   description: Caligo description
-  icon: {fileID: 0}
   prefabButterfly: {fileID: 6885700414733911391, guid: b627cb3194513c943bfe783505b4ed2a, type: 3}
   prefabEgg: {fileID: 5331980137712306466, guid: a5b97bcf580f6c84ba936466bf6ea583, type: 3}
   prefabCaterpillar: {fileID: 7688535396130257905, guid: 884795c8c971c264b992f7b70096bc6c, type: 3}

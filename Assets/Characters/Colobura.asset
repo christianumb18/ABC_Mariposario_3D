@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Colobura
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Mariposa
+  speciesName: Colobura
   description: Una hermosa mariposa.
   icon: {fileID: 0}
   prefabButterfly: {fileID: 7855499619355327458, guid: 915c0c81f3715ca4093bf369b151933f, type: 3}
   prefabEgg: {fileID: 868330415206350792, guid: a5219570bb79a094ab6de93b9cbc8515, type: 3}
   prefabCaterpillar: {fileID: 3835247391999423374, guid: 9737c8b4066ef5243b5dc96b5bf0fa1f, type: 3}
+  scale: 0.25
   flightSpeed: 6
   turnSpeed: 4
   bobAmplitude: 0.3

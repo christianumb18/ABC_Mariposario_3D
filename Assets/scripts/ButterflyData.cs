@@ -11,7 +11,6 @@ public class ButterflyData : ScriptableObject
     public string speciesName = "Mariposa";
     [TextArea(2, 4)]
     public string description = "Una hermosa mariposa.";
-    public Sprite icon;               // Icono para el menú de selección
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
     public GameObject prefabEgg;         // Prefab 3D del huevo en escena
     public GameObject prefabCaterpillar;         // Prefab 3D de la oruga en escena

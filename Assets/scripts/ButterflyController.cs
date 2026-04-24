@@ -8,6 +8,7 @@
 ///   permitiendo subir y bajar naturalmente con el joystick.
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(SphereCollider))]
 public class ButterflyController : MonoBehaviour
 {
     // ── Input (escrito por ButterflyInput cada frame) ──────────────
@@ -15,12 +16,12 @@ public class ButterflyController : MonoBehaviour
     [HideInInspector] public float Vinput;
     [HideInInspector] public float VertInput;
 
-    [Header("Datos de especie")]
-    public ButterflyData data;
+    private ButterflyData data;
 
     // ── Estado interno ─────────────────────────────────────────────
     private Vector3 _moveDir = Vector3.forward;
     private Rigidbody _rb;
+    private SphereCollider _sphC;
 
     // ── Constantes ─────────────────────────────────────────────────
     private const float GROUND_HOVER_Y = 0.5f;
@@ -55,6 +56,10 @@ public class ButterflyController : MonoBehaviour
         _rb.linearDamping = 2f;
         _rb.angularDamping = 8f;
         _rb.freezeRotation = true;
+
+        _sphC = GetComponent<SphereCollider>();
+        _sphC.radius = 2.2f;
+        _sphC.center = new Vector3(0, 1.77f, -0.54f);
     }
 
     private void Start()

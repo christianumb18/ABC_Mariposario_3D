@@ -376,9 +376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec1ac33a3ad1f147ae3bbb4e6e4b2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MariposarioGameManager
-  selector: {fileID: 1800814757}
+  selectionSceneName: SeleccionMariposa
+  mariposarioSceneName: MapaMariposario
   cameraInput: {fileID: 368535814}
-  hudCanvas: {fileID: 0}
+  fallbackSpecies: {fileID: 11400000, guid: ad48c38bab8321a4fb37d062613cb8f9, type: 2}
 --- !u!4 &258542925
 Transform:
   m_ObjectHideFlags: 0
@@ -501,8 +502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyUserControl
   LeftJoystick: {fileID: 1891148607}
   TouchField: {fileID: 2114102197}
-  CameraDistance: 5
-  CameraHeight: 5
+  CameraDistance: 8
+  CameraHeight: 8
   CameraLateral: 10
   YawSensitivity: 0.15
   PitchSensitivity: 0.12
@@ -1654,7 +1655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800814758}
-  - component: {fileID: 1800814757}
+  - component: {fileID: 1800814759}
   m_Layer: 0
   m_Name: ButterflySpawnPoint
   m_TagString: Untagged
@@ -1662,27 +1663,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1800814757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800814756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980b1140fdefd474bafda2a14234be6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButterflySelector
-  species:
-  - {fileID: 11400000, guid: f2eb8fb70cc432c4e9231b5c14b26e6e, type: 2}
-  - {fileID: 11400000, guid: d13398bf4dc4dee47bd0e6a42d3670c9, type: 2}
-  selectionPanel: {fileID: 0}
-  buttonContainer: {fileID: 0}
-  buttonPrefab: {fileID: 0}
-  descriptionText: {fileID: 0}
-  previewIcon: {fileID: 0}
-  cameraInput: {fileID: 368535814}
 --- !u!4 &1800814758
 Transform:
   m_ObjectHideFlags: 0
@@ -1698,6 +1678,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 5.913, y: -185.83, z: 14.3}
+--- !u!114 &1800814759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800814756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105a69c1c2de9fc4fbeb0dd2213ad533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposarioSpawner
+  cameraInput: {fileID: 368535814}
 --- !u!1001 &1822955073
 PrefabInstance:
   m_ObjectHideFlags: 0

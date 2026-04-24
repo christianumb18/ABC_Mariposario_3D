@@ -59,6 +59,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e40e6e7db55e441ae68c152f026e9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5981605694449362921}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e40e6e7db55e441ae68c152f026e9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3451647803782345274}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e40e6e7db55e441ae68c152f026e9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6611076816498873069}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 60e40e6e7db55e441ae68c152f026e9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8429522333176034465}
   m_SourcePrefab: {fileID: 100100000, guid: 60e40e6e7db55e441ae68c152f026e9c, type: 3}
 --- !u!1 &5523758805550789290 stripped
 GameObject:
@@ -87,3 +96,67 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &3451647803782345274
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523758805550789290}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &6611076816498873069
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523758805550789290}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8429522333176034465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5523758805550789290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2fc0a1cb38596c498963ee3c119e0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButterflyController
+  Hinput: 0
+  Vinput: 0
+  VertInput: 0
+  data: {fileID: 0}

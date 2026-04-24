@@ -13,9 +13,9 @@ public class ButterflyUserControl : MonoBehaviour
     public FixedTouchField TouchField;
 
     [Header("Camara orbital")]
-    public float CameraDistance = 20f;
-    public float CameraHeight = 15f;
-    public float CameraLateral = 4f;
+    public float CameraDistance = 8f;
+    public float CameraHeight = 8f;
+    public float CameraLateral = 10f;
     public float YawSensitivity = 0.15f;
     public float PitchSensitivity = 0.12f;
 
