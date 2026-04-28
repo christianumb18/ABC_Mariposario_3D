@@ -772,7 +772,7 @@ MonoBehaviour:
   selectionSceneName: SeleccionMariposa
   mariposarioSceneName: MapaMariposario
   cameraInput: {fileID: 368535814}
-  fallbackSpecies: {fileID: 0}
+  fallbackSpecies: {fileID: 11400000, guid: ad48c38bab8321a4fb37d062613cb8f9, type: 2}
 --- !u!4 &258542925
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,104 +1069,6 @@ MonoBehaviour:
   PitchMin: -60
   PitchMax: 70
   CameraSmoothing: 8
---- !u!1001 &372959172
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6194853291403130154, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6194853291403130154, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_AnimatePhysics
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7187634828861029014, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: data
-      value: 
-      objectReference: {fileID: 11400000, guid: f2eb8fb70cc432c4e9231b5c14b26e6e, type: 2}
-    - target: {fileID: 7187634828861029014, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: leftWing
-      value: 
-      objectReference: {fileID: 2042809009}
-    - target: {fileID: 7187634828861029014, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7187634828861029014, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: rightWing
-      value: 
-      objectReference: {fileID: 828900177}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 358.47263
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 27.20203
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 469.64923
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.0568031
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.1267434
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.9892944
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.044789232
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 5.913
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -185.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 7247038364978049343, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 14.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7623476702657195741, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_Name
-      value: mariposa Caligo atreus agesilaus (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1464615150}
-    - targetCorrespondingSourceObject: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1464615155}
-    - targetCorrespondingSourceObject: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1464615156}
-  m_SourcePrefab: {fileID: 100100000, guid: d08d267d637dd69438f0158fb499c285, type: 3}
 --- !u!1001 &428890155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1758,11 +1660,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a49926156c248954ebf15040716642eb, type: 3}
---- !u!4 &828900177 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4816105881861552926, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-  m_PrefabInstance: {fileID: 372959172}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &917014433
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,81 +2488,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18b3653ff6ace964c9b8347669591485, type: 3}
---- !u!1 &1464615146 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8059603109167803269, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-  m_PrefabInstance: {fileID: 372959172}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1464615150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464615146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd81a5a400e27144c85bae89ff1ff562, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButterflyInput
-  LeftJoystick: {fileID: 1891148607}
-  TouchField: {fileID: 2114102197}
-  CameraDistance: 15
-  CameraHeight: 15
-  CameraLateral: 4
-  YawSensitivity: 0.15
-  PitchSensitivity: 0.12
-  PitchMin: -60
-  PitchMax: 70
-  CameraSmoothing: 8
---- !u!135 &1464615155
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464615146}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: -0.05, y: 0.15, z: 0}
---- !u!54 &1464615156
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464615146}
-  serializedVersion: 5
-  m_Mass: 9.15
-  m_LinearDamping: 0
-  m_AngularDamping: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 1
 --- !u!1 &1531765686
 GameObject:
   m_ObjectHideFlags: 0
@@ -3122,6 +2944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800814758}
   - component: {fileID: 1800814757}
+  - component: {fileID: 1800814759}
   m_Layer: 0
   m_Name: ButterflySpawnPoint
   m_TagString: Untagged
@@ -3156,6 +2979,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 5.913, y: -185.83, z: 14.3}
+--- !u!114 &1800814759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800814756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105a69c1c2de9fc4fbeb0dd2213ad533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MariposarioSpawner
+  cameraInput: {fileID: 368535814}
 --- !u!1001 &1813354071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3682,11 +3518,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
---- !u!4 &2042809009 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8010535368792491297, guid: d08d267d637dd69438f0158fb499c285, type: 3}
-  m_PrefabInstance: {fileID: 372959172}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2071859007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3857,7 +3688,6 @@ SceneRoots:
   - {fileID: 1044211000}
   - {fileID: 1571496894}
   - {fileID: 1822955073}
-  - {fileID: 372959172}
   - {fileID: 368535813}
   - {fileID: 917014437}
   - {fileID: 1062729884}

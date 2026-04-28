@@ -17,9 +17,8 @@ public class MariposarioGameManager : MonoBehaviour
     public static MariposarioGameManager Instance { get; private set; }
 
     // ── Nombre de las escenas (ajusta segun tu proyecto) ──────────
-    [Header("Nombres de escenas")]
-    public string selectionSceneName = "SeleccionMariposa";
-    public string mariposarioSceneName = "MapaMariposario";
+    private string selectionSceneName = "SeleccionMariposa";
+    private string mariposarioSceneName = "MapaMariposario_conPlantas";
 
     // ── Dato persistente ───────────────────────────────────────────
     /// <summary>Especie que el jugador eligio. Disponible en cualquier escena.</summary>
