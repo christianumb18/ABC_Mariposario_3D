@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Siproeta epaphus
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Mariposa
+  speciesName: Epaphus
   description: Una hermosa mariposa.
-  icon: {fileID: 0}
   prefabButterfly: {fileID: 2712945845587232095, guid: 53022ab479c60a04aa7ee92b43114f0e, type: 3}
-  prefabEgg: {fileID: 919132149155446097, guid: 7bff1f19909cb3143bcbdbc73e7da3af, type: 3}
-  prefabCaterpillar: {fileID: 8744744911656081862, guid: a0a113a868e8bef45b682cdfab5d1dd9, type: 3}
   scale: 0.25
+  hostPlantID: Epaphus
   flightSpeed: 6
   turnSpeed: 4
   bobAmplitude: 0.3

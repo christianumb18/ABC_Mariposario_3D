@@ -108,12 +108,6 @@ public class ButterflyController : MonoBehaviour
             _rb.MovePosition(transform.position
                              + _moveDir * (data.flightSpeed * Time.fixedDeltaTime));
         }
-        else
-        {
-            // Sin input: frena suavemente
-            _rb.linearVelocity = Vector3.Lerp(_rb.linearVelocity, Vector3.zero,
-                                               Time.fixedDeltaTime * 5f);
-        }
     }
 
     // ───────────────────────────────────────────────────────────────
@@ -133,7 +127,7 @@ public class ButterflyController : MonoBehaviour
     // ───────────────────────────────────────────────────────────────
     private void PreventCollisions()
     {
-        int butterflyLayer = gameObject.layer;
+        int butterflyLayer = LayerMask.GetMask("Butterfly");
 
         foreach (Vector3 dir in RAY_DIRECTIONS)
         {
@@ -181,4 +175,7 @@ public class ButterflyController : MonoBehaviour
             Gizmos.DrawRay(transform.position, dir * COLLISION_RAY);
         }
     }
+
+    /// <summary>Devuelve los datos de especie. Usado por HostPlant para validar.</summary>
+    public ButterflyData GetData() => data;
 }

@@ -12,9 +12,12 @@ public class ButterflyData : ScriptableObject
     [TextArea(2, 4)]
     public string description = "Una hermosa mariposa.";
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
-    public GameObject prefabEgg;         // Prefab 3D del huevo en escena
-    public GameObject prefabCaterpillar;         // Prefab 3D de la oruga en escena
     [Range(0.1f, 2f)] public float scale = 0.25f;
+
+    [Header("Planta hospedera")]
+    [Tooltip("Identificador unico de la planta hospedera de esta especie. " +
+             "Debe coincidir exactamente con el hostPlantID del HostPlant en escena.")]
+    public string hostPlantID = "";
 
     [Header("Vuelo")]
     [Range(1f, 20f)] public float flightSpeed = 6f;

@@ -90,6 +90,20 @@ public class ButterflySelectionUI : MonoBehaviour
         {
             _activeInstance = Instantiate(data.prefabButterfly, butterflyDisplay.position,
                                           butterflyDisplay.rotation, butterflyDisplay);
+
+            // ── ButterflyAnimator ──────────────────────────────────────
+            ButterflyAnimator _activeAnimator = _activeInstance.GetComponent<ButterflyAnimator>();
+            if (_activeAnimator != null)
+            {
+                // Activa la animacion de vuelo apenas aparece la mariposa
+                _activeAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Preview);
+            }
+            else
+            {
+                Debug.LogWarning($"[MariposarioSpawner] '{data.prefabButterfly.name}' no tiene ButterflyAnimator. " +
+                                  "Agrega el script al prefab si quieres controlar animaciones.");
+            }
+
             // Elimina scripts de gameplay para que solo sea visual
             StripGameplayScripts(_activeInstance);
         }
@@ -193,6 +207,15 @@ public class ButterflySelectionUI : MonoBehaviour
     private void OnConfirm()
     {
         if (MariposarioGameManager.Instance == null) return;
+
+        // Destruye la instancia visual ANTES de cargar la nueva escena
+        // para evitar que su ButterflyAnimator interfiera con el del mariposario
+        if (_activeInstance != null)
+        {
+            Destroy(_activeInstance);
+            _activeInstance = null;
+        }
+
         MariposarioGameManager.Instance.SelectSpecies(species[_currentIndex]);
         MariposarioGameManager.Instance.LoadMariposario();
     }
@@ -210,5 +233,12 @@ public class ButterflySelectionUI : MonoBehaviour
         // Desactiva fisica
         var rb = go.GetComponent<Rigidbody>();
         if (rb != null) rb.isKinematic = true;
+    }
+
+    // Limpieza por si la escena se descarga de otra forma (boton atras, etc.)
+    private void OnDestroy()
+    {
+        if (_activeInstance != null)
+            Destroy(_activeInstance);
     }
 }

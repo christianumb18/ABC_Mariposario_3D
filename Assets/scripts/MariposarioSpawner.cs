@@ -17,6 +17,7 @@ public class MariposarioSpawner : MonoBehaviour
     // ── Instancia activa ───────────────────────────────────────────
     private ButterflyController _activeButterfly;
     public ButterflyController ActiveButterfly => _activeButterfly;
+    private ButterflyAnimator _activeAnimator;
 
     // ═══════════════════════════════════════════════════════════════
 
@@ -65,6 +66,19 @@ public class MariposarioSpawner : MonoBehaviour
 
         _activeButterfly.Initialize(data);
 
+        // ── ButterflyAnimator ──────────────────────────────────────
+        _activeAnimator = go.GetComponent<ButterflyAnimator>();
+        if (_activeAnimator != null)
+        {
+            // Activa la animacion de vuelo apenas aparece la mariposa
+            _activeAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
+        }
+        else
+        {
+            Debug.LogWarning($"[MariposarioSpawner] '{data.prefabButterfly.name}' no tiene ButterflyAnimator. " +
+                              "Agrega el script al prefab si quieres controlar animaciones.");
+        }
+        
         // Notifica a la camara
         if (cameraInput != null)
             cameraInput.SetTarget(_activeButterfly);

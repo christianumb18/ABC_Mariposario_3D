@@ -186,7 +186,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 231559899045949668, guid: 3f4c8aa64466b1d45bc5c8800511d90c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2122822310}
+    - targetCorrespondingSourceObject: {fileID: 231559899045949668, guid: 3f4c8aa64466b1d45bc5c8800511d90c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2122822309}
   m_SourcePrefab: {fileID: 100100000, guid: 3f4c8aa64466b1d45bc5c8800511d90c, type: 3}
 --- !u!1001 &103014340
 PrefabInstance:
@@ -245,6 +251,47 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94a3318e328358d4095f16b054b14180, type: 3}
+--- !u!1 &111760975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6209031737948153394, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
+  m_PrefabInstance: {fileID: 165932689}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &111760979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111760975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Morpho
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &111760980
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111760975}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39459088
+  m_Center: {x: 0.00018523252, y: 0.00026582179, z: 0.00087565184}
 --- !u!1001 &148396590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -385,8 +432,96 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 150139439}
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 150139438}
   m_SourcePrefab: {fileID: 100100000, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+--- !u!1 &150139437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+  m_PrefabInstance: {fileID: 150139436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &150139438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150139437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Caligo
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &150139439
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150139437}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.342393
+  m_Center: {x: 0.0005049259, y: -0.00015127675, z: -0.0030950457}
+--- !u!1 &160600420 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+  m_PrefabInstance: {fileID: 706874086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &160600424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160600420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Hamadryas
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &160600425
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160600420}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5001307
+  m_Center: {x: 0.00087046606, y: 0.0011620225, z: 0.0010185838}
 --- !u!1001 &164225046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -568,7 +703,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6209031737948153394, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 111760980}
+    - targetCorrespondingSourceObject: {fileID: 6209031737948153394, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 111760979}
   m_SourcePrefab: {fileID: 100100000, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
 --- !u!1001 &190107822
 PrefabInstance:
@@ -653,7 +794,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 942816636}
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 942816635}
   m_SourcePrefab: {fileID: 100100000, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
 --- !u!1001 &216616007
 PrefabInstance:
@@ -738,8 +885,137 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 216616010}
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 216616009}
   m_SourcePrefab: {fileID: 100100000, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+--- !u!1 &216616008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+  m_PrefabInstance: {fileID: 216616007}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &216616009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216616008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Caligo
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &216616010
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216616008}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.34239295
+  m_Center: {x: 0.00050492585, y: -0.0001512766, z: -0.003094092}
+--- !u!1 &226407699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+  m_PrefabInstance: {fileID: 1841196081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &226407703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226407699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Steleness
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &226407704
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226407699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.50117797
+  m_Center: {x: -0.00031337145, y: 0.00006499889, z: -0.00017635527}
+--- !u!1 &242253081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+  m_PrefabInstance: {fileID: 1746763846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &242253085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242253081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Colobura
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &242253086
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242253081}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3929661
+  m_Center: {x: 0.00017155705, y: 0.00005483626, z: 0.0005952865}
 --- !u!1 &258542923
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,10 +1045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec1ac33a3ad1f147ae3bbb4e6e4b2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MariposarioGameManager
-  selectionSceneName: SeleccionMariposa
-  mariposarioSceneName: MapaMariposario
   cameraInput: {fileID: 368535814}
-  fallbackSpecies: {fileID: 11400000, guid: ad48c38bab8321a4fb37d062613cb8f9, type: 2}
+  fallbackSpecies: {fileID: 11400000, guid: f2eb8fb70cc432c4e9231b5c14b26e6e, type: 2}
 --- !u!4 &258542925
 Transform:
   m_ObjectHideFlags: 0
@@ -871,7 +1145,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1436518159}
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1436518158}
   m_SourcePrefab: {fileID: 100100000, guid: 684a7e65f498df24f806871e5771edae, type: 3}
 --- !u!1001 &307677082
 PrefabInstance:
@@ -952,8 +1232,96 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486299051}
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486299050}
   m_SourcePrefab: {fileID: 100100000, guid: 85045f3875b594242bf17153206294fc, type: 3}
+--- !u!1 &322692362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+  m_PrefabInstance: {fileID: 1813354071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322692366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322692362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Steleness
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &322692367
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322692362}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5011779
+  m_Center: {x: -0.00031337142, y: 0.00007262827, z: -0.00017635523}
+--- !u!1 &322814039 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+  m_PrefabInstance: {fileID: 1350242333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &322814043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322814039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Steleness
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &322814044
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322814039}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5011782
+  m_Center: {x: -0.00031337168, y: 0.00007262833, z: -0.00017635533}
 --- !u!1 &368535809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1061,14 +1429,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyUserControl
   LeftJoystick: {fileID: 1891148607}
   TouchField: {fileID: 2114102197}
-  CameraDistance: 15
-  CameraHeight: 15
-  CameraLateral: 4
+  CameraDistance: 10
+  CameraHeight: 10
+  CameraLateral: 0
   YawSensitivity: 0.15
   PitchSensitivity: 0.12
   PitchMin: -60
   PitchMax: 70
   CameraSmoothing: 8
+  DeadZone: 4
 --- !u!1001 &428890155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1136,8 +1505,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2674422332621483945, guid: 655763f5435cb504981b34ba7499f13a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2079003066}
+    - targetCorrespondingSourceObject: {fileID: 2674422332621483945, guid: 655763f5435cb504981b34ba7499f13a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2079003065}
   m_SourcePrefab: {fileID: 100100000, guid: 655763f5435cb504981b34ba7499f13a, type: 3}
+--- !u!1 &460846461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+  m_PrefabInstance: {fileID: 1838343266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &460846465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460846461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Hamadryas
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &460846466
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460846461}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5001298
+  m_Center: {x: 0.0008704665, y: 0.0011620224, z: 0.0010185838}
 --- !u!1001 &500511459
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1221,7 +1637,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952781983}
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1952781982}
   m_SourcePrefab: {fileID: 100100000, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
 --- !u!1 &503798154
 GameObject:
@@ -1488,7 +1910,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8596815490294812239, guid: 2c4f01c5682ed074cb7dc3c090ed789f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1822282787}
+    - targetCorrespondingSourceObject: {fileID: 8596815490294812239, guid: 2c4f01c5682ed074cb7dc3c090ed789f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1822282786}
   m_SourcePrefab: {fileID: 100100000, guid: 2c4f01c5682ed074cb7dc3c090ed789f, type: 3}
 --- !u!1001 &706874086
 PrefabInstance:
@@ -1573,7 +2001,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 160600425}
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 160600424}
   m_SourcePrefab: {fileID: 100100000, guid: 684a7e65f498df24f806871e5771edae, type: 3}
 --- !u!1001 &737825553
 PrefabInstance:
@@ -1658,7 +2092,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1853498724}
+    - targetCorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1853498723}
   m_SourcePrefab: {fileID: 100100000, guid: a49926156c248954ebf15040716642eb, type: 3}
 --- !u!1 &917014433
 GameObject:
@@ -1763,6 +2203,88 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &934590583 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+  m_PrefabInstance: {fileID: 1158923282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &934590587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934590583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Mechantis
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &934590588
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934590583}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3928312
+  m_Center: {x: 0.00034815073, y: 0.00022031367, z: -0.00026133657}
+--- !u!1 &942816631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+  m_PrefabInstance: {fileID: 190107822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &942816635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942816631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Mechantis
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &942816636
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942816631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3928312
+  m_Center: {x: 0.00034815073, y: 0.00022031367, z: -0.00026133654}
 --- !u!1001 &1044211000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2062,6 +2584,47 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94a3318e328358d4095f16b054b14180, type: 3}
+--- !u!1 &1158917217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+  m_PrefabInstance: {fileID: 1274092222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1158917221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158917217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Danaus
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1158917222
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158917217}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39529562
+  m_Center: {x: 0.00068020844, y: 0.00007393955, z: -0.00007897624}
 --- !u!1001 &1158923282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2145,7 +2708,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 934590588}
+    - targetCorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 934590587}
   m_SourcePrefab: {fileID: 100100000, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
 --- !u!1001 &1274092222
 PrefabInstance:
@@ -2226,7 +2795,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158917222}
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1158917221}
   m_SourcePrefab: {fileID: 100100000, guid: 85045f3875b594242bf17153206294fc, type: 3}
 --- !u!1001 &1292258489
 PrefabInstance:
@@ -2364,7 +2939,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322814044}
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322814043}
   m_SourcePrefab: {fileID: 100100000, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
 --- !u!1001 &1360349799
 PrefabInstance:
@@ -2431,6 +3012,47 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8f8660f45621a4a804df622b985183, type: 3}
+--- !u!1 &1436518154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+  m_PrefabInstance: {fileID: 272529071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1436518158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436518154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Hamadryas
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1436518159
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436518154}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.5001307
+  m_Center: {x: 0.00087046606, y: 0.0011620225, z: 0.0010185838}
 --- !u!1001 &1446890634
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2488,6 +3110,47 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18b3653ff6ace964c9b8347669591485, type: 3}
+--- !u!1 &1486299046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+  m_PrefabInstance: {fileID: 307677082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486299050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486299046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Danaus
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1486299051
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486299046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39529556
+  m_Center: {x: 0.0006802084, y: 0.00007393956, z: -0.00007897624}
 --- !u!1 &1531765686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2932,7 +3595,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 242253086}
+    - targetCorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 242253085}
   m_SourcePrefab: {fileID: 100100000, guid: a49926156c248954ebf15040716642eb, type: 3}
 --- !u!1 &1800814756
 GameObject:
@@ -2943,7 +3612,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1800814758}
-  - component: {fileID: 1800814757}
   - component: {fileID: 1800814759}
   m_Layer: 0
   m_Name: ButterflySpawnPoint
@@ -2952,18 +3620,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1800814757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800814756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980b1140fdefd474bafda2a14234be6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ButterflySelector
 --- !u!4 &1800814758
 Transform:
   m_ObjectHideFlags: 0
@@ -3059,8 +3715,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322692367}
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 322692366}
   m_SourcePrefab: {fileID: 100100000, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+--- !u!1 &1822282782 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8596815490294812239, guid: 2c4f01c5682ed074cb7dc3c090ed789f, type: 3}
+  m_PrefabInstance: {fileID: 673658062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822282786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822282782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Colobura
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1822282787
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822282782}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39185447
+  m_Center: {x: -0.0004783274, y: -0.00010447211, z: 0.00010739265}
 --- !u!1001 &1822955073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3213,7 +3916,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 460846466}
+    - targetCorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 460846465}
   m_SourcePrefab: {fileID: 100100000, guid: 684a7e65f498df24f806871e5771edae, type: 3}
 --- !u!1001 &1841196081
 PrefabInstance:
@@ -3282,8 +3991,55 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 226407704}
+    - targetCorrespondingSourceObject: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 226407703}
   m_SourcePrefab: {fileID: 100100000, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
+--- !u!1 &1853498719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8924744127784852191, guid: a49926156c248954ebf15040716642eb, type: 3}
+  m_PrefabInstance: {fileID: 737825553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1853498723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853498719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Colobura
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1853498724
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853498719}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3929661
+  m_Center: {x: 0.00017155705, y: 0.00005483626, z: 0.0005952865}
 --- !u!1001 &1869497594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3431,7 +4187,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2087698768}
+    - targetCorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2087698767}
   m_SourcePrefab: {fileID: 100100000, guid: 85045f3875b594242bf17153206294fc, type: 3}
 --- !u!1001 &1902729976
 PrefabInstance:
@@ -3516,8 +4278,96 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1902729979}
+    - targetCorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1902729978}
   m_SourcePrefab: {fileID: 100100000, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+--- !u!1 &1902729977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
+  m_PrefabInstance: {fileID: 1902729976}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1902729978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902729977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Caligo
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1902729979
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902729977}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.342393
+  m_Center: {x: 0.0005049259, y: -0.00015127675, z: -0.0030931383}
+--- !u!1 &1952781978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1977625771831501391, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+  m_PrefabInstance: {fileID: 500511459}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1952781982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952781978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Mechantis
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &1952781983
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952781978}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3928312
+  m_Center: {x: 0.00034815073, y: 0.00022031367, z: -0.00026133657}
 --- !u!1001 &2071859007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3575,6 +4425,88 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f36916143c7509543b1b8d40091baa24, type: 3}
+--- !u!1 &2079003061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2674422332621483945, guid: 655763f5435cb504981b34ba7499f13a, type: 3}
+  m_PrefabInstance: {fileID: 428890155}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2079003065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079003061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Morpho
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &2079003066
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079003061}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3916058
+  m_Center: {x: 0.000046744943, y: -0.00006432832, z: -0.00064557785}
+--- !u!1 &2087698763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
+  m_PrefabInstance: {fileID: 1899912220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2087698767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087698763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Danaus
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &2087698768
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087698763}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39529562
+  m_Center: {x: 0.00068020844, y: 0.00007393955, z: -0.00007897624}
 --- !u!1 &2114102196
 GameObject:
   m_ObjectHideFlags: 0
@@ -3607,8 +4539,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FixedTouchField
   TouchDist: {x: 0, y: 0}
-  PointerOld: {x: 0, y: 0}
   Pressed: 0
+  PointerOld: {x: 0, y: 0}
+  PointerId: -1
 --- !u!114 &2114102198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3666,6 +4599,47 @@ RectTransform:
   m_AnchoredPosition: {x: 302.9998, y: 0}
   m_SizeDelta: {x: -606.0004, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2122822305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 231559899045949668, guid: 3f4c8aa64466b1d45bc5c8800511d90c, type: 3}
+  m_PrefabInstance: {fileID: 64714931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2122822309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122822305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34e8789f2920b9c4f860e7984b1cf640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HostPlant
+  hostPlantID: Morpho
+  layEggButton: {fileID: 0}
+  spawner: {fileID: 1800814759}
+--- !u!135 &2122822310
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2122822305}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.39147866
+  m_Center: {x: 0.00016390532, y: -0.00021979223, z: 0.00075733673}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
