@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Morpho
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Mariposa
+  speciesName: Morpho
   description: Una hermosa mariposa.
-  icon: {fileID: 0}
   prefabButterfly: {fileID: 3109968336678517971, guid: 272893b6d4266bd4a8158d3e9ea7184d, type: 3}
-  prefabEgg: {fileID: 2275803784489646159, guid: 0252bb6be20a4424681489e5c56fa422, type: 3}
-  prefabCaterpillar: {fileID: 2810463195113439453, guid: 4888ebbacc2b8474483b4f6f3f454a04, type: 3}
+  scale: 0.25
+  hostPlantID: Morpho
   flightSpeed: 6
   turnSpeed: 4
   bobAmplitude: 0.3

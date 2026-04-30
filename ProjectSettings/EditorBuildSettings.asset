@@ -11,6 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapaMariposario.unity
     guid: 6bb3ab11731743d4e9e5ebf863323ecc
-  m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

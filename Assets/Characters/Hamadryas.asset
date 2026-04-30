@@ -12,12 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Hamadryas
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Mariposa
+  speciesName: Hamadryas
   description: Una hermosa mariposa.
-  icon: {fileID: 0}
   prefabButterfly: {fileID: 5523758805550789290, guid: 25011fa5ed491524b878fb1351a24a2c, type: 3}
-  prefabEgg: {fileID: 8146540911981327765, guid: 15d5add0ca763b242be17d25e41a902f, type: 3}
-  prefabCaterpillar: {fileID: 5478460815616594600, guid: cdc0c82ab5d5a2040a2bcf999628ace3, type: 3}
+  scale: 0.25
+  hostPlantID: Hamadryas
   flightSpeed: 6
   turnSpeed: 4
   bobAmplitude: 0.3

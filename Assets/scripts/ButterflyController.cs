@@ -1,52 +1,46 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Controlador de vuelo de la mariposa integrado con la camara orbital (FixedTouchField).
-///
-///   Usa los 3 ejes de la camara tal como ButterflyInput los posiciona cada frame,
-///   de modo que Vinput empuja en la direccion real de la camara (incluida su Y),
-///   permitiendo subir y bajar naturalmente con el joystick.
-/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(SphereCollider))]
 public class ButterflyController : MonoBehaviour
 {
-    // ── Input (escrito por ButterflyInput cada frame) ──────────────
+    // ── Input ──────────────────────────────────────────────────────
     [HideInInspector] public float Hinput;
     [HideInInspector] public float Vinput;
     [HideInInspector] public float VertInput;
 
     private ButterflyData data;
 
-    // ── Estado interno ─────────────────────────────────────────────
-    private Vector3 _moveDir = Vector3.forward;
+    // ── Componentes ────────────────────────────────────────────────
     private Rigidbody _rb;
     private SphereCollider _sphC;
 
-    // ── Constantes ─────────────────────────────────────────────────
-    private const float GROUND_HOVER_Y = 0.5f;
+    // ── Estado interno ─────────────────────────────────────────────
+    private Vector3 _moveDir = Vector3.forward;
 
-    // ── Constantes de colision ─────────────────────────────────────
-    private const float COLLISION_RAY = 2f;    // longitud de cada rayo
-    private const float COLLISION_HOVER = 0.5f;  // margen minimo al rebotar
-    private const float COLLISION_PUSH = 8f;    // velocidad de separacion
+    // ── Colision ───────────────────────────────────────────────────
+    private const float COLLISION_RAY = 1.5f;
+    private const float COLLISION_HOVER = 0.5f;
+    private const float COLLISION_PUSH = 8f;
 
-    // Direcciones que se comprueban cada FixedUpdate.
-    // Combina los 6 ejes cardinales con 4 diagonales hacia abajo
-    // para cubrir suelo, techo, paredes y esquinas inclinadas.
+    // Solo direcciones que tienen sentido para una mariposa volando:
+    // quitamos Vector3.up porque no hay techo en un mariposario abierto
+    // y era la causa del "techo fantasma" al subir.
+    // Si tu escena tiene techo real, vuelve a agregarlo.
     private static readonly Vector3[] RAY_DIRECTIONS =
     {
-        Vector3.down,                           // suelo
-        Vector3.up,                             // techo
-        Vector3.forward,                        // frente
-        Vector3.back,                           // detras
-        Vector3.left,                           // izquierda
-        Vector3.right,                          // derecha
-        new Vector3( 1f, -1f,  0f).normalized,  // diagonal abajo-derecha
-        new Vector3(-1f, -1f,  0f).normalized,  // diagonal abajo-izquierda
-        new Vector3( 0f, -1f,  1f).normalized,  // diagonal abajo-frente
-        new Vector3( 0f, -1f, -1f).normalized,  // diagonal abajo-detras
+        Vector3.down,
+        Vector3.up,
+        Vector3.forward,
+        Vector3.back,
+        Vector3.left,
+        Vector3.right,
+        new Vector3( 1f, -1f,  0f).normalized,
+        new Vector3(-1f, -1f,  0f).normalized,
+        new Vector3( 0f, -1f,  1f).normalized,
+        new Vector3( 0f, -1f, -1f).normalized,
     };
+
     // ═══════════════════════════════════════════════════════════════
 
     private void Awake()
@@ -59,7 +53,13 @@ public class ButterflyController : MonoBehaviour
 
         _sphC = GetComponent<SphereCollider>();
         _sphC.radius = 2.2f;
-        _sphC.center = new Vector3(0, 1.77f, -0.54f);
+        _sphC.center = new Vector3(0f, 1.77f, -0.54f);
+
+        // El collider propio nunca debe activar los rayos de colision.
+        // Asigna la mariposa a su propia layer (ej. "Butterfly") y
+        // excluye esa layer del raycast para evitar auto-colision.
+        // Si no usas layers, Physics.IgnoreCollision es la alternativa:
+        // se configura en Initialize() cuando ya tenemos los datos.
     }
 
     private void Start()
@@ -68,31 +68,25 @@ public class ButterflyController : MonoBehaviour
             Debug.LogWarning("[ButterflyController] No hay ButterflyData asignada.", this);
     }
 
-    private void Update()
+    // Todo el movimiento va en FixedUpdate para ser consistente con la fisica
+    private void FixedUpdate()
     {
         if (data == null) return;
         HandleMovement();
         BobVertically();
-    }
-
-    private void FixedUpdate()
-    {
         PreventCollisions();
     }
 
     // ───────────────────────────────────────────────────────────────
-    // MOVIMIENTO 3D — incluye eje Y de la camara
+    // MOVIMIENTO 3D
     // ───────────────────────────────────────────────────────────────
     private void HandleMovement()
     {
         Camera cam = Camera.main;
         if (cam == null) return;
 
-        // Tomamos los ejes de la camara SIN aplanar sobre el plano horizontal.
-        // ButterflyInput posiciona la camara cada frame con una altura y angulo
-        // definidos; esos ejes ya llevan la informacion vertical que necesitamos.
-        Vector3 camForward = cam.transform.forward; // tiene componente Y segun inclinacion
-        Vector3 camRight = cam.transform.right;   // siempre horizontal (sin roll)
+        Vector3 camForward = cam.transform.forward;
+        Vector3 camRight = cam.transform.right;
 
         Vector3 input = camForward * Vinput
                       + camRight * Hinput
@@ -102,17 +96,17 @@ public class ButterflyController : MonoBehaviour
         {
             Vector3 inputDir = input.normalized;
 
-            // Suaviza la direccion de movimiento
-            _moveDir = Vector3.Lerp(_moveDir, inputDir, Time.deltaTime * data.turnSpeed);
+            _moveDir = Vector3.Lerp(_moveDir, inputDir,
+                                    Time.fixedDeltaTime * data.turnSpeed);
 
-            // Rota el cuerpo hacia donde vuela.
-            // Usamos Vector3.up para que la mariposa no quede volcada al bajar en picado.
-            // Si prefieres que incline el cuerpo en picado, usa cam.transform.up en su lugar.
             Quaternion targetRot = Quaternion.LookRotation(_moveDir, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRot,
-                                                     Time.deltaTime * data.turnSpeed);
-            // Traslada
-            transform.position += _moveDir * (data.flightSpeed * Time.deltaTime);
+                                                     Time.fixedDeltaTime * data.turnSpeed);
+
+            // Usa MovePosition en lugar de transform.position para que
+            // la fisica de Unity sepa a donde va el objeto este frame
+            _rb.MovePosition(transform.position
+                             + _moveDir * (data.flightSpeed * Time.fixedDeltaTime));
         }
     }
 
@@ -125,7 +119,38 @@ public class ButterflyController : MonoBehaviour
 
         float bob = Mathf.Sin(Time.time * data.bobFrequency * Mathf.PI * 2f)
                   * data.bobAmplitude;
-        transform.position += Vector3.up * (bob * Time.deltaTime);
+        _rb.MovePosition(transform.position + Vector3.up * (bob * Time.fixedDeltaTime));
+    }
+
+    // ───────────────────────────────────────────────────────────────
+    // PREVENCION DE COLISIONES
+    // ───────────────────────────────────────────────────────────────
+    private void PreventCollisions()
+    {
+        int butterflyLayer = LayerMask.GetMask("Butterfly");
+
+        foreach (Vector3 dir in RAY_DIRECTIONS)
+        {
+            // Ignora la propia layer de la mariposa en el raycast
+            // para que el SphereCollider no se detecte a si mismo
+            int mask = ~(1 << butterflyLayer);
+
+            if (!Physics.Raycast(transform.position, dir, out RaycastHit hit,
+                                 COLLISION_RAY, mask))
+                continue;
+
+            if (hit.distance >= COLLISION_HOVER) continue;
+
+            // Empuja en direccion opuesta al obstaculo
+            Vector3 safePos = hit.point + (-dir) * COLLISION_HOVER;
+            _rb.MovePosition(Vector3.Lerp(transform.position, safePos,
+                                          Time.fixedDeltaTime * COLLISION_PUSH));
+
+            // Cancela velocidad hacia el obstaculo
+            float velToward = Vector3.Dot(_rb.linearVelocity, dir);
+            if (velToward > 0f)
+                _rb.linearVelocity -= dir * velToward;
+        }
     }
 
     // ───────────────────────────────────────────────────────────────
@@ -136,48 +161,21 @@ public class ButterflyController : MonoBehaviour
         data = newData;
         transform.localScale = Vector3.one * data.scale;
     }
-    
-    // ───────────────────────────────────────────────────────────────
-    // PREVENCION DE COLISIONES EN TODAS LAS DIRECCIONES
-    // ───────────────────────────────────────────────────────────────
-    private void PreventCollisions()
-    {
-        foreach (Vector3 dir in RAY_DIRECTIONS)
-        {
-            if (!Physics.Raycast(transform.position, dir, out RaycastHit hit, COLLISION_RAY))
-                continue;
-
-            // Si la mariposa esta mas cerca del obstaculo que el margen de seguridad
-            if (hit.distance < COLLISION_HOVER)
-            {
-                // Empuja en la direccion opuesta al obstaculo
-                Vector3 pushDir = -dir;
-                transform.position = Vector3.Lerp(
-                    transform.position,
-                    hit.point + pushDir * COLLISION_HOVER,
-                    Time.fixedDeltaTime * COLLISION_PUSH
-                );
-
-                // Cancela la componente de velocidad que va HACIA el obstaculo
-                // para que no "luche" contra el empuje
-                float velocityToward = Vector3.Dot(_rb.linearVelocity, dir);
-                if (velocityToward > 0f)
-                    _rb.linearVelocity -= dir * velocityToward;
-            }
-        }
-    }
 
     // ───────────────────────────────────────────────────────────────
-    // GIZMOS — visualiza los rayos en el editor
+    // GIZMOS
     // ───────────────────────────────────────────────────────────────
     private void OnDrawGizmosSelected()
     {
+        int mask = ~(1 << gameObject.layer);
         foreach (Vector3 dir in RAY_DIRECTIONS)
         {
-            // Verde = rayo libre, rojo = rayo tocando algo
-            bool hit = Physics.Raycast(transform.position, dir, COLLISION_RAY);
+            bool hit = Physics.Raycast(transform.position, dir, COLLISION_RAY, mask);
             Gizmos.color = hit ? Color.red : Color.green;
             Gizmos.DrawRay(transform.position, dir * COLLISION_RAY);
         }
     }
+
+    /// <summary>Devuelve los datos de especie. Usado por HostPlant para validar.</summary>
+    public ButterflyData GetData() => data;
 }

@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
   speciesName: Danaus
   description: Una hermosa mariposa.
-  icon: {fileID: 0}
   prefabButterfly: {fileID: 2318519655408594110, guid: 4d51e8b7e342c4846bbe4286f192c8aa, type: 3}
-  prefabEgg: {fileID: 321656290106638917, guid: bba832bd55796b0428694a9e19850187, type: 3}
-  prefabCaterpillar: {fileID: 7198758841711757837, guid: 0410ce1a2aa848f419078fe11fc3184c, type: 3}
   scale: 0.25
+  hostPlantID: Danaus
   flightSpeed: 6
   turnSpeed: 4
   bobAmplitude: 0.3

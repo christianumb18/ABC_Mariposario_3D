@@ -2,9 +2,7 @@
 
 /// <summary>
 /// Adjunta a la Main Camera.
-/// NO usa GetComponent<ButterflyController>() en Start porque la camara
-/// no tiene ese script. La referencia se asigna desde ButterflySelector
-/// cada vez que se instancia un nuevo prefab de mariposa.
+/// Controla la camara orbital y envia input al ButterflyController.
 /// </summary>
 public class ButterflyUserControl : MonoBehaviour
 {
@@ -16,27 +14,47 @@ public class ButterflyUserControl : MonoBehaviour
     public float CameraDistance = 8f;
     public float CameraHeight = 8f;
     public float CameraLateral = 10f;
-    public float YawSensitivity = 0.15f;
-    public float PitchSensitivity = 0.12f;
 
+    [Header("Sensibilidad separada por eje")]
+    [Tooltip("Sensibilidad horizontal (yaw)")]
+    public float YawSensitivity = 0.08f;
+    [Tooltip("Sensibilidad vertical (pitch) — mantener menor que yaw")]
+    public float PitchSensitivity = 0.05f;
+
+    [Header("Limites de pitch")]
     [Range(-80f, 0f)] public float PitchMin = -60f;
     [Range(0f, 80f)] public float PitchMax = 70f;
+
+    [Header("Suavizado")]
     [Range(1f, 20f)] public float CameraSmoothing = 8f;
 
+    [Header("Filtro de ruido (movil)")]
+    [Tooltip("Pixeles minimos de arrastre para considerar movimiento real")]
+    public float DeadZone = 4f;
+
     // ── Estado interno ─────────────────────────────────────────────
-    private ButterflyController _control;   // se asigna desde SetTarget()
+    private ButterflyController _control;
     private float _yaw = 180f;
     private float _pitch = 20f;
     private Vector3 _camVelocity;
     private float _verticalButtonInput;
 
+    // Escala de DPI: normaliza la sensibilidad entre pantallas de distinta densidad
+    // Un telefono de 420 DPI genera el doble de pixeles que uno de 210 DPI
+    // con el mismo arrastre fisico → sin escala, se ve el doble de rapido
+    private float _dpiScale = 1f;
+
     // ═══════════════════════════════════════════════════════════════
+
+    private void Start()
+    {
+        float dpi = Screen.dpi > 0 ? Screen.dpi : 96f;
+        _dpiScale = 96f / dpi;
+    }
 
     private void Update()
     {
-        // Solo procesa si ya hay una mariposa instanciada
         if (_control == null) return;
-
         HandleCameraOrbit();
         SendInputToController();
         UpdateCameraTransform();
@@ -46,8 +64,15 @@ public class ButterflyUserControl : MonoBehaviour
     private void HandleCameraOrbit()
     {
         if (TouchField == null || !TouchField.Pressed) return;
-        _yaw += TouchField.TouchDist.x * YawSensitivity;
-        _pitch -= TouchField.TouchDist.y * PitchSensitivity;
+
+        Vector2 dist = TouchField.TouchDist;
+
+        // Filtra micro-movimientos: dedo quieto en movil genera ruido de 1-2 px
+        // que sin dead zone se acumula y mueve la camara solo en el eje Y
+        if (dist.magnitude < DeadZone) return;
+
+        _yaw += dist.x * YawSensitivity * _dpiScale;
+        _pitch -= dist.y * PitchSensitivity * _dpiScale;
         _pitch = Mathf.Clamp(_pitch, PitchMin, PitchMax);
     }
 
@@ -76,9 +101,6 @@ public class ButterflyUserControl : MonoBehaviour
 
     // ── API publica ────────────────────────────────────────────────
 
-    /// <summary>
-    /// Llamado desde ButterflySelector cada vez que se instancia un nuevo prefab.
-    /// </summary>
     public void SetTarget(ButterflyController newController)
     {
         _control = newController;
@@ -89,6 +111,5 @@ public class ButterflyUserControl : MonoBehaviour
         }
     }
 
-    /// <summary>Conecta a botones UI de subir/bajar.</summary>
     public void SetVerticalInput(float value) => _verticalButtonInput = value;
 }
