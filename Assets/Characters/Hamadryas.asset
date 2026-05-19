@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Hamadryas
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 5523758805550789290, guid: 25011fa5ed491524b878fb1351a24a2c, type: 3}
+  prefabPlant: {fileID: 919132149155446097, guid: 57ebe69236a89d94c9fd45e223b9310d, type: 3}
   scale: 0.25
   hostPlantID: Hamadryas
   flightSpeed: 6

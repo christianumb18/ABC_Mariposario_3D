@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Mechantis
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 633458905928733921, guid: 2c77abeb74a33894eb66465f46bc2936, type: 3}
+  prefabPlant: {fileID: 919132149155446097, guid: 5efe0a8d6cf3fc44c84907089db4966e, type: 3}
   scale: 0.25
   hostPlantID: Mechantis
   flightSpeed: 6

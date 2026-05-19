@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Morpho
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 3109968336678517971, guid: 272893b6d4266bd4a8158d3e9ea7184d, type: 3}
+  prefabPlant: {fileID: 6209031737948153394, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
   scale: 0.25
   hostPlantID: Morpho
   flightSpeed: 6

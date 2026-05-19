@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Caligo
   description: Caligo description
   prefabButterfly: {fileID: 6885700414733911391, guid: b627cb3194513c943bfe783505b4ed2a, type: 3}
+  prefabPlant: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
   scale: 0.25
   hostPlantID: Caligo
   flightSpeed: 6

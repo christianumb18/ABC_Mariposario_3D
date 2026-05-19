@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Danaus
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 2318519655408594110, guid: 4d51e8b7e342c4846bbe4286f192c8aa, type: 3}
+  prefabPlant: {fileID: 919132149155446097, guid: 0454d87d9f58ad24fbba177eef5a636b, type: 3}
   scale: 0.25
   hostPlantID: Danaus
   flightSpeed: 6

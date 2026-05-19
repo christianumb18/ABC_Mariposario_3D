@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Steleness
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 1872554824594770698, guid: 380ea3a7fca5cf84b87dd0a1c75913c2, type: 3}
+  prefabPlant: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
   scale: 0.25
   hostPlantID: Steleness
   flightSpeed: 6

@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Colobura
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 7855499619355327458, guid: 915c0c81f3715ca4093bf369b151933f, type: 3}
+  prefabPlant: {fileID: 919132149155446097, guid: 561b3c5d78f2a5847ac7151e64092f62, type: 3}
   scale: 0.25
   hostPlantID: Colobura
   flightSpeed: 6

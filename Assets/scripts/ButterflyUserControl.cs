@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Adjunta a la Main Camera.
@@ -9,6 +10,7 @@ public class ButterflyUserControl : MonoBehaviour
     [Header("Controles tactiles")]
     public FixedJoystick LeftJoystick;
     public FixedTouchField TouchField;
+    public Button btnBack;
 
     [Header("Camara orbital")]
     public float CameraDistance = 8f;
@@ -50,6 +52,8 @@ public class ButterflyUserControl : MonoBehaviour
     {
         float dpi = Screen.dpi > 0 ? Screen.dpi : 96f;
         _dpiScale = 96f / dpi;
+
+        btnBack.onClick.AddListener(OnBack);
     }
 
     private void Update()
@@ -109,6 +113,11 @@ public class ButterflyUserControl : MonoBehaviour
             _yaw = _control.transform.eulerAngles.y + 180f;
             _pitch = 20f;
         }
+    }
+
+    private void OnBack()
+    {
+        MariposarioGameManager.Instance.LoadSceneSelection();
     }
 
     public void SetVerticalInput(float value) => _verticalButtonInput = value;

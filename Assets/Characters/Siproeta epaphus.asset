@@ -15,6 +15,7 @@ MonoBehaviour:
   speciesName: Epaphus
   description: Una hermosa mariposa.
   prefabButterfly: {fileID: 2712945845587232095, guid: 53022ab479c60a04aa7ee92b43114f0e, type: 3}
+  prefabPlant: {fileID: 919132149155446097, guid: 891735bc8ac7ef9408e7c5dea39a124a, type: 3}
   scale: 0.25
   hostPlantID: Epaphus
   flightSpeed: 6
