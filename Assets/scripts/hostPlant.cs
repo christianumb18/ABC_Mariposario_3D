@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +19,6 @@ public class HostPlant : MonoBehaviour
     public string hostPlantID = "";
 
     private float proximityRadius = 0.5f;
-
-    [Header("UI")]
-    public Button layEggButton;         // Boton que se habilita al acercarse
 
     [Header("Referencias")]
     public MariposarioSpawner spawner;
@@ -57,13 +55,16 @@ public class HostPlant : MonoBehaviour
         {
             _correctSpeciesNearby = true;
             SetButtonVisible(true);
-            ActiveAnimation();
+            SetTextVisible(true, spawner.textPlantCorrect);
+            SetTextVisible(false, spawner.textPlantIncorrect);
         }
         else
         {
             // Especie incorrecta: no muestra el boton
             _correctSpeciesNearby = false;
             SetButtonVisible(false);
+            SetTextVisible(false, spawner.textPlantCorrect);
+            SetTextVisible(true, spawner.textPlantIncorrect);
         }
     }
 
@@ -73,6 +74,8 @@ public class HostPlant : MonoBehaviour
         if (!IsButterfly(other)) return;
         _correctSpeciesNearby = false;
         SetButtonVisible(false);
+        SetTextVisible(false, spawner.textPlantCorrect);
+        SetTextVisible(false, spawner.textPlantIncorrect);
         InactiveAnimation();
     }
 
@@ -113,8 +116,15 @@ public class HostPlant : MonoBehaviour
     // ── Muestra u oculta el boton ─────────────────────────────────
     private void SetButtonVisible(bool visible)
     {
-        if (layEggButton == null) return;
-        layEggButton.gameObject.SetActive(visible);
+        if (spawner.layEggButton == null) return;
+        spawner.layEggButton.gameObject.SetActive(visible);
+    }
+
+    // ── Muestra u oculta el texto ─────────────────────────────────
+    private void SetTextVisible(bool visible, TextMeshProUGUI text)
+    {
+        if (text == null) return;
+        text.gameObject.SetActive(visible);
     }
 
     // ── Gizmo para visualizar el rango en el editor ───────────────
@@ -126,16 +136,6 @@ public class HostPlant : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, proximityRadius);
     }
 
-    private void ActiveAnimation()
-    {
-        if (spawner == null || spawner.ActiveButterfly == null) return;
-        ButterflyController ctrl = spawner.ActiveButterfly;
-        ButterflyAnimator anim = ctrl.GetComponent<ButterflyAnimator>();
-        if (anim != null)
-        {
-            anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Passive);
-        }
-    }
     private void InactiveAnimation()
     {
         if (spawner == null || spawner.ActiveButterfly == null) return;

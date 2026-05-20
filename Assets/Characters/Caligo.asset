@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Caligo
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Caligo
-  description: Caligo description
+  speciesName: Caligo memnon
+  description: "Una mariposa gigante famosa por los enormes patrones en sus alas
+    que parecen los ojos de un b\xFAho. Estos \u201Cojos falsos\u201D ayudan a asustar
+    depredadores como aves y lagartos. Vive en bosques tropicales y suele estar activa
+    durante el amanecer y el atardecer.\n\nDato curioso:\nCuando cierra sus alas
+    parece una hoja seca, pero al abrirlas muestra grandes ojos que intimidan a sus
+    enemigos."
   prefabButterfly: {fileID: 6885700414733911391, guid: b627cb3194513c943bfe783505b4ed2a, type: 3}
   prefabPlant: {fileID: 5265967237087112630, guid: 68af442e37ed5fc41acf83848b6ac86d, type: 3}
   scale: 0.25
   hostPlantID: Caligo
-  flightSpeed: 6
+  flightSpeed: 10
   turnSpeed: 4
-  bobAmplitude: 0.5
+  bobAmplitude: 0.7
   bobFrequency: 1.5

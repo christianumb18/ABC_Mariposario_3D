@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Hamadryas
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Hamadryas
-  description: Una hermosa mariposa.
+  speciesName: Hamadryas amphinome
+  description: "Una llamativa mariposa tropical conocida por los tonos rojizos y
+    anaranjados en sus alas, combinados con patrones oscuros que le ayudan a mezclarse
+    con troncos y rocas. Como otras especies del g\xE9nero Hamadryas, puede hacer
+    peque\xF1os sonidos de \u201Cchasquido\u201D para comunicarse o defender territorio.\n\nDato
+    curioso:\nAunque parece muy colorida al volar, cuando descansa puede camuflarse
+    sorprendentemente bien en la corteza de los \xE1rboles."
   prefabButterfly: {fileID: 5523758805550789290, guid: 25011fa5ed491524b878fb1351a24a2c, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 57ebe69236a89d94c9fd45e223b9310d, type: 3}
   scale: 0.25
   hostPlantID: Hamadryas
-  flightSpeed: 6
+  flightSpeed: 10
   turnSpeed: 4
-  bobAmplitude: 0.3
-  bobFrequency: 1.2
+  bobAmplitude: 0.7
+  bobFrequency: 1.5

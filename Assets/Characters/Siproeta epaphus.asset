@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Siproeta epaphus
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Epaphus
-  description: Una hermosa mariposa.
+  speciesName: Siproeta epaphus epaphus
+  description: "Una elegante mariposa tropical reconocida por las brillantes franjas
+    verdes que cruzan sus alas oscuras. Su vuelo es r\xE1pido y \xE1gil, y suele
+    descansar con las alas abiertas para absorber calor del sol.\n\nDato curioso:\nSus
+    colores verdes ayudan a camuflarse entre hojas y plantas, dificultando que los
+    depredadores la detecten."
   prefabButterfly: {fileID: 2712945845587232095, guid: 53022ab479c60a04aa7ee92b43114f0e, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 891735bc8ac7ef9408e7c5dea39a124a, type: 3}
   scale: 0.25
   hostPlantID: Epaphus
-  flightSpeed: 6
+  flightSpeed: 10
   turnSpeed: 4
-  bobAmplitude: 0.3
-  bobFrequency: 1.2
+  bobAmplitude: 0.7
+  bobFrequency: 1.5

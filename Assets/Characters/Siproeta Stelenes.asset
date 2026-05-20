@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Siproeta Stelenes
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Steleness
-  description: Una hermosa mariposa.
+  speciesName: Siproeta stelenes
+  description: "Una mariposa tropical de llamativos tonos verde brillante y negro,
+    f\xE1cil de reconocer por los patrones luminosos en sus alas. Es r\xE1pida, activa
+    durante el d\xEDa y suele encontrarse descansando sobre hojas o cerca de frutas
+    maduras.\n\nDato curioso:\nA menudo extiende completamente las alas para calentarse
+    con el sol y mostrar sus colores brillantes."
   prefabButterfly: {fileID: 1872554824594770698, guid: 380ea3a7fca5cf84b87dd0a1c75913c2, type: 3}
   prefabPlant: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
   scale: 0.25
   hostPlantID: Steleness
-  flightSpeed: 6
+  flightSpeed: 10
   turnSpeed: 4
-  bobAmplitude: 0.3
-  bobFrequency: 1.2
+  bobAmplitude: 0.7
+  bobFrequency: 1.5
