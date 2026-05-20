@@ -23,14 +23,6 @@ public class LayEggAction : MonoBehaviour
     // ── Estado ────────────────────────────────────────────────────
     private bool _isLayingEgg;
 
-    // ═══════════════════════════════════════════════════════════════
-
-    private void Start()
-    {
-        if (spawner.layEggButton != null)
-            spawner.layEggButton.onClick.AddListener(OnLayEggPressed);
-    }
-
     // ── Se llama al presionar el boton ────────────────────────────
     public void OnLayEggPressed()
     {
@@ -57,6 +49,7 @@ public class LayEggAction : MonoBehaviour
         spawner.layEggButton.gameObject.SetActive(false);
 
         // Espera la duracion de la animacion
+        Debug.Log("Poniendo huevo... " + layEggDuration + " segundos");
         yield return new WaitForSeconds(layEggDuration);
 
         // Vuelve a vuelo normal
@@ -64,6 +57,9 @@ public class LayEggAction : MonoBehaviour
             anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
 
         if (ctrl != null) ctrl.enabled = true;
+
+        // Muestra el boton nuevamente
+        spawner.layEggButton.gameObject.SetActive(true);
 
         _isLayingEgg = false;
     }
