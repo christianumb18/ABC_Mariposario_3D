@@ -1290,7 +1290,6 @@ GameObject:
   m_Component:
   - component: {fileID: 258542925}
   - component: {fileID: 258542924}
-  - component: {fileID: 258542926}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1327,20 +1326,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &258542926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258542923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f24f2a61a8ab4a42852e80bac392b79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LayEggAction
-  spawner: {fileID: 1800814759}
-  layEggDuration: 5
 --- !u!1001 &272529071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4128,7 +4113,7 @@ MonoBehaviour:
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0.3
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -4144,7 +4129,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1703802904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1800814760}
+        m_TargetAssemblyTypeName: LayEggAction, Assembly-CSharp
+        m_MethodName: OnLayEggPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1703802904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4421,6 +4418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800814758}
   - component: {fileID: 1800814759}
+  - component: {fileID: 1800814760}
   m_Layer: 0
   m_Name: ButterflySpawnPoint
   m_TagString: Untagged
@@ -4459,6 +4457,20 @@ MonoBehaviour:
   layEggButton: {fileID: 1703802903}
   textPlantCorrect: {fileID: 1207703687}
   textPlantIncorrect: {fileID: 40654539}
+--- !u!114 &1800814760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800814756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f24f2a61a8ab4a42852e80bac392b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LayEggAction
+  spawner: {fileID: 1800814759}
+  layEggDuration: 6
 --- !u!1001 &1813354071
 PrefabInstance:
   m_ObjectHideFlags: 0
