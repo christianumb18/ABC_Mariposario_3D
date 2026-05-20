@@ -14,7 +14,6 @@ using UnityEngine.UI;
 public class LayEggAction : MonoBehaviour
 {
     [Header("Referencias")]
-    public Button layEggButton;
     public MariposarioSpawner spawner;       // Para obtener la mariposa activa
 
     [Header("Configuracion")]
@@ -28,8 +27,8 @@ public class LayEggAction : MonoBehaviour
 
     private void Start()
     {
-        if (layEggButton != null)
-            layEggButton.onClick.AddListener(OnLayEggPressed);
+        if (spawner.layEggButton != null)
+            spawner.layEggButton.onClick.AddListener(OnLayEggPressed);
     }
 
     // ── Se llama al presionar el boton ────────────────────────────
@@ -52,10 +51,10 @@ public class LayEggAction : MonoBehaviour
 
         // Reproduce animacion de poner huevos
         if (anim != null)
-            Debug.Log("Transicion entre mariposario y ciclo de vida");
+            anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Passive);
 
         // Oculta el boton mientras dura la accion
-        layEggButton.gameObject.SetActive(false);
+        spawner.layEggButton.gameObject.SetActive(false);
 
         // Espera la duracion de la animacion
         yield return new WaitForSeconds(layEggDuration);

@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Lee la especie guardada en ButterflyGameManager e instancia el prefab
@@ -13,6 +15,11 @@ public class MariposarioSpawner : MonoBehaviour
 {
     [Header("Referencia a la camara")]
     public ButterflyUserControl cameraInput;
+
+    [Header("UI")]
+    public Button layEggButton;         // Boton que se habilita al acercarse
+    public TextMeshProUGUI textPlantCorrect;   // Texto que indica si la planta es correcta
+    public TextMeshProUGUI textPlantIncorrect; // Texto que indica si la planta es incorrecta
 
     // ── Instancia activa ───────────────────────────────────────────
     private ButterflyController _activeButterfly;
