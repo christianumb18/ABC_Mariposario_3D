@@ -12,6 +12,7 @@ public class ButterflyData : ScriptableObject
     [TextArea(2, 4)]
     public string description = "Una hermosa mariposa.";
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
+    public GameObject prefabPlant;         // Prefab 3D de la mariposa en escena
     [Range(0.1f, 2f)] public float scale = 0.25f;
 
     [Header("Planta hospedera")]

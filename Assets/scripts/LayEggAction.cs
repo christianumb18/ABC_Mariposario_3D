@@ -14,7 +14,6 @@ using UnityEngine.UI;
 public class LayEggAction : MonoBehaviour
 {
     [Header("Referencias")]
-    public Button layEggButton;
     public MariposarioSpawner spawner;       // Para obtener la mariposa activa
 
     [Header("Configuracion")]
@@ -23,14 +22,6 @@ public class LayEggAction : MonoBehaviour
 
     // ── Estado ────────────────────────────────────────────────────
     private bool _isLayingEgg;
-
-    // ═══════════════════════════════════════════════════════════════
-
-    private void Start()
-    {
-        if (layEggButton != null)
-            layEggButton.onClick.AddListener(OnLayEggPressed);
-    }
 
     // ── Se llama al presionar el boton ────────────────────────────
     public void OnLayEggPressed()
@@ -52,12 +43,13 @@ public class LayEggAction : MonoBehaviour
 
         // Reproduce animacion de poner huevos
         if (anim != null)
-            Debug.Log("Transicion entre mariposario y ciclo de vida");
+            anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Passive);
 
         // Oculta el boton mientras dura la accion
-        layEggButton.gameObject.SetActive(false);
+        spawner.layEggButton.gameObject.SetActive(false);
 
         // Espera la duracion de la animacion
+        Debug.Log("Poniendo huevo... " + layEggDuration + " segundos");
         yield return new WaitForSeconds(layEggDuration);
 
         // Vuelve a vuelo normal
@@ -65,6 +57,9 @@ public class LayEggAction : MonoBehaviour
             anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
 
         if (ctrl != null) ctrl.enabled = true;
+
+        // Muestra el boton nuevamente
+        spawner.layEggButton.gameObject.SetActive(true);
 
         _isLayingEgg = false;
     }
