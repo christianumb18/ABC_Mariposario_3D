@@ -6,10 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 8345d378bd72449428713b8bcdbe51d9
+    path: Assets/Scenes/Menu_3D.unity
+    guid: 6c88f3e216bc2414b904a94d2fd88181
   - enabled: 1
-    path: Assets/Scenes/MapaMariposario.unity
-    guid: 6bb3ab11731743d4e9e5ebf863323ecc
+    path: Assets/Scenes/MapaMariposario_conPlantas.unity
+    guid: 5077573a1a318204383aa796c18ebc2c
+  - enabled: 1
+    path: Assets/Scenes/SeleccionMariposa.unity
+    guid: 0f628bf9cb5b02e43ae6722e615557af
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

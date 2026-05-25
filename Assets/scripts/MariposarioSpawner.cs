@@ -16,6 +16,9 @@ public class MariposarioSpawner : MonoBehaviour
     [Header("Referencia a la camara")]
     public ButterflyUserControl cameraInput;
 
+    [Header("Referencia al minimapa")]
+    public MinimapController minimapController;
+
     [Header("UI")]
     public Button layEggButton;         // Boton que se habilita al acercarse
     public TextMeshProUGUI textPlantCorrect;   // Texto que indica si la planta es correcta
@@ -47,6 +50,10 @@ public class MariposarioSpawner : MonoBehaviour
         }
 
         SpawnButterfly(data);
+
+        if (ProfileManager.Instance != null)
+            ProfileManager.Instance.StartCounting();
+
     }
 
     // ── Instancia el prefab ───────────────────────────────────────
@@ -91,5 +98,11 @@ public class MariposarioSpawner : MonoBehaviour
             cameraInput.SetTarget(_activeButterfly);
         else
             Debug.LogWarning("[MariposarioSpawner] cameraInput no asignado.");
+            
+        // Notifica al minimapa
+        if (minimapController != null)
+            minimapController.SetTarget(_activeButterfly.transform);
+        else
+            Debug.LogWarning("[MariposarioSpawner] minimapController no asignado.");
     }
 }

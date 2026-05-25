@@ -17,7 +17,7 @@ public class MariposarioGameManager : MonoBehaviour
     public static MariposarioGameManager Instance { get; private set; }
 
     // ── Nombre de las escenas (ajusta segun tu proyecto) ──────────
-    private string menuSceneName = "Menu";
+    private string menuSceneName = "Menu_3D";
     private string selectionSceneName = "SeleccionMariposa";
     private string mariposarioSceneName = "MapaMariposario_conPlantas";
 
@@ -76,11 +76,15 @@ public class MariposarioGameManager : MonoBehaviour
 
     public void LoadSceneSelection()
     {
+        if (ProfileManager.Instance != null)
+            ProfileManager.Instance.StopCounting();
         SceneManager.LoadScene(selectionSceneName);
     }
 
     public void LoadSceneMenu()
     {
+        if (ProfileManager.Instance != null)
+            ProfileManager.Instance.StopCounting();
         SceneManager.LoadScene(menuSceneName);
     }
 }
