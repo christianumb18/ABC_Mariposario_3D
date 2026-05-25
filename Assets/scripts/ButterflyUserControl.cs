@@ -84,7 +84,7 @@ public class ButterflyUserControl : MonoBehaviour
         float invertY = SettingsPanel.InvertY ? -1f : 1f;
 
         // Eje X: arrastrar a la derecha → camara orbita a la derecha (yaw negativo)
-        _yaw   -= dist.x * YawSensitivityBase   * mult * _dpiScale;
+        _yaw   += dist.x * YawSensitivityBase   * mult * _dpiScale;
         _pitch -= dist.y * PitchSensitivityBase * mult * invertY * _dpiScale;
         _pitch  = Mathf.Clamp(_pitch, PitchMin, PitchMax);
     }
