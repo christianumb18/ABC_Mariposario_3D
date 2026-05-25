@@ -21,7 +21,9 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/Menu.unity
+    m_path: Assets/Scenes/Menu_3D.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Biblioteca.unity
   - m_enabled: 1
     m_path: Assets/Scenes/SeleccionMariposa.unity
   - m_enabled: 1
