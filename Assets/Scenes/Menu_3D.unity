@@ -4616,10 +4616,10 @@ RectTransform:
   - {fileID: 1053147093}
   m_Father: {fileID: 917014437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 85}
-  m_SizeDelta: {x: 780, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &727079156
 GameObject:
@@ -6513,11 +6513,11 @@ RectTransform:
   - {fileID: 1242486404}
   m_Father: {fileID: 720723202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 910}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -84.7}
   m_SizeDelta: {x: 450, y: 55}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1053147094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6862,11 +6862,11 @@ RectTransform:
   - {fileID: 191722202}
   m_Father: {fileID: 720723202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 80}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 62.35}
   m_SizeDelta: {x: 500, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1076574799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12660,6 +12660,10 @@ PrefabInstance:
     - target: {fileID: 7784465622346775109, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
       propertyPath: m_Name
       value: Button_Configruacion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7784465622346775109, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
