@@ -4,6 +4,9 @@ using UnityEngine.UI;
 /// <summary>
 /// Adjunta a la Main Camera.
 /// Controla la camara orbital y envia input al ButterflyController.
+///
+/// Sensibilidad: lee SettingsPanel.SensitivityMultiplier en runtime, por lo que
+/// el slider del panel de configuracion afecta la camara en vivo.
 /// </summary>
 public class ButterflyUserControl : MonoBehaviour
 {
@@ -17,11 +20,11 @@ public class ButterflyUserControl : MonoBehaviour
     public float CameraHeight = 8f;
     public float CameraLateral = 10f;
 
-    [Header("Sensibilidad separada por eje")]
-    [Tooltip("Sensibilidad horizontal (yaw)")]
-    public float YawSensitivity = 0.08f;
-    [Tooltip("Sensibilidad vertical (pitch) — mantener menor que yaw")]
-    public float PitchSensitivity = 0.05f;
+    [Header("Sensibilidad base (multiplicada por el slider de Configuracion)")]
+    [Tooltip("Sensibilidad horizontal base. Se multiplica por SettingsPanel.SensitivityMultiplier.")]
+    public float YawSensitivityBase = 0.08f;
+    [Tooltip("Sensibilidad vertical base. Mantener menor que la horizontal.")]
+    public float PitchSensitivityBase = 0.05f;
 
     [Header("Limites de pitch")]
     [Range(-80f, 0f)] public float PitchMin = -60f;
@@ -41,9 +44,9 @@ public class ButterflyUserControl : MonoBehaviour
     private Vector3 _camVelocity;
     private float _verticalButtonInput;
 
-    // Escala de DPI: normaliza la sensibilidad entre pantallas de distinta densidad
-    // Un telefono de 420 DPI genera el doble de pixeles que uno de 210 DPI
-    // con el mismo arrastre fisico → sin escala, se ve el doble de rapido
+    // Escala de DPI: normaliza la sensibilidad entre pantallas de distinta densidad.
+    // Un telefono de 420 DPI genera el doble de pixeles que uno de 210 DPI con el
+    // mismo arrastre fisico → sin escala, se ve el doble de rapido.
     private float _dpiScale = 1f;
 
     // ═══════════════════════════════════════════════════════════════
@@ -53,7 +56,7 @@ public class ButterflyUserControl : MonoBehaviour
         float dpi = Screen.dpi > 0 ? Screen.dpi : 96f;
         _dpiScale = 96f / dpi;
 
-        btnBack.onClick.AddListener(OnBack);
+        if (btnBack != null) btnBack.onClick.AddListener(OnBack);
     }
 
     private void Update()
@@ -72,12 +75,18 @@ public class ButterflyUserControl : MonoBehaviour
         Vector2 dist = TouchField.TouchDist;
 
         // Filtra micro-movimientos: dedo quieto en movil genera ruido de 1-2 px
-        // que sin dead zone se acumula y mueve la camara solo en el eje Y
+        // que sin dead zone se acumula y mueve la camara solo en el eje Y.
         if (dist.magnitude < DeadZone) return;
 
-        _yaw += dist.x * YawSensitivity * _dpiScale;
-        _pitch -= dist.y * PitchSensitivity * _dpiScale;
-        _pitch = Mathf.Clamp(_pitch, PitchMin, PitchMax);
+        // Multiplicador del slider de configuracion. Se lee cada frame para
+        // que los cambios desde el panel de Configuracion afecten en vivo.
+        float mult = SettingsPanel.SensitivityMultiplier;
+        float invertY = SettingsPanel.InvertY ? -1f : 1f;
+
+        // Eje X: arrastrar a la derecha → camara orbita a la derecha (yaw negativo)
+        _yaw   -= dist.x * YawSensitivityBase   * mult * _dpiScale;
+        _pitch -= dist.y * PitchSensitivityBase * mult * invertY * _dpiScale;
+        _pitch  = Mathf.Clamp(_pitch, PitchMin, PitchMax);
     }
 
     // ── Posicion y rotacion de la camara ───────────────────────────
@@ -117,7 +126,7 @@ public class ButterflyUserControl : MonoBehaviour
 
     private void OnBack()
     {
-        MariposarioGameManager.Instance.LoadSceneSelection();
+        MariposarioGameManager.Instance.LoadSceneMenu();
     }
 
     public void SetVerticalInput(float value) => _verticalButtonInput = value;
