@@ -21,11 +21,11 @@ public class MainMenu : MonoBehaviour
     [Tooltip("Nombre exacto de la escena del mariposario en Build Profiles.")]
     [SerializeField] private string mariposarioSceneName = "MapaMariposario_conPlantas";
 
-    [Tooltip("MapaMariposario_conPlantas")]
-    [SerializeField] private string selectionSceneName = "";
+    [Tooltip("Nombre exacto de la escena de seleccion de mariposa en Build Profiles.")]
+    [SerializeField] private string selectionSceneName = "SeleccionMariposa";
 
-    [Tooltip("Escena de la biblioteca/seleccion de mariposa.")]
-    [SerializeField] private string bibliotecaSceneName = "SeleccionMariposa";
+    [Tooltip("Nombre exacto de la escena de la biblioteca en Build Profiles.")]
+    [SerializeField] private string bibliotecaSceneName = "Biblioteca";
 
     // ── Boton INICIAR ──────────────────────────────────────────────
     public void PlayGame()

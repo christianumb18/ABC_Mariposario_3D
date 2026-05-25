@@ -14,23 +14,21 @@ using TMPro;
 ///   - ButterflyDisplay es un GameObject vacio en el centro de la escena
 ///     donde se instancia el prefab 3D.
 /// </summary>
-public class ButterflySelectionUI : MonoBehaviour
+public class ButterflyLibrary : MonoBehaviour
 {
     [Header("Especies")]
     public List<ButterflyData> species = new();
 
     [Header("Display 3D")]
     public Transform butterflyDisplay;      // Punto central donde aparece el prefab
-    public Transform plantDisplay;      // Punto central donde aparece el prefab
     public float displayRotationSpeed = 30f; // Rotacion automatica (grados/seg)
 
     [Header("UI")]
     public TMP_Text nameText;
+    public TMP_Text descriptionText;
     public Button btnLeft;
     public Button btnRight;
-    public Button btnConfirm;
     public Button btnBack;
-    public TMP_Text confirmLabel;
 
     [Header("Transicion")]
     [Range(0.1f, 1f)]
@@ -39,7 +37,6 @@ public class ButterflySelectionUI : MonoBehaviour
     // ── Estado ─────────────────────────────────────────────────────
     private int _currentIndex = 0;
     private GameObject _activeInstanceButterfly;
-    private GameObject _activeInstancePlant;
     private bool _isTransitioning;
 
     // ═══════════════════════════════════════════════════════════════
@@ -54,7 +51,6 @@ public class ButterflySelectionUI : MonoBehaviour
 
         btnLeft.onClick.AddListener(PreviousSpecies);
         btnRight.onClick.AddListener(NextSpecies);
-        btnConfirm.onClick.AddListener(OnConfirm);
         btnBack.onClick.AddListener(OnBack);
 
         ShowSpecies(_currentIndex, instant: true);
@@ -84,11 +80,10 @@ public class ButterflySelectionUI : MonoBehaviour
         ButterflyData data = species[index];
 
         instanceButterfly(data);
-        instancePlant(data);
 
         // Actualiza UI
         if (nameText != null) nameText.text = data.speciesName;
-        if (confirmLabel != null) confirmLabel.text = $"Volar como {data.speciesName}";
+        if (descriptionText != null) descriptionText.text = data.description;
 
         // Flechas: oculta si solo hay una especie
         bool multipleSpecies = species.Count > 1;
@@ -127,21 +122,6 @@ public class ButterflySelectionUI : MonoBehaviour
         }
     }
 
-    private void instancePlant(ButterflyData data)
-    {
-        // Destruye la instancia anterior
-        if (_activeInstancePlant != null)
-            Destroy(_activeInstancePlant);
-
-
-        // Instancia el nuevo prefab en el display
-        if (data.prefabPlant != null)
-        {
-            _activeInstancePlant = Instantiate(data.prefabPlant, plantDisplay.position,
-                                          plantDisplay.rotation, plantDisplay);
-        }
-    }
-
     // ── Transicion animada entre especies ──────────────────────────
 
     private IEnumerator TransitionTo(int newIndex, bool fromRight)
@@ -157,19 +137,11 @@ public class ButterflySelectionUI : MonoBehaviour
             _activeInstanceButterfly = null;
         }
 
-        if (_activeInstancePlant != null)
-        {
-            float dir = fromRight ? -1f : 1f;
-            yield return StartCoroutine(SlideOut(_activeInstancePlant, dir));
-            Destroy(_activeInstancePlant);
-            _activeInstancePlant = null;
-        }
-
         // 2. Actualiza textos mientras el prefab no es visible
         _currentIndex = newIndex;
         ButterflyData data = species[_currentIndex];
         if (nameText != null) nameText.text = data.speciesName;
-        if (confirmLabel != null) confirmLabel.text = $"Volar como {data.speciesName}";
+        if (descriptionText != null) descriptionText.text = data.description;
 
         // 3. Instancia la nueva y la hace entrar
         if (data.prefabButterfly != null)
@@ -183,18 +155,6 @@ public class ButterflySelectionUI : MonoBehaviour
 
             yield return StartCoroutine(SlideIn(_activeInstanceButterfly,
                                                  butterflyDisplay.position));
-        }
-
-        if (data.prefabPlant != null)
-        {
-            float dir = fromRight ? 1f : -1f;
-            Vector3 offscreen = plantDisplay.position + Vector3.right * dir * 4f;
-
-            _activeInstancePlant = Instantiate(data.prefabPlant, offscreen,
-                                          plantDisplay.rotation, plantDisplay);
-            StripGameplayScripts(_activeInstancePlant);
-            yield return StartCoroutine(SlideIn(_activeInstancePlant,
-                                                 plantDisplay.position));
         }
 
         _isTransitioning = false;
@@ -239,28 +199,6 @@ public class ButterflySelectionUI : MonoBehaviour
             _activeInstanceButterfly.transform.Rotate(Vector3.up,
                                               displayRotationSpeed * Time.deltaTime,
                                               Space.World);
-        if (_activeInstancePlant != null && !ButterflyRotator.IsDragging)
-            _activeInstancePlant.transform.Rotate(Vector3.up,
-                                              displayRotationSpeed * Time.deltaTime,
-                                              Space.World);
-    }
-
-    // ── Confirmacion ───────────────────────────────────────────────
-
-    private void OnConfirm()
-    {
-        if (MariposarioGameManager.Instance == null) return;
-
-        // Destruye la instancia visual ANTES de cargar la nueva escena
-        // para evitar que su ButterflyAnimator interfiera con el del mariposario
-        if (_activeInstanceButterfly != null)
-        {
-            Destroy(_activeInstanceButterfly);
-            _activeInstanceButterfly = null;
-        }
-
-        MariposarioGameManager.Instance.SelectSpecies(species[_currentIndex]);
-        MariposarioGameManager.Instance.LoadMariposario();
     }
 
     private void OnBack()
@@ -288,7 +226,5 @@ public class ButterflySelectionUI : MonoBehaviour
     {
         if (_activeInstanceButterfly != null)
             Destroy(_activeInstanceButterfly);
-        if (_activeInstancePlant != null)
-            Destroy(_activeInstancePlant);
     }
 }
