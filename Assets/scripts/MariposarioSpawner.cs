@@ -29,6 +29,18 @@ public class MariposarioSpawner : MonoBehaviour
     public ButterflyController ActiveButterfly => _activeButterfly;
     private ButterflyAnimator _activeAnimator;
 
+    /// <summary>
+    /// Reasigna la mariposa activa cuando el jugador cambia de personaje a una NPC.
+    /// Usado por GameStateManager.OnChooseBecomeButterfly para que HostPlant valide
+    /// la especie correcta tras el swap.
+    /// </summary>
+    public void SetActiveButterfly(ButterflyController newController)
+    {
+        _activeButterfly = newController;
+        if (newController != null)
+            _activeAnimator = newController.GetComponent<ButterflyAnimator>();
+    }
+
     // ═══════════════════════════════════════════════════════════════
 
     private void Start()

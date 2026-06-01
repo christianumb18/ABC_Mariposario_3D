@@ -210,6 +210,14 @@ public class GameStateManager : MonoBehaviour
         var previousPlayer = playerCharacter;
         playerCharacter    = npc.gameObject;
 
+        // 7b. Reasignar la ActiveButterfly del spawner para que HostPlant
+        // valide la especie del nuevo personaje (sin esto, sigue comparando
+        // contra la mariposa original oculta y la planta hospedera correcta
+        // no se reconoce tras el cambio de personaje).
+        var spawner = FindFirstObjectByType<MariposarioSpawner>();
+        if (spawner != null && npcController != null)
+            spawner.SetActiveButterfly(npcController);
+
         // 8. Resetear la selección (ya no es una NPC seleccionada)
         SelectedNPC         = null;
         SelectedSpeciesData = null;
