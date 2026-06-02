@@ -45,10 +45,10 @@ public class GameStateManager : MonoBehaviour
 
     [Header("Datos de especies")]
     [Tooltip("Lista de ButterflySpeciesData — usada como fallback si el prefab no tiene ButterflyIdentity")]
-    public ButterflySpeciesData[] speciesDataList;
+    public ButterflyData[] speciesDataList;
 
     public ButterflyNPCBehavior  SelectedNPC         { get; private set; }
-    public ButterflySpeciesData  SelectedSpeciesData { get; private set; }
+    public ButterflyData  SelectedSpeciesData { get; private set; }
 
     private Coroutine  _approachCoroutine;
     private Camera     _cam;
@@ -120,23 +120,28 @@ public class GameStateManager : MonoBehaviour
         SelectedNPC = npc;
 
         // Prioridad: ButterflyIdentity en el prefab → fallback por nombre de especie
-        var identity        = npc.GetComponent<ButterflyIdentity>();
-        SelectedSpeciesData = identity != null ? identity.speciesData
-                                               : FindSpeciesData(npc.Data?.speciesName);
+        SelectedSpeciesData = FindSpeciesData(npc.Data?.speciesName);
 
         TransitionTo(GameState.ApproachingButterfly);
     }
 
-    private ButterflySpeciesData FindSpeciesData(string speciesName)
+    private ButterflyData FindSpeciesData(string speciesName)
     {
         if (string.IsNullOrEmpty(speciesName) || speciesDataList == null) return null;
         return System.Array.Find(speciesDataList,
-            sd => sd != null && sd.name.Equals(speciesName, System.StringComparison.OrdinalIgnoreCase));
+            sd => sd != null && sd.speciesName.Equals(speciesName, System.StringComparison.OrdinalIgnoreCase));
     }
 
     public void OnReturnToExploring()
     {
         if (CurrentState != GameState.Inspecting) return;
+        // ── ButterflyAnimator ──────────────────────────────────────
+        ButterflyAnimator _activeAnimator = SelectedNPC.GetComponent<ButterflyAnimator>();
+        if (_activeAnimator != null)
+        {
+            // Activa la animacion de vuelo apenas aparece la mariposa
+            _activeAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Passive);
+        }
         ReleaseNPC();
         TransitionTo(GameState.Exploring);
     }
@@ -201,10 +206,18 @@ public class GameStateManager : MonoBehaviour
         var cc = FindFirstObjectByType<CameraControl>();
         if (cc != null) cc.target = npc.transform;
 
-        // 6. Redirigir el minimapa (si su componente tiene SetTarget vía SendMessage)
-        var minimap = FindFirstObjectByType<MinimapController>();
-        if (minimap != null)
-            minimap.SendMessage("SetTarget", npc.transform, SendMessageOptions.DontRequireReceiver);
+        //// 6. Redirigir el minimapa (si su componente tiene SetTarget vía SendMessage)
+        //var minimap = FindFirstObjectByType<MinimapController>();
+        //if (minimap != null)
+        //    minimap.SendMessage("SetTarget", npc.transform, SendMessageOptions.DontRequireReceiver);
+
+        //// ── ButterflyAnimator ──────────────────────────────────────
+        //ButterflyAnimator _activeAnimator = SelectedNPC.GetComponent<ButterflyAnimator>();
+        //if (_activeAnimator != null)
+        //{
+        //    // Activa la animacion de vuelo apenas aparece la mariposa
+        //    _activeAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
+        //}
 
         // 7. Marcar la mariposa nueva como el personaje del jugador
         var previousPlayer = playerCharacter;
@@ -215,8 +228,8 @@ public class GameStateManager : MonoBehaviour
         // contra la mariposa original oculta y la planta hospedera correcta
         // no se reconoce tras el cambio de personaje).
         var spawner = FindFirstObjectByType<MariposarioSpawner>();
-        if (spawner != null && npcController != null)
-            spawner.SetActiveButterfly(npcController);
+        if (spawner != null && npc.Data != null)
+            spawner.SetActiveButterfly(npc.Data);
 
         // 8. Resetear la selección (ya no es una NPC seleccionada)
         SelectedNPC         = null;
@@ -258,6 +271,13 @@ public class GameStateManager : MonoBehaviour
                     if (rb != null) rb.constraints = RigidbodyConstraints.None;
                 }
                 videoPanel?.Show(SelectedSpeciesData);
+                // ── ButterflyAnimator ──────────────────────────────────────
+                ButterflyAnimator _activeAnimator = SelectedNPC.GetComponent<ButterflyAnimator>();
+                if (_activeAnimator != null)
+                {
+                    // Activa la animacion de vuelo apenas aparece la mariposa
+                    _activeAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Preview);
+                }
                 ShowReturnButton(true);
                 break;
 

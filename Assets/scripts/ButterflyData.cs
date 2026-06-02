@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Video;
 
 /// <summary>
 /// ScriptableObject que define los datos de una especie de mariposa.
@@ -14,6 +15,8 @@ public class ButterflyData : ScriptableObject
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
     public GameObject prefabPlant;         // Prefab 3D de la mariposa en escena
     [Range(0.1f, 2f)] public float scale = 0.25f;
+    [Header("Video — se reproduce en el panel derecho al inspeccionar")]
+    public VideoClip videoClip;
 
     [Header("Planta hospedera")]
     [Tooltip("Identificador unico de la planta hospedera de esta especie. " +

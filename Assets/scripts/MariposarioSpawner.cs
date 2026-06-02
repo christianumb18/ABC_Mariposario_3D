@@ -34,11 +34,9 @@ public class MariposarioSpawner : MonoBehaviour
     /// Usado por GameStateManager.OnChooseBecomeButterfly para que HostPlant valide
     /// la especie correcta tras el swap.
     /// </summary>
-    public void SetActiveButterfly(ButterflyController newController)
+    public void SetActiveButterfly(ButterflyData butterfly)
     {
-        _activeButterfly = newController;
-        if (newController != null)
-            _activeAnimator = newController.GetComponent<ButterflyAnimator>();
+        SpawnButterfly(butterfly);
     }
 
     // ═══════════════════════════════════════════════════════════════

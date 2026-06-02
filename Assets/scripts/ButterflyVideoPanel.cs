@@ -23,14 +23,14 @@ public class ButterflyVideoPanel : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────────────
 
-    public void Show(ButterflySpeciesData data)
+    public void Show(ButterflyData data)
     {
         Initialize();
 
         if (data != null)
         {
-            _commonNameText.text     = data.commonName;
-            _scientificNameText.text = $"<i>{data.scientificName}</i>";
+            _commonNameText.text     = data.speciesName;
+            _scientificNameText.text = $"<i>{data.speciesName}</i>";
             _descriptionText.text    = data.description;
 
             if (_videoPlayer != null && data.videoClip != null)
