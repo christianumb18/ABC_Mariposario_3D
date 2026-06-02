@@ -2,258 +2,353 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Singleton de perfil. Persiste entre escenas y guarda en PlayerPrefs:
-///   - Nombre del usuario
-///   - Tiempo total de vuelo acumulado (segundos)
-///   - Progreso del juego (especies descubiertas)
+/// Singleton de perfiles MULTI-USUARIO. Persiste todo en PlayerPrefs como un
+/// único JSON (clave Profiles_Data_V2). Cada perfil tiene su nombre, tiempo de
+/// vuelo, score total y progreso por especie (score, vidas, muertes, video,
+/// targets descubiertos).
 ///
-/// El cronometro de vuelo corre SIEMPRE que esta instancia exista,
-/// no solo cuando el panel de perfil esta abierto. Asi el tiempo
-/// se acumula mientras el jugador esta jugando.
+/// MANTIENE la API antigua (UserName, FlightTimeSeconds, Progress,
+/// FlightTimeFormatted, ProgressPercent, SetUserName, StartCounting…) para que
+/// el ProfilePanel existente siga funcionando.
+///
+/// AGREGA:
+///   - GetAllProfiles(), CreateProfile, DeleteProfile, SwitchProfile
+///   - GetSpecies(id), AddScoreToSpecies, LoseLife, MarkVideoSeen, …
+///   - Eventos: OnProfileSwitched, OnScoreChanged, OnLifeLost, OnSpeciesReset
 ///
 /// SETUP:
-///   1. Crea un GameObject vacio "ProfileManager" en la escena del menu.
-///   2. Adjunta este script.
-///   3. Marca "Count Time On Start" si quieres que el cronometro arranque
-///      automaticamente al abrir el juego. Si solo quieres contar dentro
-///      del mariposario, dejalo desmarcado y llama StartCounting() /
-///      StopCounting() desde donde corresponda.
-///
-/// El ProfilePanel solo LEE de aqui y llama a las funciones publicas.
+///   - Sigue siendo el mismo: un GameObject "ProfileManager" en la escena de
+///     menú con este script. Auto-migra del formato viejo si existe.
 /// </summary>
 public class ProfileManager : MonoBehaviour
 {
-    // ── Singleton ──────────────────────────────────────────────────
     public static ProfileManager Instance { get; private set; }
 
-    // ── Configuracion ──────────────────────────────────────────────
+    // ── Config ────────────────────────────────────────────────────────
     [Header("Configuracion")]
-    [Tooltip("Si esta marcado, el cronometro de vuelo arranca apenas " +
-             "se crea el ProfileManager. Si lo desmarcas, debes llamar " +
-             "StartCounting() manualmente (por ejemplo al entrar al mariposario).")]
-    public bool countTimeOnStart = true;
+    public bool   countTimeOnStart = true;
+    public string defaultUserName  = "User01";
+    [Tooltip("Total de especies del juego (usado por Progress/ProgressPercent).")]
+    public int    totalSpecies     = 8;
 
-    [Tooltip("Nombre por defecto cuando no hay nada guardado todavia.")]
-    public string defaultUserName = "User01";
+    // ── Constantes ────────────────────────────────────────────────────
+    private const string KEY_STORE     = "Profiles_Data_V2";
+    private const string KEY_OLD_NAME  = "Profile_UserName";       // legacy V1
+    private const string KEY_OLD_TIME  = "Profile_FlightTimeSeconds";
+    private const string KEY_OLD_PROG  = "Profile_Progress";
+    private const float  SAVE_INTERVAL = 5f;
 
-    [Tooltip("Total de especies del juego. Cambialo cuando agregues mas.")]
-    public int totalSpecies = 9;
+    // ── Estado ────────────────────────────────────────────────────────
+    private ProfilesStore _store = new();
+    private bool          _countingActive;
+    private float         _saveTimer;
 
-    // ── Claves de PlayerPrefs ──────────────────────────────────────
-    // Centralizadas como const para evitar typos y poder cambiarlas en un solo sitio.
-    private const string KEY_NAME = "Profile_UserName";
-    private const string KEY_FLIGHT_TIME = "Profile_FlightTimeSeconds";
-    private const string KEY_PROGRESS = "Profile_Progress";
-
-    // ── Estado en memoria ──────────────────────────────────────────
-    // Se mantiene en RAM y se sincroniza con PlayerPrefs cuando hace falta,
-    // para no escribir a disco cada frame (PlayerPrefs.SetX es caro en movil).
-    private string _userName;
-    private float _flightTimeSeconds;
-    private int _progress;
-    private bool _countingActive;
-
-    // Cada cuanto persistimos el tiempo a disco mientras corre el cronometro.
-    // 5s es suficiente para no perder progreso si el jugador cierra la app
-    // de golpe, sin penalizar el rendimiento.
-    private const float SAVE_INTERVAL = 5f;
-    private float _saveTimer;
-
-    // ── Eventos para que la UI se entere de cambios ────────────────
-    // El ProfilePanel se suscribe en su OnEnable y refresca los textos
-    // sin tener que hacer polling en Update.
+    // ── Eventos ───────────────────────────────────────────────────────
     public event Action OnNameChanged;
     public event Action OnProgressChanged;
-    // OnFlightTimeChanged no se dispara cada frame: el panel lee el getter
-    // directamente cuando esta abierto. Disparar un evento por segundo es ruido.
+    public event Action OnProfileSwitched;
+    public event Action<string,int> OnScoreChanged;   // (speciesID, newScore)
+    public event Action<string,int> OnLifeLost;       // (speciesID, livesRemaining)
+    public event Action<string>     OnSpeciesReset;   // (speciesID)
 
-    // ═══════════════════════════════════════════════════════════════
-    // PROPIEDADES PUBLICAS
-    // ═══════════════════════════════════════════════════════════════
+    // ═════════════════════════════════════════════════════════════════
+    // API ANTIGUA — el ProfilePanel la sigue usando
+    // ═════════════════════════════════════════════════════════════════
 
-    public string UserName => _userName;
-    public float FlightTimeSeconds => _flightTimeSeconds;
-    public int Progress => _progress;
-    public int TotalSpecies => totalSpecies;
+    public string UserName          => Active != null ? Active.userName : "";
+    public float  FlightTimeSeconds => Active != null ? Active.flightTimeSeconds : 0f;
+    public int    Progress          => Active != null ? Active.CountSpeciesWithVideoSeen() : 0;
+    public int    TotalSpecies      => totalSpecies;
 
-    /// <summary>Devuelve el tiempo formateado como HH:MM:SS.</summary>
     public string FlightTimeFormatted
     {
         get
         {
-            TimeSpan ts = TimeSpan.FromSeconds(_flightTimeSeconds);
-            // Total de horas (no solo 0-23) por si alguien juega 30 horas.
+            TimeSpan ts = TimeSpan.FromSeconds(FlightTimeSeconds);
             int hours = (int)ts.TotalHours;
             return $"{hours:D2}:{ts.Minutes:D2}:{ts.Seconds:D2}";
         }
     }
 
-    /// <summary>Porcentaje 0-100 segun progreso/totalSpecies.</summary>
-    public float ProgressPercent
-    {
-        get
-        {
-            if (totalSpecies <= 0) return 0f;
-            return (_progress / (float)totalSpecies) * 100f;
-        }
-    }
+    public float ProgressPercent =>
+        totalSpecies <= 0 ? 0f : (Progress / (float)totalSpecies) * 100f;
 
-    // ═══════════════════════════════════════════════════════════════
+    // ═════════════════════════════════════════════════════════════════
     // CICLO DE VIDA
-    // ═══════════════════════════════════════════════════════════════
+    // ═════════════════════════════════════════════════════════════════
 
     private void Awake()
     {
-        // Patron singleton (mismo que MariposarioGameManager)
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
         LoadFromDisk();
     }
 
     private void Start()
     {
-        if (countTimeOnStart)
-            StartCounting();
+        if (countTimeOnStart) StartCounting();
     }
 
     private void Update()
     {
-        if (!_countingActive) return;
+        if (!_countingActive || Active == null) return;
 
-        _flightTimeSeconds += Time.unscaledDeltaTime;
-        // unscaledDeltaTime: cuenta tiempo real, no afectado por Time.timeScale.
-        // Si pausas el juego con timeScale=0, el cronometro igual sigue:
-        // cambia a Time.deltaTime si prefieres que se detenga en pausa.
+        Active.flightTimeSeconds += Time.unscaledDeltaTime;
 
         _saveTimer += Time.unscaledDeltaTime;
         if (_saveTimer >= SAVE_INTERVAL)
         {
             _saveTimer = 0f;
-            SaveFlightTime();
+            SaveToDisk();
         }
     }
 
-    private void OnApplicationPause(bool pause)
-    {
-        // En movil, OnApplicationPause(true) se dispara al mandar la app
-        // a segundo plano. Guardamos para no perder los segundos del intervalo.
-        if (pause) SaveFlightTime();
-    }
+    private void OnApplicationPause(bool pause) { if (pause) SaveToDisk(); }
+    private void OnApplicationQuit()            { SaveToDisk(); }
 
-    private void OnApplicationQuit()
-    {
-        SaveFlightTime();
-    }
-
-    // ═══════════════════════════════════════════════════════════════
+    // ═════════════════════════════════════════════════════════════════
     // CARGA / GUARDADO
-    // ═══════════════════════════════════════════════════════════════
+    // ═════════════════════════════════════════════════════════════════
 
     private void LoadFromDisk()
     {
-        _userName = PlayerPrefs.GetString(KEY_NAME, defaultUserName);
-        _flightTimeSeconds = PlayerPrefs.GetFloat(KEY_FLIGHT_TIME, 0f);
-        _progress = PlayerPrefs.GetInt(KEY_PROGRESS, 0);
+        string json = PlayerPrefs.GetString(KEY_STORE, "");
+        if (!string.IsNullOrEmpty(json))
+        {
+            try { _store = JsonUtility.FromJson<ProfilesStore>(json) ?? new ProfilesStore(); }
+            catch { _store = new ProfilesStore(); }
+        }
+        else
+        {
+            _store = new ProfilesStore();
+            // Migración del formato V1 (nombre + tiempo + progreso global)
+            if (PlayerPrefs.HasKey(KEY_OLD_NAME) || PlayerPrefs.HasKey(KEY_OLD_TIME))
+            {
+                var legacy = new ProfileData(PlayerPrefs.GetString(KEY_OLD_NAME, defaultUserName));
+                legacy.flightTimeSeconds = PlayerPrefs.GetFloat(KEY_OLD_TIME, 0f);
+                _store.profiles.Add(legacy);
+                _store.activeProfileName = legacy.userName;
+            }
+        }
+
+        // Si no hay ningún perfil aún, crea uno por defecto
+        if (_store.profiles.Count == 0)
+        {
+            var p = new ProfileData(defaultUserName);
+            _store.profiles.Add(p);
+            _store.activeProfileName = defaultUserName;
+            SaveToDisk();
+        }
+
+        // Si activeProfileName apunta a un perfil que no existe, repara
+        if (_store.ActiveProfile == null && _store.profiles.Count > 0)
+            _store.activeProfileName = _store.profiles[0].userName;
     }
 
-    private void SaveFlightTime()
+    public void SaveToDisk()
     {
-        PlayerPrefs.SetFloat(KEY_FLIGHT_TIME, _flightTimeSeconds);
+        if (Active != null) Active.RecomputeTotalScore();
+        string json = JsonUtility.ToJson(_store);
+        PlayerPrefs.SetString(KEY_STORE, json);
         PlayerPrefs.Save();
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // API PUBLICA — NOMBRE
-    // ═══════════════════════════════════════════════════════════════
+    public ProfileData Active => _store?.ActiveProfile;
 
-    /// <summary>
-    /// Cambia el nombre. Si pasas "" o null, queda como cadena vacia
-    /// (el boton Borrar usa esto). NO usa el default en ese caso:
-    /// la decision del usuario manda.
-    /// </summary>
+    // ═════════════════════════════════════════════════════════════════
+    // MULTI-PERFIL
+    // ═════════════════════════════════════════════════════════════════
+
+    public System.Collections.Generic.List<ProfileData> GetAllProfiles() => _store.profiles;
+
+    public bool CreateProfile(string name)
+    {
+        name = (name ?? "").Trim();
+        if (string.IsNullOrEmpty(name)) return false;
+        if (_store.FindByName(name) != null) return false;
+        _store.profiles.Add(new ProfileData(name));
+        _store.activeProfileName = name;
+        SaveToDisk();
+        OnProfileSwitched?.Invoke();
+        OnNameChanged?.Invoke();
+        OnProgressChanged?.Invoke();
+        return true;
+    }
+
+    public bool SwitchProfile(string name)
+    {
+        var p = _store.FindByName(name);
+        if (p == null) return false;
+        _store.activeProfileName = name;
+        SaveToDisk();
+        OnProfileSwitched?.Invoke();
+        OnNameChanged?.Invoke();
+        OnProgressChanged?.Invoke();
+        return true;
+    }
+
+    public bool DeleteProfile(string name)
+    {
+        var p = _store.FindByName(name);
+        if (p == null) return false;
+        _store.profiles.Remove(p);
+        if (_store.activeProfileName == name)
+            _store.activeProfileName = _store.profiles.Count > 0 ? _store.profiles[0].userName : null;
+        SaveToDisk();
+        OnProfileSwitched?.Invoke();
+        OnNameChanged?.Invoke();
+        OnProgressChanged?.Invoke();
+        return true;
+    }
+
+    // ═════════════════════════════════════════════════════════════════
+    // API ANTIGUA (mantener compatibilidad con ProfilePanel)
+    // ═════════════════════════════════════════════════════════════════
+
     public void SetUserName(string newName)
     {
-        _userName = newName ?? string.Empty;
-        PlayerPrefs.SetString(KEY_NAME, _userName);
-        PlayerPrefs.Save();
+        if (Active == null) return;
+        newName = newName ?? string.Empty;
+
+        // Si cambian el nombre del perfil activo, hay que actualizar activeProfileName
+        string old = Active.userName;
+        Active.userName = newName;
+        if (_store.activeProfileName == old) _store.activeProfileName = newName;
+        SaveToDisk();
         OnNameChanged?.Invoke();
     }
 
-    /// <summary>Vacia el nombre. Equivalente a SetUserName("").</summary>
-    public void ClearUserName()
-    {
-        SetUserName(string.Empty);
-    }
+    public void ClearUserName() => SetUserName(string.Empty);
 
-    // ═══════════════════════════════════════════════════════════════
-    // API PUBLICA — TIEMPO DE VUELO
-    // ═══════════════════════════════════════════════════════════════
+    public void StartCounting() { _countingActive = true; _saveTimer = 0f; }
+    public void StopCounting()  { if (!_countingActive) return; _countingActive = false; SaveToDisk(); }
 
-    /// <summary>Arranca el cronometro. Idempotente.</summary>
-    public void StartCounting()
-    {
-        _countingActive = true;
-        _saveTimer = 0f;
-    }
-
-    /// <summary>Pausa el cronometro y guarda. Idempotente.</summary>
-    public void StopCounting()
-    {
-        if (!_countingActive) return;
-        _countingActive = false;
-        SaveFlightTime();
-    }
-
-    /// <summary>Resetea solo el tiempo de vuelo. El nombre y el progreso quedan intactos.</summary>
     public void ResetFlightTime()
     {
-        _flightTimeSeconds = 0f;
-        SaveFlightTime();
+        if (Active != null) Active.flightTimeSeconds = 0f;
+        SaveToDisk();
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // API PUBLICA — PROGRESO
-    // ═══════════════════════════════════════════════════════════════
+    /// <summary>Setter legacy de progreso — recalcula con base en CountSpeciesWithVideoSeen, sin efecto directo.</summary>
+    public void SetProgress(int discovered) { OnProgressChanged?.Invoke(); }
+    public void IncrementProgress()          { OnProgressChanged?.Invoke(); }
+    public void ResetProgress()              { /* reset por especie está abajo */ OnProgressChanged?.Invoke(); }
 
-    /// <summary>Fija un valor absoluto de progreso (0..totalSpecies).</summary>
-    public void SetProgress(int discovered)
+    public void ResetStats()
     {
-        _progress = Mathf.Clamp(discovered, 0, totalSpecies);
-        PlayerPrefs.SetInt(KEY_PROGRESS, _progress);
-        PlayerPrefs.Save();
+        if (Active == null) return;
+        Active.flightTimeSeconds = 0f;
+        Active.totalScore = 0;
+        Active.species.Clear();
+        SaveToDisk();
+        OnProgressChanged?.Invoke();
+        OnScoreChanged?.Invoke(null, 0);
+    }
+
+    // ═════════════════════════════════════════════════════════════════
+    // API NUEVA — por especie
+    // ═════════════════════════════════════════════════════════════════
+
+    public SpeciesProgress GetSpecies(string speciesID)
+    {
+        return Active?.GetOrCreate(speciesID);
+    }
+
+    public void MarkVideoSeen(string speciesID, int pointsIfFirstTime)
+    {
+        if (Active == null || string.IsNullOrEmpty(speciesID)) return;
+        var sp = Active.GetOrCreate(speciesID);
+        if (sp.videoSeen) return;
+        sp.videoSeen = true;
+        AddScoreToSpecies(speciesID, pointsIfFirstTime);
         OnProgressChanged?.Invoke();
     }
 
-    /// <summary>Suma 1 al progreso (para cuando se descubra una especie nueva).</summary>
-    public void IncrementProgress()
+    public void AddScoreToSpecies(string speciesID, int delta)
     {
-        SetProgress(_progress + 1);
+        if (Active == null || string.IsNullOrEmpty(speciesID) || delta == 0) return;
+        var sp = Active.GetOrCreate(speciesID);
+        sp.score = Mathf.Max(0, sp.score + delta);
+        if (sp.score > sp.highScore) sp.highScore = sp.score;
+        Active.RecomputeTotalScore();
+        SaveToDisk();
+        OnScoreChanged?.Invoke(speciesID, sp.score);
     }
 
-    /// <summary>Resetea el progreso a 0. Usado por el boton Resetear.</summary>
-    public void ResetProgress()
+    public void MarkTargetDiscovered(string speciesID, string targetID)
     {
-        SetProgress(0);
+        if (Active == null || string.IsNullOrEmpty(speciesID) || string.IsNullOrEmpty(targetID)) return;
+        var sp = Active.GetOrCreate(speciesID);
+        if (!sp.discoveredTargets.Contains(targetID))
+        {
+            sp.discoveredTargets.Add(targetID);
+            SaveToDisk();
+        }
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    // API PUBLICA — ACCIONES COMBINADAS DEL PANEL DE PERFIL
-    // ═══════════════════════════════════════════════════════════════
-
-    /// <summary>
-    /// Resetea todos los stats EXCEPTO el nombre.
-    /// Lo llama el boton "Resetear" del panel de perfil.
-    /// </summary>
-    public void ResetStats()
+    public bool WasTargetDiscovered(string speciesID, string targetID)
     {
-        ResetFlightTime();
-        ResetProgress();
+        var sp = GetSpecies(speciesID);
+        return sp != null && sp.discoveredTargets.Contains(targetID);
+    }
+
+    /// <summary>Resta 1 vida. Devuelve true si llegó a 0 (provocó reset).</summary>
+    public bool LoseLife(string speciesID)
+    {
+        if (Active == null || string.IsNullOrEmpty(speciesID)) return false;
+        var sp = Active.GetOrCreate(speciesID);
+        sp.lives = Mathf.Max(0, sp.lives - 1);
+        sp.totalDeaths += 1;
+        OnLifeLost?.Invoke(speciesID, sp.lives);
+
+        if (sp.lives <= 0)
+        {
+            ResetSpeciesProgress(speciesID);
+            return true;
+        }
+        SaveToDisk();
+        return false;
+    }
+
+    /// <summary>Pone score=0, videoSeen=false, discoveredTargets vacío, lives=3.
+    /// El highScore y totalDeaths NO se borran.</summary>
+    public void ResetSpeciesProgress(string speciesID)
+    {
+        if (Active == null) return;
+        var sp = Active.GetOrCreate(speciesID);
+        sp.score = 0;
+        sp.videoSeen = false;
+        sp.discoveredTargets.Clear();
+        sp.lives = 3;
+        Active.RecomputeTotalScore();
+        SaveToDisk();
+        OnSpeciesReset?.Invoke(speciesID);
+        OnScoreChanged?.Invoke(speciesID, 0);
+        OnProgressChanged?.Invoke();
+    }
+
+    // ═════════════════════════════════════════════════════════════════
+    // ANÁLISIS — fortalezas/fallas
+    // ═════════════════════════════════════════════════════════════════
+
+    /// <summary>Especie con más score actual.</summary>
+    public SpeciesProgress GetStrongest()
+    {
+        if (Active == null || Active.species.Count == 0) return null;
+        SpeciesProgress best = null;
+        for (int i = 0; i < Active.species.Count; i++)
+            if (best == null || Active.species[i].score > best.score) best = Active.species[i];
+        return best != null && best.score > 0 ? best : null;
+    }
+
+    /// <summary>Especie con más muertes totales.</summary>
+    public SpeciesProgress GetMostChallenging()
+    {
+        if (Active == null || Active.species.Count == 0) return null;
+        SpeciesProgress worst = null;
+        for (int i = 0; i < Active.species.Count; i++)
+            if (worst == null || Active.species[i].totalDeaths > worst.totalDeaths) worst = Active.species[i];
+        return worst != null && worst.totalDeaths > 0 ? worst : null;
     }
 }

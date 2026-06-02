@@ -7747,6 +7747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269212070}
   - component: {fileID: 1269212069}
+  - component: {fileID: 1269212100}
   m_Layer: 0
   m_Name: ProfileManager
   m_TagString: Untagged
@@ -12826,6 +12827,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 841bb1385182b5b49860650ea0887648, type: 3}
+--- !u!114 &1269212100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269212068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50004, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  showOnStart: 1
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.85}
+  panelColor: {r: 0.1, g: 0.12, b: 0.18, a: 0.98}
+  buttonColor: {r: 0.2, g: 0.45, b: 0.8, a: 1}
+  buttonAltColor: {r: 0.3, g: 0.3, b: 0.35, a: 1}
+  buttonDangerCol: {r: 0.65, g: 0.2, b: 0.2, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
