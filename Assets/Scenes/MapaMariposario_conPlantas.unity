@@ -6307,7 +6307,15 @@ MonoBehaviour:
   approachDistance: 9
   approachUpOffset: -0.5
   approachSideOffset: 1.2
-  speciesDataList: []
+  speciesDataList:
+  - {fileID: 11400000, guid: f2eb8fb70cc432c4e9231b5c14b26e6e, type: 2}
+  - {fileID: 11400000, guid: 50e92b1f1f706284ba64532bf01a3845, type: 2}
+  - {fileID: 11400000, guid: ad48c38bab8321a4fb37d062613cb8f9, type: 2}
+  - {fileID: 11400000, guid: f80645d771c3a59428b91ba78f9128c4, type: 2}
+  - {fileID: 11400000, guid: acaf48ec19df9dc489499fdb52f40de0, type: 2}
+  - {fileID: 11400000, guid: 362267a5b68baa54485b2e0901c16cef, type: 2}
+  - {fileID: 11400000, guid: d13398bf4dc4dee47bd0e6a42d3670c9, type: 2}
+  - {fileID: 11400000, guid: 713d9106b8be9f843b1976700cf69403, type: 2}
 --- !u!114 &9876543223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6366,8 +6374,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a6b9c0d1e2f3a4b5c6d7e8f9a0b1c2d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &9876544001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6378,8 +6386,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50001, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   videoPoints: 80
   predatorDamageRange: 1
   invulnerabilityTime: 2
@@ -6395,8 +6403,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50002, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   spawner: {fileID: 0}
   anchoredPosition: {x: 20, y: -340}
   panelSize: {x: 260, y: 86}
@@ -6417,8 +6425,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50003, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   showFloatingButton: 1
   floatingButtonPosition: {x: -20, y: -150}
   floatingButtonSize: {x: 72, y: 72}
@@ -6438,8 +6446,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b710cd96e9b26c744bff6b4df14567da, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   minimapArea: {fileID: 0}
   minimapCamera: {fileID: 0}
   spawner: {fileID: 0}

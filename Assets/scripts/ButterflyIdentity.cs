@@ -9,5 +9,5 @@ using UnityEngine;
 public class ButterflyIdentity : MonoBehaviour
 {
     [Tooltip("ScriptableObject con nombre, video y descripción de esta especie")]
-    public ButterflySpeciesData speciesData;
+    public ButterflyData speciesData;
 }
