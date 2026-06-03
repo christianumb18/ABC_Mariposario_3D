@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4562387771614862712
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.83205
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.83205
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.83205
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 380.13
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.086
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 385.37
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.17650771
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.1765077
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6847227
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.68472254
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 151.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
+      propertyPath: m_Name
+      value: mantis_sebas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 38d2e6324467aa443bb5dd64404381e7, type: 3}
