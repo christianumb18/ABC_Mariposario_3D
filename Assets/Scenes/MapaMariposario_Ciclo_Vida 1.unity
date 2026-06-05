@@ -819,15 +819,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7160131054933572500, guid: 5ce83e77874515a4486e3cef3b4a75e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 363.145
+      value: 363.2156
       objectReference: {fileID: 0}
     - target: {fileID: 7160131054933572500, guid: 5ce83e77874515a4486e3cef3b4a75e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.95
+      value: 13.8764
       objectReference: {fileID: 0}
     - target: {fileID: 7160131054933572500, guid: 5ce83e77874515a4486e3cef3b4a75e8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 431.36
+      value: 431.3896
       objectReference: {fileID: 0}
     - target: {fileID: 7160131054933572500, guid: 5ce83e77874515a4486e3cef3b4a75e8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -859,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7500241528707522862, guid: 5ce83e77874515a4486e3cef3b4a75e8, type: 3}
       propertyPath: m_Name
-      value: crisaldia_epapus
+      value: crisaldia_epaphus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1128,7 +1128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111746670931118344, guid: 36e8ecb3256bf5d448152442726a1929, type: 3}
       propertyPath: m_Name
-      value: planta_tipo_1 (1)
+      value: planta_hospedera_epaphus_huevos
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1590,7 +1590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111746670931118344, guid: 36e8ecb3256bf5d448152442726a1929, type: 3}
       propertyPath: m_Name
-      value: planta_tipo_1
+      value: Planta_hospedera_epaphus_crisalida
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2730,7 +2730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4111746670931118344, guid: 36e8ecb3256bf5d448152442726a1929, type: 3}
       propertyPath: m_Name
-      value: planta_tipo_1 (2)
+      value: planta_hospedera_epaphus_mariposa
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4257,7 +4257,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4986305466068419214, guid: 1edad8b8033c3f24c8d845ed89cffe9a, type: 3}
       propertyPath: m_Name
-      value: huevos
+      value: huevos_epaphus
       objectReference: {fileID: 0}
     - target: {fileID: 5654615452910393396, guid: 1edad8b8033c3f24c8d845ed89cffe9a, type: 3}
       propertyPath: m_LocalScale.x
