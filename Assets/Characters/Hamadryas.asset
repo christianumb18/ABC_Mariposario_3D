@@ -27,3 +27,7 @@ MonoBehaviour:
   turnSpeed: 4
   bobAmplitude: 0.7
   bobFrequency: 1.5
+  videoDesove: {fileID: 32900000, guid: c9323cb7ceee544658b48fb8b9c27ea7, type: 3}
+  videoNacimiento: {fileID: 32900000, guid: c9323cb7ceee544658b48fb8b9c27ea7, type: 3}
+  videoCrisalida: {fileID: 32900000, guid: c9323cb7ceee544658b48fb8b9c27ea7, type: 3}
+  videoNacimientoMariposa: {fileID: 32900000, guid: c9323cb7ceee544658b48fb8b9c27ea7, type: 3}

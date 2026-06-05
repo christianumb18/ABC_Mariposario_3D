@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Maneja la accion de poner huevos.
@@ -41,7 +42,7 @@ public class LayEggAction : MonoBehaviour
         // Desactiva el movimiento mientras pone huevos
         if (ctrl != null) ctrl.enabled = false;
 
-        // Reproduce animacion de poner huevos
+        // Reproduce animacion de poner huevos (Posarse)
         if (anim != null)
             anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Passive);
 
@@ -52,16 +53,9 @@ public class LayEggAction : MonoBehaviour
         Debug.Log("Poniendo huevo... " + layEggDuration + " segundos");
         yield return new WaitForSeconds(layEggDuration);
 
-        // Vuelve a vuelo normal
-        if (anim != null)
-            anim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
-
-        if (ctrl != null) ctrl.enabled = true;
-
-        // Muestra el boton nuevamente
-        spawner.layEggButton.gameObject.SetActive(true);
-
-        _isLayingEgg = false;
+        // ── AQUI ESTA EL CAMBIO ───────────────────────────────────────
+        // En lugar de volver a volar, cargamos el escenario del ciclo de vida
+        SceneManager.LoadScene("MapaMariposario_Ciclo_Vida 1"); 
     }
 
     private ButterflyAnimator GetButterflyAnimator()
