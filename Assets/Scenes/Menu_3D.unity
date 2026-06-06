@@ -3132,7 +3132,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440159164}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -7785,6 +7785,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269212100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269212068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showOnStart: 1
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.85}
+  panelColor: {r: 0.1, g: 0.12, b: 0.18, a: 0.98}
+  buttonColor: {r: 0.2, g: 0.45, b: 0.8, a: 1}
+  buttonAltColor: {r: 0.3, g: 0.3, b: 0.35, a: 1}
+  buttonDangerCol: {r: 0.65, g: 0.2, b: 0.2, a: 1}
+  textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1274092222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7959,7 +7978,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282380285}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -12226,8 +12245,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 30591456}
   m_HandleRect: {fileID: 30591455}
   m_Direction: 0
-  m_Value: 0
-  m_Size: 0.9999999
+  m_Value: 1
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12696,7 +12715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1757517020851604586, guid: 841bb1385182b5b49860650ea0887648, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2464360716342938303, guid: 841bb1385182b5b49860650ea0887648, type: 3}
       propertyPath: m_Name
@@ -12827,25 +12846,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 841bb1385182b5b49860650ea0887648, type: 3}
---- !u!114 &1269212100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1269212068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1b2c3d4e5f6789a0b1c2d3e4f50004, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  showOnStart: 1
-  overlayColor: {r: 0, g: 0, b: 0, a: 0.85}
-  panelColor: {r: 0.1, g: 0.12, b: 0.18, a: 0.98}
-  buttonColor: {r: 0.2, g: 0.45, b: 0.8, a: 1}
-  buttonAltColor: {r: 0.3, g: 0.3, b: 0.35, a: 1}
-  buttonDangerCol: {r: 0.65, g: 0.2, b: 0.2, a: 1}
-  textColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

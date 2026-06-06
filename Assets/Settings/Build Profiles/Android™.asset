@@ -28,6 +28,8 @@ MonoBehaviour:
     m_path: Assets/Scenes/SeleccionMariposa.unity
   - m_enabled: 1
     m_path: Assets/Scenes/MapaMariposario_conPlantas.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/MapaMariposario_Ciclo_Vida 1.unity
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
