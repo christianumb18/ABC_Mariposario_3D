@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2234038813164537039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 380.42096
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.9000857
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 384.9603
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.65340126
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6534014
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.27030864
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.27030864
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -44.949
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
+      propertyPath: m_Name
+      value: ave_setophaga_spp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f9cae49eb4778649a0e14cf041bfac4, type: 3}
