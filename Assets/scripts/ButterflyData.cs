@@ -26,6 +26,14 @@ public class ButterflyData : ScriptableObject
     [Header("Vuelo")]
     [Range(1f, 20f)] public float flightSpeed = 6f;
     [Range(1f, 20f)] public float turnSpeed = 4f;
-    [Range(0f, 3f)] public float bobAmplitude = 0.5f; // oscilación vertical suave
+    [Range(0f, 3f)] public float bobAmplitude = 0.5f; // oscilaciï¿½n vertical suave
     [Range(0.1f, 5f)] public float bobFrequency = 1.5f;
+
+
+    // Esta parte es la logica de los videos que van en el ciclo de vida
+    [Header("Ciclo de Vida (Fase 2)")]
+    public UnityEngine.Video.VideoClip videoDesove;
+    public UnityEngine.Video.VideoClip videoNacimiento;
+    public UnityEngine.Video.VideoClip videoCrisalida;    
+    public UnityEngine.Video.VideoClip videoNacimientoMariposa;
 }
