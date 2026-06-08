@@ -154,6 +154,11 @@ public class SettingsPanel : MonoBehaviour
         if (toggleEnglish != null) toggleEnglish.onValueChanged.AddListener(OnEnglishToggle);
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
+
     private void Start()
     {
         LoadSettings();
@@ -286,11 +291,22 @@ public class SettingsPanel : MonoBehaviour
 
     public void SetQuality(int level)
     {
-        // QualitySettings tiene los niveles definidos en Project Settings > Quality.
-        // 0 = Bajo, 1 = Medio, 2 = Alto (segun el orden de los presets de Unity).
-        // applyExpensiveChanges = true regenera shaders/texturas si hace falta.
         QualitySettings.SetQualityLevel(level, applyExpensiveChanges: true);
         PlayerPrefs.SetInt(KEY_QUALITY, level);
+        ApplyResolutionScale(level);
+    }
+
+    // Escala de resolucion por nivel — la palanca mas fuerte de FPS en movil.
+    // Solo aplica en dispositivo; en editor/PC no toca la ventana.
+    private static readonly float[] RESOLUTION_SCALE = { 0.6f, 0.8f, 1.0f }; // Baja, Media, Alta
+
+    private void ApplyResolutionScale(int level)
+    {
+        if (!Application.isMobilePlatform) return;
+        float scale = RESOLUTION_SCALE[Mathf.Clamp(level, 0, RESOLUTION_SCALE.Length - 1)];
+        int w = Mathf.RoundToInt(Display.main.systemWidth * scale);
+        int h = Mathf.RoundToInt(Display.main.systemHeight * scale);
+        Screen.SetResolution(w, h, true);
     }
 
     // ═══════════════════════════════════════════════════════════════
@@ -357,6 +373,7 @@ public class SettingsPanel : MonoBehaviour
         // Grafica - default ALTA (indice 2)
         int q = PlayerPrefs.GetInt(KEY_QUALITY, 2);
         QualitySettings.SetQualityLevel(q, true);
+        ApplyResolutionScale(q);
         if (dropdownQuality != null) dropdownQuality.value = q;
 
         // Idioma - default ESPANOL (indice 0)

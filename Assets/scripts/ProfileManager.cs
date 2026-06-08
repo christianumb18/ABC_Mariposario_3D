@@ -320,7 +320,7 @@ public class ProfileManager : MonoBehaviour
         sp.score = 0;
         sp.videoSeen = false;
         sp.discoveredTargets.Clear();
-        sp.lives = 3;
+        sp.lives = 6;
         Active.RecomputeTotalScore();
         SaveToDisk();
         OnSpeciesReset?.Invoke(speciesID);
