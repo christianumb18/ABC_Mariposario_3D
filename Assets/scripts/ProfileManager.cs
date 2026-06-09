@@ -192,14 +192,32 @@ public class ProfileManager : MonoBehaviour
     {
         var p = _store.FindByName(name);
         if (p == null) return false;
-        _store.profiles.Remove(p);
-        if (_store.activeProfileName == name)
+        return DeleteProfile(p);
+    }
+
+    /// <summary>Borra por referencia. Funciona aunque el perfil no tenga nombre.</summary>
+    public bool DeleteProfile(ProfileData profile)
+    {
+        if (profile == null) return false;
+        if (!_store.profiles.Contains(profile)) return false;
+
+        bool wasActive = (_store.activeProfileName == profile.userName);
+        _store.profiles.Remove(profile);
+        if (wasActive)
             _store.activeProfileName = _store.profiles.Count > 0 ? _store.profiles[0].userName : null;
         SaveToDisk();
         OnProfileSwitched?.Invoke();
         OnNameChanged?.Invoke();
         OnProgressChanged?.Invoke();
         return true;
+    }
+
+    /// <summary>Borra por índice. Útil cuando hay perfiles con el mismo nombre.</summary>
+    public bool DeleteProfileAt(int index)
+    {
+        var all = GetAllProfiles();
+        if (index < 0 || index >= all.Count) return false;
+        return DeleteProfile(all[index]);
     }
 
     // ═════════════════════════════════════════════════════════════════
@@ -309,6 +327,18 @@ public class ProfileManager : MonoBehaviour
         }
         SaveToDisk();
         return false;
+    }
+
+    /// <summary>Suma 1 vida hasta un máximo de 6. Devuelve true si efectivamente subió.</summary>
+    public bool GainLife(string speciesID)
+    {
+        if (Active == null || string.IsNullOrEmpty(speciesID)) return false;
+        var sp = Active.GetOrCreate(speciesID);
+        if (sp.lives >= 3) return false;            // ya está al tope, no hace nada
+        sp.lives = Mathf.Min(3, sp.lives + 1);
+        OnLifeLost?.Invoke(speciesID, sp.lives);    // reusa el evento para refrescar el HUD
+        SaveToDisk();
+        return true;
     }
 
     /// <summary>Pone score=0, videoSeen=false, discoveredTargets vacío, lives=3.

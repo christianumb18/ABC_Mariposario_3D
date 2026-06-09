@@ -162,6 +162,20 @@ public class ButterflyController : MonoBehaviour
         transform.localScale = Vector3.one * data.scale;
     }
 
+    /// <summary>Resetea el estado de vuelo al transform actual.
+    /// Llamar al asumir control de una mariposa NPC (Cambiar Personaje)
+    /// para que el primer input del joystick se sienta natural.</summary>
+    public void ResetFlightState()
+    {
+        _moveDir = transform.forward;
+        if (_rb != null)
+        {
+            _rb.linearVelocity  = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+        }
+        Hinput = Vinput = VertInput = 0f;
+    }
+
     // ───────────────────────────────────────────────────────────────
     // GIZMOS
     // ───────────────────────────────────────────────────────────────

@@ -23,15 +23,23 @@ public class ButterflyVideoPanel : MonoBehaviour
 
     // ─────────────────────────────────────────────────────────────────
 
+    private ButterflyData _currentData;
+
     public void Show(ButterflyData data)
     {
         Initialize();
+        _currentData = data;
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged -= RefreshTexts;
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged += RefreshTexts;
 
         if (data != null)
         {
-            _commonNameText.text     = data.speciesName;
+            _commonNameText.text     = data.GetLocalizedSpeciesName();
             _scientificNameText.text = $"<i>{data.speciesName}</i>";
-            _descriptionText.text    = data.description;
+            _descriptionText.text    = data.GetLocalizedDescription();
 
             if (_videoPlayer != null && data.videoClip != null)
             {
@@ -46,13 +54,21 @@ public class ButterflyVideoPanel : MonoBehaviour
         }
         else
         {
-            _commonNameText.text     = "Sin datos";
+            string L(string k) => LocalizationManager.Instance != null ? LocalizationManager.Instance.Get(k) : k;
+            _commonNameText.text     = L("video.no_data");
             _scientificNameText.text = "";
-            _descriptionText.text    = "Asigna un ButterflySpeciesData en el ButterflyIdentity de este prefab.";
+            _descriptionText.text    = L("video.no_data_help");
             if (_videoPlayer != null) _videoPlayer.Stop();
         }
 
         _panelRoot.SetActive(true);
+    }
+
+    private void RefreshTexts()
+    {
+        if (!_initialized || _currentData == null) return;
+        _commonNameText.text     = _currentData.GetLocalizedSpeciesName();
+        _descriptionText.text    = _currentData.GetLocalizedDescription();
     }
 
     public void Hide()
@@ -100,22 +116,23 @@ public class ButterflyVideoPanel : MonoBehaviour
 
         // Nombre común — barra superior
         _commonNameText = CreateText("CommonName",
-            new Vector2(0.03f, 0.85f), new Vector2(0.97f, 0.97f),
-            48f, FontStyles.Bold, TextAlignmentOptions.MidlineLeft);
+            new Vector2(0.03f, 0.88f), new Vector2(0.97f, 0.97f),
+            48f, FontStyles.Bold, TextAlignmentOptions.Center);
 
         // Nombre científico — debajo del común
         _scientificNameText = CreateText("ScientificName",
-            new Vector2(0.03f, 0.78f), new Vector2(0.97f, 0.86f),
-            28f, FontStyles.Italic, TextAlignmentOptions.MidlineLeft);
+            new Vector2(0.03f, 0.82f), new Vector2(0.97f, 0.88f),
+            28f, FontStyles.Italic, TextAlignmentOptions.Center);
 
-        // Video — franja central
+        // Video — oculto (sin espacio reservado)
         _videoDisplay = CreateRawImage("VideoDisplay",
-            new Vector2(0.03f, 0.30f), new Vector2(0.97f, 0.76f));
+            new Vector2(0f, 0f), new Vector2(0f, 0f));
+        _videoDisplay.gameObject.SetActive(false);
 
-        // Descripción — franja inferior
+        // Descripción — ocupa todo el panel central, texto centrado
         _descriptionText = CreateText("Description",
-            new Vector2(0.03f, 0.02f), new Vector2(0.97f, 0.28f),
-            22f, FontStyles.Normal, TextAlignmentOptions.TopLeft);
+            new Vector2(0.05f, 0.16f), new Vector2(0.95f, 0.80f),
+            24f, FontStyles.Normal, TextAlignmentOptions.Center);
 
         // VideoPlayer
         _videoPlayer = canvasGO.AddComponent<VideoPlayer>();

@@ -30,15 +30,32 @@ public class MainMenu : MonoBehaviour
     // ── Boton INICIAR ──────────────────────────────────────────────
     public void PlayGame()
     {
-        // Si hay escena de seleccion configurada, va alli primero
-        if (!string.IsNullOrEmpty(selectionSceneName))
+        // Si hay un selector de perfil disponible, lo mostramos PRIMERO.
+        // El usuario elige perfil → se dispara OnProfileChosen → cargamos escena.
+        if (ProfileSelectionUI.Instance != null)
         {
-            SceneManager.LoadScene(selectionSceneName);
+            // Suscribirse una sola vez al evento
+            System.Action handler = null;
+            handler = () =>
+            {
+                ProfileSelectionUI.Instance.OnProfileChosen -= handler;
+                LoadNextScene();
+            };
+            ProfileSelectionUI.Instance.OnProfileChosen += handler;
+            ProfileSelectionUI.Instance.Open();
             return;
         }
 
-        // Si no, va directo al mariposario
-        SceneManager.LoadScene(mariposarioSceneName);
+        // Si no hay selector, va directo
+        LoadNextScene();
+    }
+
+    private void LoadNextScene()
+    {
+        if (!string.IsNullOrEmpty(selectionSceneName))
+            SceneManager.LoadScene(selectionSceneName);
+        else
+            SceneManager.LoadScene(mariposarioSceneName);
     }
 
     // ── Boton SALIR ────────────────────────────────────────────────

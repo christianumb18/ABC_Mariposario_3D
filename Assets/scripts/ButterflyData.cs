@@ -12,10 +12,34 @@ public class ButterflyData : ScriptableObject
     public string speciesName = "Mariposa";
     [TextArea(2, 4)]
     public string description = "Una hermosa mariposa.";
+    [Header("Traduccion EN (opcional)")]
+    [Tooltip("Nombre en ingles. Si esta vacio se usa speciesName.")]
+    public string speciesNameEn = "";
+    [TextArea(2, 4)]
+    [Tooltip("Descripcion en ingles. Si esta vacio se usa description.")]
+    public string descriptionEn = "";
+
+    /// <summary>Devuelve el nombre segun el idioma activo de LocalizationManager.</summary>
+    public string GetLocalizedSpeciesName()
+    {
+        if (LocalizationManager.Instance != null && LocalizationManager.Instance.CurrentLanguage == 1
+            && !string.IsNullOrEmpty(speciesNameEn))
+            return speciesNameEn;
+        return speciesName;
+    }
+
+    /// <summary>Devuelve la descripcion segun el idioma activo.</summary>
+    public string GetLocalizedDescription()
+    {
+        if (LocalizationManager.Instance != null && LocalizationManager.Instance.CurrentLanguage == 1
+            && !string.IsNullOrEmpty(descriptionEn))
+            return descriptionEn;
+        return description;
+    }
     public GameObject prefabButterfly;         // Prefab 3D de la mariposa en escena
     public GameObject prefabPlant;         // Prefab 3D de la mariposa en escena
     [Range(0.1f, 2f)] public float scale = 0.25f;
-    [Header("Video — se reproduce en el panel derecho al inspeccionar")]
+    [Header("Video ï¿½ se reproduce en el panel derecho al inspeccionar")]
     public VideoClip videoClip;
 
     [Header("Planta hospedera")]

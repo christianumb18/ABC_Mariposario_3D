@@ -130,6 +130,10 @@ public class ScoreManager : MonoBehaviour
             // Reset también de los markers descubiertos en el minimapa
             var minimap = FindFirstObjectByType<MinimapMarkerSystem>();
             minimap?.ResetDiscoveriesForSpecies(speciesID);
+            
+            // Sin más vidas → volver al menú principal
+            if (MariposarioGameManager.Instance != null)
+                MariposarioGameManager.Instance.LoadSceneMenu();
         }
     }
 

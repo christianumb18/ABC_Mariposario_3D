@@ -48,6 +48,10 @@ public class SettingsPanel : MonoBehaviour
     public Toggle toggleTouchScreen;
     public Toggle toggleJoystick;
 
+    [Header("Accesibilidad")]
+    [Tooltip("Toggle para mover el joystick a la derecha (modo zurdo).")]
+    public Toggle toggleLeftHanded;
+
     [Header("Grafica")]
     public TMP_Dropdown dropdownQuality;    // 0=Bajo, 1=Medio, 2=Alto
 
@@ -125,11 +129,12 @@ public class SettingsPanel : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
-            return;
+            Destroy(Instance.gameObject);
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
         // Botones
         if (btnClose != null) btnClose.onClick.AddListener(Close);
@@ -145,6 +150,7 @@ public class SettingsPanel : MonoBehaviour
         if (toggleInvertY != null) toggleInvertY.onValueChanged.AddListener(SetInvertY);
         if (toggleTouchScreen != null) toggleTouchScreen.onValueChanged.AddListener(OnTouchToggle);
         if (toggleJoystick != null) toggleJoystick.onValueChanged.AddListener(OnJoystickToggle);
+        if (toggleLeftHanded != null) toggleLeftHanded.onValueChanged.AddListener(SetLeftHanded);
 
         // Grafica
         if (dropdownQuality != null) dropdownQuality.onValueChanged.AddListener(SetQuality);
@@ -154,10 +160,111 @@ public class SettingsPanel : MonoBehaviour
         if (toggleEnglish != null) toggleEnglish.onValueChanged.AddListener(OnEnglishToggle);
     }
 
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged -= RebuildQualityOptions;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (panelRoot != null && panelRoot.activeSelf)
+            panelRoot.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
     private void Start()
     {
         LoadSettings();
         if (panelRoot != null) panelRoot.SetActive(false);
+
+        RebuildQualityOptions();
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged += RebuildQualityOptions;
+
+        BuildLeftHandedToggleIfMissing();
+    }
+
+    // Construye el toggle "Modo zurdo" automaticamente si no esta asignado.
+    private void BuildLeftHandedToggleIfMissing()
+    {
+        if (toggleLeftHanded != null) return;
+        if (panelRoot == null) return;
+
+        // Crear contenedor: rectangulo abajo a la izquierda (debajo del panel Graficos)
+        var go = new GameObject("Toggle_Zurdo", typeof(RectTransform));
+        go.transform.SetParent(panelRoot.transform, false);
+        var rt = (RectTransform)go.transform;
+        rt.anchorMin = new Vector2(0f, 0f);
+        rt.anchorMax = new Vector2(0f, 0f);
+        rt.pivot     = new Vector2(0f, 0f);
+        rt.anchoredPosition = new Vector2(80f, 20f);
+        rt.sizeDelta = new Vector2(190f, 30f);
+
+        // Background (caja del checkbox)
+        var bg = new GameObject("Background", typeof(RectTransform), typeof(Image));
+        bg.transform.SetParent(go.transform, false);
+        var bgRT = (RectTransform)bg.transform;
+        bgRT.anchorMin = new Vector2(0f, 0.5f);
+        bgRT.anchorMax = new Vector2(0f, 0.5f);
+        bgRT.pivot     = new Vector2(0f, 0.5f);
+        bgRT.anchoredPosition = new Vector2(0f, 0f);
+        bgRT.sizeDelta = new Vector2(22f, 22f);
+        bg.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.9f);
+
+        // Checkmark
+        var check = new GameObject("Checkmark", typeof(RectTransform), typeof(Image));
+        check.transform.SetParent(bg.transform, false);
+        var ckRT = (RectTransform)check.transform;
+        ckRT.anchorMin = Vector2.zero; ckRT.anchorMax = Vector2.one;
+        ckRT.offsetMin = new Vector2(3f, 3f); ckRT.offsetMax = new Vector2(-3f, -3f);
+        check.GetComponent<Image>().color = new Color(0.1f, 0.5f, 0.1f, 1f);
+
+        // Label
+        var lbl = new GameObject("Label", typeof(RectTransform));
+        lbl.transform.SetParent(go.transform, false);
+        var lblRT = (RectTransform)lbl.transform;
+        lblRT.anchorMin = new Vector2(0f, 0.5f);
+        lblRT.anchorMax = new Vector2(1f, 0.5f);
+        lblRT.pivot     = new Vector2(0f, 0.5f);
+        lblRT.anchoredPosition = new Vector2(30f, 0f);
+        lblRT.sizeDelta = new Vector2(160f, 22f);
+        var tmp = lbl.AddComponent<TextMeshProUGUI>();
+        tmp.text = "Modo zurdo";
+        tmp.fontSize = 14;
+        tmp.alignment = TextAlignmentOptions.MidlineLeft;
+        tmp.color = new Color(0.1f, 0.1f, 0.1f, 1f);
+
+        // Auto-localiza
+        var loc = lbl.AddComponent<LocalizedText>();
+        loc.key = "settings.left_handed";
+        loc.Refresh();
+
+        // Toggle component
+        var toggle = go.AddComponent<Toggle>();
+        toggle.targetGraphic = bg.GetComponent<Image>();
+        toggle.graphic       = check.GetComponent<Image>();
+        toggle.isOn          = JoystickPositioner.LeftHanded;
+        toggle.onValueChanged.AddListener(SetLeftHanded);
+
+        toggleLeftHanded = toggle;
+    }
+
+    private void RebuildQualityOptions()
+    {
+        if (dropdownQuality == null) return;
+        int previous = dropdownQuality.value;
+        dropdownQuality.ClearOptions();
+        dropdownQuality.AddOptions(new System.Collections.Generic.List<string>
+        {
+            L("settings.quality.low"),
+            L("settings.quality.med"),
+            L("settings.quality.high"),
+        });
+        dropdownQuality.value = Mathf.Clamp(previous, 0, 2);
+        dropdownQuality.RefreshShownValue();
     }
 
     private void Update()
@@ -280,17 +387,33 @@ public class SettingsPanel : MonoBehaviour
         }
     }
 
+    public void SetLeftHanded(bool isOn)
+    {
+        JoystickPositioner.LeftHanded = isOn;
+    }
+
     // ═══════════════════════════════════════════════════════════════
     // CALLBACKS - GRAFICA
     // ═══════════════════════════════════════════════════════════════
 
     public void SetQuality(int level)
     {
-        // QualitySettings tiene los niveles definidos en Project Settings > Quality.
-        // 0 = Bajo, 1 = Medio, 2 = Alto (segun el orden de los presets de Unity).
-        // applyExpensiveChanges = true regenera shaders/texturas si hace falta.
         QualitySettings.SetQualityLevel(level, applyExpensiveChanges: true);
         PlayerPrefs.SetInt(KEY_QUALITY, level);
+        ApplyResolutionScale(level);
+    }
+
+    // Escala de resolucion por nivel — la palanca mas fuerte de FPS en movil.
+    // Solo aplica en dispositivo; en editor/PC no toca la ventana.
+    private static readonly float[] RESOLUTION_SCALE = { 0.6f, 0.8f, 1.0f }; // Baja, Media, Alta
+
+    private void ApplyResolutionScale(int level)
+    {
+        if (!Application.isMobilePlatform) return;
+        float scale = RESOLUTION_SCALE[Mathf.Clamp(level, 0, RESOLUTION_SCALE.Length - 1)];
+        int w = Mathf.RoundToInt(Display.main.systemWidth * scale);
+        int h = Mathf.RoundToInt(Display.main.systemHeight * scale);
+        Screen.SetResolution(w, h, true);
     }
 
     // ═══════════════════════════════════════════════════════════════
@@ -312,9 +435,12 @@ public class SettingsPanel : MonoBehaviour
         Language = index;
         PlayerPrefs.SetInt(KEY_LANGUAGE, index);
 
-        // TODO: cuando instales Unity Localization (Package Manager):
-        //   var locales = LocalizationSettings.AvailableLocales.Locales;
-        //   LocalizationSettings.SelectedLocale = locales[index];
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.SetLanguage(index);
+
+        // Refresca los textos de rendimiento que no usan LocalizedText
+        RefreshPerformanceTexts();
+
         Debug.Log($"[SettingsPanel] Idioma: {(index == 0 ? "Espanol" : "English")}");
     }
 
@@ -353,10 +479,12 @@ public class SettingsPanel : MonoBehaviour
         if (toggleInvertY != null) toggleInvertY.isOn = InvertY;
         if (toggleTouchScreen != null) toggleTouchScreen.isOn = (InputMode == 0);
         if (toggleJoystick != null) toggleJoystick.isOn = (InputMode == 1);
+        if (toggleLeftHanded != null) toggleLeftHanded.isOn = JoystickPositioner.LeftHanded;
 
         // Grafica - default ALTA (indice 2)
         int q = PlayerPrefs.GetInt(KEY_QUALITY, 2);
         QualitySettings.SetQualityLevel(q, true);
+        ApplyResolutionScale(q);
         if (dropdownQuality != null) dropdownQuality.value = q;
 
         // Idioma - default ESPANOL (indice 0)
@@ -369,51 +497,44 @@ public class SettingsPanel : MonoBehaviour
     // RENDIMIENTO - lectura de datos del sistema
     // ═══════════════════════════════════════════════════════════════
 
+    private static string L(string key)
+    {
+        return LocalizationManager.Instance != null
+            ? LocalizationManager.Instance.Get(key)
+            : key;
+    }
+
     private void RefreshPerformanceTexts()
     {
-        // FPS
         if (textFPS != null)
-            textFPS.text = $"FPS: {_currentFPS:0}";
+            textFPS.text = $"{L("perf.fps")}: {_currentFPS:0}";
 
-        // Bateria
-        // SystemInfo.batteryLevel devuelve 0-1 en dispositivos reales,
-        // o -1 si no esta disponible (editor o desktop sin bateria).
         if (textBattery != null)
         {
             float bat = SystemInfo.batteryLevel;
             textBattery.text = bat < 0f
-                ? "Bateria: N/D"
-                : $"Bateria: {Mathf.RoundToInt(bat * 100f)}%";
+                ? $"{L("perf.battery")}: {L("perf.na")}"
+                : $"{L("perf.battery")}: {Mathf.RoundToInt(bat * 100f)}%";
         }
 
-        // Temperatura
-        // Unity NO expone temperatura del CPU/GPU. Requiere plugin nativo
-        // de Android. Por ahora siempre N/D.
         if (textTemperature != null)
-            textTemperature.text = "Temperatura: N/D";
+            textTemperature.text = $"{L("perf.temperature")}: {L("perf.na")}";
 
-        // Ahorro de bateria
-        // Heuristica: si esta descargandose y nivel < 20%, sugerimos modo
-        // ahorro activo. Para deteccion real del modo "Battery Saver" de
-        // Android se requiere plugin nativo (PowerManager.isPowerSaveMode).
         if (textBatterySaving != null)
         {
             BatteryStatus status = SystemInfo.batteryStatus;
             float bat = SystemInfo.batteryLevel;
             bool savingLikely = (status == BatteryStatus.Discharging) && bat > 0f && bat < 0.2f;
-            textBatterySaving.text = savingLikely
-                ? "Ahorro de bateria: Si"
-                : "Ahorro de bateria: No";
+            textBatterySaving.text = $"{L("perf.battery_saving")}: {L(savingLikely ? "settings.yes" : "settings.no")}";
         }
 
-        // Estado general segun FPS
         if (textPerformanceState != null)
         {
-            string state;
-            if (_currentFPS >= 50f) state = "Estable";
-            else if (_currentFPS >= 30f) state = "Medio consumo";
-            else state = "Alto consumo";
-            textPerformanceState.text = $"Estado: {state}";
+            string stateKey;
+            if (_currentFPS >= 50f) stateKey = "perf.state.stable";
+            else if (_currentFPS >= 30f) stateKey = "perf.state.medium";
+            else stateKey = "perf.state.high";
+            textPerformanceState.text = $"{L("perf.state")}: {L(stateKey)}";
         }
     }
 }

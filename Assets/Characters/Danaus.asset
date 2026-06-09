@@ -13,14 +13,39 @@ MonoBehaviour:
   m_Name: Danaus
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
   speciesName: Danaus plexippus
-  description: "Una de las mariposas m\xE1s famosas del mundo gracias a sus impresionantes
-    migraciones. Sus alas anaranjadas con l\xEDneas negras le ayudan a advertir a
-    los depredadores que no es f\xE1cil de comer. Durante su ciclo de vida depende
-    de plantas llamadas algodoncillo.\n\nDato curioso:\nPuede migrar miles de kil\xF3metros
-    entre pa\xEDses y generaciones."
+  description: "La Danaus plexippus es una mariposa perteneciente al g\xE9nero Danaus
+    y a la familia Nymphalidae. Es conocida por su color vibrante y su gran tama\xF1o.\r\n\r\nCaracter\xEDsticas
+    principales:\r\n\r\nEnvergadura: Alcanza una envergadura de 9 a 10 cm, lo que
+    la convierte en una mariposa de tama\xF1o considerable.\r\nEl dorso de sus alas
+    es de un color naranja brillante con manchas negras, mientras que el reverso
+    de las alas tiene una combinaci\xF3n de tonos m\xE1s apagados con detalles en
+    blanco y marr\xF3n.\r\nEs muy similar en apariencia a la famosa Danaus plexippus
+    (mariposa monarca), pero con patrones de color ligeramente diferentes."
+  speciesNameEn: Butterfly Danaus plexippus (Monarch)
+  descriptionEn: 'The Danaus plexippus  is a butterfly belonging to the genus Danaus
+    and the family Nymphalidae . It is known for its vibrant color and large size.
+
+    
+
+    Main
+    features:
+
+    
+
+    Wingspan: It reaches a wingspan of 9 to 10 cm , which
+    makes it a butterfly of considerable size.
+
+    The back of its wings is a bright
+    orange color with black spots , while the underside of the wings has a combination
+    of more muted tones with white and brown details.
+
+    It is very similar in
+    appearance to the famous Danaus plexippus (monarch butterfly), but with slightly
+    different color patterns.'
   prefabButterfly: {fileID: 2318519655408594110, guid: 4d51e8b7e342c4846bbe4286f192c8aa, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 0454d87d9f58ad24fbba177eef5a636b, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Danaus
   flightSpeed: 10
   turnSpeed: 4

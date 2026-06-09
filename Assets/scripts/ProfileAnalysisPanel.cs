@@ -18,6 +18,8 @@ using TMPro;
 /// </summary>
 public class ProfileAnalysisPanel : MonoBehaviour
 {
+    public static ProfileAnalysisPanel Instance { get; private set; }
+
     [Header("Comportamiento")]
     public bool showFloatingButton = true;
 
@@ -47,13 +49,34 @@ public class ProfileAnalysisPanel : MonoBehaviour
 
     // ═════════════════════════════════════════════════════════════════
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) { Instance = this; }
+        else Instance = this;
+    }
+
     private void Start()
     {
         BuildUI();
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged += OnLanguageChanged;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged -= OnLanguageChanged;
+    }
+
+    private void OnLanguageChanged()
+    {
+        if (_root != null && _root.activeSelf) Refresh();
     }
 
     public void Open()
     {
+        if (_root == null) return;
         _root.SetActive(true);
         Refresh();
     }
@@ -65,29 +88,51 @@ public class ProfileAnalysisPanel : MonoBehaviour
 
     // ── Análisis ──────────────────────────────────────────────────────
 
+    private static string L(string key)
+    {
+        return LocalizationManager.Instance != null
+            ? LocalizationManager.Instance.Get(key)
+            : key;
+    }
+
     private void Refresh()
     {
-        if (ProfileManager.Instance == null || ProfileManager.Instance.Active == null) return;
+        if (ProfileManager.Instance == null || ProfileManager.Instance.Active == null)
+        {
+            // Si no hay perfil activo, mostrar mensaje claro en vez de vacío
+            if (_summaryText  != null) _summaryText.text  = "<i>Sin perfil activo.</i>";
+            if (_strengthText != null) _strengthText.text = "";
+            if (_weaknessText != null) _weaknessText.text = "";
+            return;
+        }
         var profile = ProfileManager.Instance.Active;
 
         // Resumen general
         _summaryText.text =
             $"<b>{profile.userName}</b>\n" +
-            $"Puntaje total: <b>{profile.totalScore}</b>\n" +
-            $"Tiempo de vuelo: <b>{ProfileManager.Instance.FlightTimeFormatted}</b>\n" +
-            $"Especies con video visto: <b>{profile.CountSpeciesWithVideoSeen()}/{ProfileManager.Instance.TotalSpecies}</b>";
+            $"{L("profile.total_score")}: <b>{profile.totalScore}</b>\n" +
+            $"{L("profile.flight_time")}: <b>{ProfileManager.Instance.FlightTimeFormatted}</b>\n" +
+            $"{L("profile.videos_seen")}: <b>{profile.CountSpeciesWithVideoSeen()}/{ProfileManager.Instance.TotalSpecies}</b>";
 
         // Fortaleza
         var strong = ProfileManager.Instance.GetStrongest();
+        string strengthHeader = $"<color=#56DA73>{L("profile.strength")}</color>";
         _strengthText.text = strong != null
-            ? $"<color=#56DA73>★ Fortaleza</color>\nTu especie más fuerte: <b>{strong.speciesID}</b>  ({strong.score} pts, récord {strong.highScore})"
-            : "<color=#56DA73>★ Fortaleza</color>\nAún sin datos — explora y suma puntos.";
+            ? $"{strengthHeader}\n{string.Format(L("profile.strongest"), $"<b>{strong.speciesID}</b>", strong.score, strong.highScore)}"
+            : $"{strengthHeader}\n{L("profile.no_data")}";
 
         // Mayor reto / fallas
         var weak = ProfileManager.Instance.GetMostChallenging();
-        _weaknessText.text = weak != null
-            ? $"<color=#FF6060>⚠ Mayor reto</color>\n<b>{weak.speciesID}</b> te ha vencido {weak.totalDeaths} {(weak.totalDeaths == 1 ? "vez" : "veces")}. Ten cuidado con los depredadores."
-            : "<color=#FF6060>⚠ Mayor reto</color>\nNo te ha vencido ningún depredador. ¡Buen trabajo!";
+        string challengeHeader = $"<color=#FF6060>{L("profile.challenge")}</color>";
+        if (weak != null)
+        {
+            string template = L(weak.totalDeaths == 1 ? "profile.beaten_singular" : "profile.beaten_plural");
+            _weaknessText.text = $"{challengeHeader}\n{string.Format(template, $"<b>{weak.speciesID}</b>", weak.totalDeaths)}";
+        }
+        else
+        {
+            _weaknessText.text = $"{challengeHeader}\n{L("profile.never_beaten")}";
+        }
 
         // Tabla por especie
         RebuildRows(profile);
@@ -99,7 +144,9 @@ public class ProfileAnalysisPanel : MonoBehaviour
             Destroy(_rowsContainer.GetChild(i).gameObject);
 
         // Header
-        var header = CreateRow(_rowsContainer, "Especie", "Score", "Muertes", "Vidas", "Video");
+        var header = CreateRow(_rowsContainer,
+            L("profile.col.species"), L("profile.col.score"), L("profile.col.deaths"),
+            L("profile.col.lives"), L("profile.col.video"));
         header.GetComponent<Image>().color = new Color(0.18f, 0.20f, 0.28f, 1f);
         ColorRowText(header, new Color(0.7f, 0.8f, 1f, 1f), bold: true);
 
@@ -191,44 +238,146 @@ public class ProfileAnalysisPanel : MonoBehaviour
         prt.sizeDelta = new Vector2(900f, 820f);
         panel.AddComponent<Image>().color = panelColor;
 
-        // Título
-        AddText(panel.transform, "Tu progreso",
+        // Título (estático arriba)
+        var titleText = AddText(panel.transform, L("profile.title"),
             new Vector2(0.04f, 0.90f), new Vector2(0.96f, 0.98f),
             42f, FontStyles.Bold, TextAlignmentOptions.Center, Color.white);
+        var titleLoc = titleText.gameObject.AddComponent<LocalizedText>();
+        titleLoc.key = "profile.title";
+        titleLoc.Refresh();
 
-        // Resumen general
-        _summaryText = AddText(panel.transform, "",
-            new Vector2(0.04f, 0.74f), new Vector2(0.96f, 0.89f),
-            22f, FontStyles.Normal, TextAlignmentOptions.MidlineLeft, Color.white);
+        // ScrollView (zona central scrollable, deja espacio para titulo arriba y boton abajo)
+        BuildScrollableContent(panel.transform);
 
-        // Fortaleza
-        _strengthText = AddText(panel.transform, "",
-            new Vector2(0.04f, 0.62f), new Vector2(0.96f, 0.73f),
-            22f, FontStyles.Normal, TextAlignmentOptions.MidlineLeft, Color.white);
-
-        // Falla
-        _weaknessText = AddText(panel.transform, "",
-            new Vector2(0.04f, 0.50f), new Vector2(0.96f, 0.61f),
-            22f, FontStyles.Normal, TextAlignmentOptions.MidlineLeft, Color.white);
-
-        // Contenedor de filas (tabla)
-        var rowsGO = new GameObject("Rows");
-        rowsGO.transform.SetParent(panel.transform, false);
-        _rowsContainer = rowsGO.AddComponent<RectTransform>();
-        _rowsContainer.anchorMin = new Vector2(0.04f, 0.10f);
-        _rowsContainer.anchorMax = new Vector2(0.96f, 0.48f);
-        _rowsContainer.offsetMin = Vector2.zero; _rowsContainer.offsetMax = Vector2.zero;
-
-        var vlg = rowsGO.AddComponent<VerticalLayoutGroup>();
-        vlg.spacing = 4f;
-        vlg.childForceExpandWidth  = true;
-        vlg.childForceExpandHeight = false;
-        vlg.childControlHeight     = false;
-
-        // Botones
-        CreateButton(panel.transform, "Cerrar",
+        // Botón cerrar (estático abajo)
+        CreateButton(panel.transform, L("ui.close"),
             new Vector2(0.30f, 0.02f), new Vector2(0.70f, 0.08f),
             buttonColor, Close);
+    }
+
+    private void BuildScrollableContent(Transform parent)
+    {
+        // ── ScrollRect contenedor ──────────────────────────────────────
+        var scrollGO = new GameObject("ScrollView");
+        scrollGO.transform.SetParent(parent, false);
+        var scrollRT = scrollGO.AddComponent<RectTransform>();
+        scrollRT.anchorMin = new Vector2(0.02f, 0.10f);
+        scrollRT.anchorMax = new Vector2(0.98f, 0.89f);
+        scrollRT.offsetMin = Vector2.zero; scrollRT.offsetMax = Vector2.zero;
+        scrollGO.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0.15f);
+
+        var scrollRect = scrollGO.AddComponent<ScrollRect>();
+        scrollRect.horizontal = false;
+        scrollRect.vertical   = true;
+        scrollRect.movementType = ScrollRect.MovementType.Clamped;
+        scrollRect.scrollSensitivity = 30f;
+
+        // ── Viewport (con Mask para recortar contenido al area visible) ─
+        var viewportGO = new GameObject("Viewport");
+        viewportGO.transform.SetParent(scrollGO.transform, false);
+        var viewportRT = viewportGO.AddComponent<RectTransform>();
+        viewportRT.anchorMin = Vector2.zero;
+        viewportRT.anchorMax = new Vector2(0.95f, 1f);    // deja 5% a la derecha para el scrollbar
+        viewportRT.offsetMin = new Vector2(8f, 8f);
+        viewportRT.offsetMax = new Vector2(-8f, -8f);
+        viewportRT.pivot = new Vector2(0f, 1f);
+        var viewportImg = viewportGO.AddComponent<Image>();
+        viewportImg.color = new Color(1f, 1f, 1f, 0.01f);
+        viewportGO.AddComponent<Mask>().showMaskGraphic = false;
+
+        // ── Content (crece verticalmente, contiene los textos y la tabla)
+        var contentGO = new GameObject("Content");
+        contentGO.transform.SetParent(viewportGO.transform, false);
+        var contentRT = contentGO.AddComponent<RectTransform>();
+        contentRT.anchorMin = new Vector2(0f, 1f);
+        contentRT.anchorMax = new Vector2(1f, 1f);
+        contentRT.pivot     = new Vector2(0.5f, 1f);
+        contentRT.anchoredPosition = Vector2.zero;
+        contentRT.sizeDelta = new Vector2(0f, 0f);
+
+        var contentVLG = contentGO.AddComponent<VerticalLayoutGroup>();
+        contentVLG.spacing = 12f;
+        contentVLG.padding = new RectOffset(10, 10, 10, 10);
+        contentVLG.childAlignment = TextAnchor.UpperLeft;
+        contentVLG.childForceExpandWidth  = true;
+        contentVLG.childForceExpandHeight = false;
+        contentVLG.childControlWidth      = true;
+        contentVLG.childControlHeight     = true;
+
+        var fitter = contentGO.AddComponent<ContentSizeFitter>();
+        fitter.horizontalFit = ContentSizeFitter.FitMode.Unconstrained;
+        fitter.verticalFit   = ContentSizeFitter.FitMode.PreferredSize;
+
+        scrollRect.viewport = viewportRT;
+        scrollRect.content  = contentRT;
+
+        // ── Scrollbar vertical a la derecha ─────────────────────────────
+        var sbGO = new GameObject("Scrollbar");
+        sbGO.transform.SetParent(scrollGO.transform, false);
+        var sbRT = sbGO.AddComponent<RectTransform>();
+        sbRT.anchorMin = new Vector2(0.95f, 0f);
+        sbRT.anchorMax = new Vector2(1f, 1f);
+        sbRT.offsetMin = new Vector2(2f, 8f);
+        sbRT.offsetMax = new Vector2(-4f, -8f);
+        sbGO.AddComponent<Image>().color = new Color(1f, 1f, 1f, 0.10f);
+        var sb = sbGO.AddComponent<Scrollbar>();
+        sb.direction = Scrollbar.Direction.BottomToTop;
+
+        var slideAreaGO = new GameObject("SlidingArea");
+        slideAreaGO.transform.SetParent(sbGO.transform, false);
+        var slideRT = slideAreaGO.AddComponent<RectTransform>();
+        slideRT.anchorMin = Vector2.zero; slideRT.anchorMax = Vector2.one;
+        slideRT.offsetMin = new Vector2(4f, 4f); slideRT.offsetMax = new Vector2(-4f, -4f);
+
+        var handleGO = new GameObject("Handle");
+        handleGO.transform.SetParent(slideAreaGO.transform, false);
+        var handleRT = handleGO.AddComponent<RectTransform>();
+        handleRT.anchorMin = Vector2.zero; handleRT.anchorMax = Vector2.one;
+        handleRT.offsetMin = Vector2.zero; handleRT.offsetMax = Vector2.zero;
+        var handleImg = handleGO.AddComponent<Image>();
+        handleImg.color = new Color(0.9f, 0.9f, 1f, 0.7f);
+        sb.targetGraphic = handleImg;
+        sb.handleRect = handleRT;
+
+        scrollRect.verticalScrollbar = sb;
+        scrollRect.verticalScrollbarVisibility = ScrollRect.ScrollbarVisibility.AutoHide;
+
+        // ── Crear los textos como hijos del Content (los maneja VerticalLayoutGroup)
+        _summaryText  = CreateContentText(contentGO.transform, 22f);
+        _strengthText = CreateContentText(contentGO.transform, 22f);
+        _weaknessText = CreateContentText(contentGO.transform, 22f);
+
+        // Contenedor de filas de tabla (también dentro del scrollable)
+        var rowsGO = new GameObject("Rows");
+        rowsGO.transform.SetParent(contentGO.transform, false);
+        _rowsContainer = rowsGO.AddComponent<RectTransform>();
+
+        var rowsVLG = rowsGO.AddComponent<VerticalLayoutGroup>();
+        rowsVLG.spacing = 4f;
+        rowsVLG.childForceExpandWidth  = true;
+        rowsVLG.childForceExpandHeight = false;
+        rowsVLG.childControlHeight     = false;
+        rowsVLG.childControlWidth      = true;
+
+        var rowsFitter = rowsGO.AddComponent<ContentSizeFitter>();
+        rowsFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+    }
+
+    private TMP_Text CreateContentText(Transform parent, float size)
+    {
+        var go = new GameObject("Text");
+        go.transform.SetParent(parent, false);
+        go.AddComponent<RectTransform>();
+        var le = go.AddComponent<LayoutElement>();
+        le.flexibleHeight = -1f;
+        var tmp = go.AddComponent<TextMeshProUGUI>();
+        tmp.text = "";
+        tmp.fontSize = size;
+        tmp.color = Color.white;
+        tmp.alignment = TextAlignmentOptions.TopLeft;
+        tmp.enableWordWrapping = true;
+        tmp.raycastTarget = false;
+        return tmp;
     }
 
     // ── Helpers ───────────────────────────────────────────────────────
@@ -316,8 +465,20 @@ public class ProfileAnalysisPanel : MonoBehaviour
         btn.targetGraphic = img;
         btn.onClick.AddListener(onClick);
 
-        AddText(go.transform, label,
+        var labelTmp = AddText(go.transform, label,
             new Vector2(0f, 0f), new Vector2(1f, 1f),
             26f, FontStyles.Bold, TextAlignmentOptions.Center, Color.white);
+
+        // Auto-localiza si el label coincide con una entrada del diccionario
+        if (LocalizationManager.Instance != null)
+        {
+            string key = LocalizationManager.Instance.FindKey(label);
+            if (key != null)
+            {
+                var loc = labelTmp.gameObject.AddComponent<LocalizedText>();
+                loc.key = key;
+                loc.Refresh();
+            }
+        }
     }
 }

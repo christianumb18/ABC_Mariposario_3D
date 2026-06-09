@@ -162,24 +162,29 @@ public class GameStateManager : MonoBehaviour
         // 1. Apagar comportamiento autónomo de la nueva mariposa
         if (npcBehavior != null) npcBehavior.enabled = false;
 
-        // 1b. Restaurar el Rigidbody a modo "jugador" para que el controller pueda moverla
+        // 1b. Restaurar el Rigidbody a EXACTAMENTE el mismo estado que el
+        // jugador original (mismo damping y constraints que ButterflyController.Awake).
         var rb = npc.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = false;
-            rb.useGravity  = false;
-            rb.constraints = RigidbodyConstraints.FreezeRotation;
-            rb.linearVelocity = Vector3.zero;
+            rb.isKinematic    = false;
+            rb.useGravity     = false;
+            rb.linearDamping  = 2f;
+            rb.angularDamping = 8f;
+            rb.freezeRotation = true;
+            rb.linearVelocity  = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
 
-        // 1c. Cambiar layer a "Butterfly" para que PreventCollisions del controller
-        // excluya su propio collider en raycasts (si no, la mariposa se auto-detecta y se atasca).
-        int butterflyLayer = LayerMask.NameToLayer("Butterfly");
-        if (butterflyLayer >= 0)
+        // 1c. Orientar la mariposa hacia el frente de la camara para que el primer
+        // movimiento del joystick se sienta natural (no hacia atras).
+        if (_cam == null) _cam = Camera.main;
+        if (_cam != null)
         {
-            foreach (Transform t in npc.GetComponentsInChildren<Transform>(includeInactive: true))
-                t.gameObject.layer = butterflyLayer;
+            Vector3 fwd = _cam.transform.forward;
+            fwd.y = 0f;
+            if (fwd.sqrMagnitude > 0.01f)
+                npc.transform.rotation = Quaternion.LookRotation(fwd.normalized, Vector3.up);
         }
 
         // 2. Activar el ButterflyController del nuevo personaje + inicializar datos
@@ -188,13 +193,19 @@ public class GameStateManager : MonoBehaviour
             npcController.enabled = true;
             if (npcBehavior != null && npcBehavior.Data != null)
                 npcController.Initialize(npcBehavior.Data);
+            // Resetea estado interno de vuelo para que el primer input sea natural
+            npcController.ResetFlightState();
         }
 
-        // 3. Apagar el controller del personaje anterior (si tenía)
+        // Asegura animacion de vuelo activa
+        var newAnimator = npc.GetComponent<ButterflyAnimator>();
+        if (newAnimator != null)
+            newAnimator.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
+
+        // 3. Convertir el personaje anterior de vuelta en NPC autonomo
         if (playerCharacter != null && playerCharacter != npc.gameObject)
         {
-            var prevCtrl = playerCharacter.GetComponentInChildren<ButterflyController>();
-            if (prevCtrl != null) prevCtrl.enabled = false;
+            ConvertPlayerToNPC(playerCharacter);
         }
 
         // 4. Redirigir el ButterflyUserControl (joystick + cámara orbital) a la nueva
@@ -223,24 +234,83 @@ public class GameStateManager : MonoBehaviour
         var previousPlayer = playerCharacter;
         playerCharacter    = npc.gameObject;
 
-        // 7b. Reasignar la ActiveButterfly del spawner para que HostPlant
-        // valide la especie del nuevo personaje (sin esto, sigue comparando
-        // contra la mariposa original oculta y la planta hospedera correcta
-        // no se reconoce tras el cambio de personaje).
+        // 7b. Reasignar la ActiveButterfly del spawner — solo actualiza la
+        // referencia al controller nuevo, sin instanciar nada.
         var spawner = FindFirstObjectByType<MariposarioSpawner>();
-        if (spawner != null && npc.Data != null)
-            spawner.SetActiveButterfly(npc.Data);
+        if (spawner != null && npcController != null)
+            spawner.SetActiveButterfly(npcController);
 
         // 8. Resetear la selección (ya no es una NPC seleccionada)
         SelectedNPC         = null;
         SelectedSpeciesData = null;
 
-        // 9. Ocultar el personaje anterior (no destruir, por si se quiere reactivar luego)
-        if (previousPlayer != null && previousPlayer != npc.gameObject)
-            previousPlayer.SetActive(false);
+        // 9. El personaje anterior queda como NPC autonomo (ya se reconfiguro en paso 3).
+        //    No lo ocultamos: queda volando solo en el mariposario.
 
         // 10. Volver a Exploring — UI se restaura y ya controlas la nueva mariposa
         TransitionTo(GameState.Exploring);
+    }
+
+    // ── Convertir un personaje del jugador en NPC autonomo ────────────
+    private void ConvertPlayerToNPC(GameObject prevPlayer)
+    {
+        Debug.Log($"[ConvertPlayerToNPC] Iniciando conversion de {prevPlayer.name}");
+
+        // El ButterflyController puede estar en el root o en un child.
+        // Localizamos el GameObject EXACTO donde vive (es donde debe ir el NPCBehavior).
+        var prevCtrl = prevPlayer.GetComponentInChildren<ButterflyController>();
+        GameObject ctrlGO = prevCtrl != null ? prevCtrl.gameObject : prevPlayer;
+        Debug.Log($"[ConvertPlayerToNPC] ButterflyController encontrado en: {(prevCtrl != null ? ctrlGO.name : "NULL")}");
+
+        var prevAnim = prevPlayer.GetComponentInChildren<ButterflyAnimator>();
+        var prevRb   = ctrlGO.GetComponent<Rigidbody>();
+
+        // Obtener Data
+        ButterflyData prevData = null;
+        if (prevCtrl != null) prevData = prevCtrl.GetData();
+        if (prevData == null)
+        {
+            var existingBehavior = prevPlayer.GetComponentInChildren<ButterflyNPCBehavior>();
+            if (existingBehavior != null) prevData = existingBehavior.Data;
+        }
+        Debug.Log($"[ConvertPlayerToNPC] Data: {(prevData != null ? prevData.speciesName : "NULL")}");
+
+        // Apagar controller
+        if (prevCtrl != null) prevCtrl.enabled = false;
+
+        // Bounds del mariposario
+        var npcManager = FindFirstObjectByType<ButterflyNPCManager>();
+        Bounds bounds = npcManager != null
+            ? new Bounds(npcManager.boundsCenter, npcManager.boundsSize)
+            : new Bounds(Vector3.zero, new Vector3(20f, 8f, 20f));
+        Debug.Log($"[ConvertPlayerToNPC] Bounds: center={bounds.center}, size={bounds.size}");
+
+        // Agregar NPCBehavior en el MISMO GameObject que el controller (no en el root parent)
+        var prevBehavior = ctrlGO.GetComponent<ButterflyNPCBehavior>();
+        if (prevBehavior == null) prevBehavior = ctrlGO.AddComponent<ButterflyNPCBehavior>();
+        prevBehavior.enabled = true;
+
+        if (prevData != null)
+        {
+            prevBehavior.Initialize(prevData, bounds);
+            Debug.Log($"[ConvertPlayerToNPC] NPCBehavior inicializado en {ctrlGO.name}");
+        }
+        else
+        {
+            Debug.LogError("[ConvertPlayerToNPC] DATA NULL - no se pudo convertir a NPC.");
+        }
+
+        // Rigidbody en cinematico para que NPCBehavior controle via transform
+        if (prevRb != null)
+        {
+            prevRb.isKinematic = true;
+            prevRb.useGravity  = false;
+            prevRb.linearVelocity  = Vector3.zero;
+            prevRb.angularVelocity = Vector3.zero;
+        }
+
+        if (prevAnim != null)
+            prevAnim.PlayAnimation(ButterflyAnimator.ButterflyAnimation.Flying);
     }
 
     // ── Máquina de estados ────────────────────────────────────────────
@@ -490,15 +560,15 @@ public class GameStateManager : MonoBehaviour
         canvasGO.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         canvasGO.AddComponent<GraphicRaycaster>();
 
-        // Botón "Volver" — izquierda-abajo
-        BuildBottomButton(canvasGO.transform, "ReturnButton", "Volver",
-            new Vector2(-160f, 40f),
+        // Botón "Volver" — centrado en la MITAD IZQUIERDA, abajo
+        BuildBottomButton(canvasGO.transform, "ReturnButton", "Volver", "game.return",
+            new Vector2(-200f, 25f),
             new Color(0.15f, 0.15f, 0.2f, 0.92f),
             OnReturnToExploring);
 
-        // Botón "Cambiar personaje" — derecha-abajo
-        BuildBottomButton(canvasGO.transform, "BecomeButton", "Cambiar personaje",
-            new Vector2(160f, 40f),
+        // Botón "Cambiar personaje" — centrado en la MITAD DERECHA, abajo
+        BuildBottomButton(canvasGO.transform, "BecomeButton", "Cambiar personaje", "game.change_character",
+            new Vector2(200f, 25f),
             new Color(0.18f, 0.45f, 0.20f, 0.92f),
             OnChooseBecomeButterfly);
 
@@ -506,7 +576,7 @@ public class GameStateManager : MonoBehaviour
     }
 
     private static void BuildBottomButton(
-        Transform parent, string goName, string label,
+        Transform parent, string goName, string label, string locKey,
         Vector2 anchoredPos, Color bgColor, UnityEngine.Events.UnityAction onClick)
     {
         var btnGO = new GameObject(goName);
@@ -517,7 +587,7 @@ public class GameStateManager : MonoBehaviour
         rt.anchorMax        = new Vector2(0.5f, 0f);
         rt.pivot            = new Vector2(0.5f, 0f);
         rt.anchoredPosition = anchoredPos;
-        rt.sizeDelta        = new Vector2(300f, 70f);
+        rt.sizeDelta        = new Vector2(176f, 40f);
 
         var img = btnGO.AddComponent<Image>();
         img.color = bgColor;
@@ -534,9 +604,17 @@ public class GameStateManager : MonoBehaviour
         lblRT.sizeDelta = Vector2.zero;
         var tmp = lblGO.AddComponent<TextMeshProUGUI>();
         tmp.text      = label;
-        tmp.fontSize  = 24f;
+        tmp.fontSize  = 14f;
         tmp.color     = Color.white;
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.enableWordWrapping = false;
+
+        // Auto-localiza: pega LocalizedText con la clave
+        if (!string.IsNullOrEmpty(locKey))
+        {
+            var loc = lblGO.AddComponent<LocalizedText>();
+            loc.key = locKey;
+            loc.Refresh();   // Importante: OnEnable corrió con key vacia, hay que refrescar manualmente
+        }
     }
 }

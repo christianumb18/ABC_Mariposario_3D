@@ -12,15 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Siproeta Stelenes
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Siproeta stelenes
-  description: "Una mariposa tropical de llamativos tonos verde brillante y negro,
-    f\xE1cil de reconocer por los patrones luminosos en sus alas. Es r\xE1pida, activa
-    durante el d\xEDa y suele encontrarse descansando sobre hojas o cerca de frutas
-    maduras.\n\nDato curioso:\nA menudo extiende completamente las alas para calentarse
-    con el sol y mostrar sus colores brillantes."
+  speciesName: Mariposa Siproeta stelenes biplagiata
+  description: "La Siproeta stelenes biplagiata es una subespecie de la mariposa
+    conocida com\xFAnmente como la mariposa de las patas largas o mariposa biplagiata.
+    Perteneciente a la familia Nymphalidae, esta mariposa es conocida por su tama\xF1o
+    mediano y su caracter\xEDstico patr\xF3n de colores en las alas.\r\n\r\nCaracter\xEDsticas
+    principales:\r\n\r\nLa envergadura de sus alas es de aproximadamente 6 a 7 cm.\r\nLas
+    alas de la Siproeta stelenes biplagiata son de color marr\xF3n con detalles en
+    blanco y naranja, con una serie de l\xEDneas y manchas caracter\xEDsticas que
+    le brindan un patr\xF3n llamativo.\r\nEl reverso de sus alas es de color marr\xF3n
+    con manchas de color blanco y naranja, lo que ayuda a que se camufle en su entorno."
+  speciesNameEn: Butterfly Siproeta stelenes biplagiata
+  descriptionEn: 'The Siproeta stelenes biplagiata is a subspecies of the butterfly
+    commonly known as the long-legged butterfly or biplagiata butterfly . Belonging
+    to the Nymphalidae family , this butterfly is known for its medium size and distinctive
+    wing pattern.
+
+    
+
+    Main features:
+
+    
+
+    Its wingspan is approximately
+    6 to 7 cm .
+
+    The wings of Siproeta stelenes biplagiata are brown with white
+    and orange details , with a series of characteristic lines and spots that give
+    it a striking pattern.
+
+    The underside of its wings is brown with white and
+    orange spots, which helps it camouflage itself in its surroundings.'
   prefabButterfly: {fileID: 1872554824594770698, guid: 380ea3a7fca5cf84b87dd0a1c75913c2, type: 3}
   prefabPlant: {fileID: 3024117663671683641, guid: 20f8e55a101ca7b479ce9a4ad3bb0ed0, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Steleness
   flightSpeed: 10
   turnSpeed: 4

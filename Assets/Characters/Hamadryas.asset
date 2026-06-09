@@ -12,16 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Hamadryas
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Hamadryas amphinome
-  description: "Una llamativa mariposa tropical conocida por los tonos rojizos y
-    anaranjados en sus alas, combinados con patrones oscuros que le ayudan a mezclarse
-    con troncos y rocas. Como otras especies del g\xE9nero Hamadryas, puede hacer
-    peque\xF1os sonidos de \u201Cchasquido\u201D para comunicarse o defender territorio.\n\nDato
-    curioso:\nAunque parece muy colorida al volar, cuando descansa puede camuflarse
-    sorprendentemente bien en la corteza de los \xE1rboles."
+  speciesName: Hamadryas amphinome fumosa
+  description: "La Hamadryas amphinome fumosa es una subespecie de la mariposa Hamadryas
+    amphinome, conocida com\xFAnmente como mariposa roja de los muros o mariposa
+    de la corteza. Pertenece a la familia Nymphalidae y al g\xE9nero Hamadryas, famoso
+    por sus mariposas con patrones cr\xEDpticos y su capacidad de producir sonidos
+    al volar (estridulaci\xF3n).\r\n\r\nCaracter\xEDsticas principales:\r\n\r\nEnvergadura:
+    Alcanza entre 7 y 9 cm, siendo una mariposa de tama\xF1o mediano.\r\nColoraci\xF3n:
+    Presenta un patr\xF3n distintivo en sus alas, con colores gris\xE1ceos y marrones
+    en la parte superior, lo que le ayuda a camuflarse en los troncos de los \xE1rboles.
+    Sin embargo, en algunas variantes, puede notarse una tonalidad rojiza en la parte
+    inferior de sus alas.\r\nTiene un comportamiento peculiar: descansa sobre los
+    troncos de los \xE1rboles con las alas completamente abiertas, mimetiz\xE1ndose
+    con la corteza."
+  speciesNameEn: Butterfly Hamadryas amphinome fumosa
+  descriptionEn: 'The Hamadryas amphinome fumosa is a subspecies of the Hamadryas
+    amphinome butterfly , commonly known as the red wall butterfly or bark butterfly
+    . It belongs to the Nymphalidae family and the genus Hamadryas , famous for its
+    butterflies with cryptic patterns and their ability to produce sounds while flying
+    (stridulation).
+
+    
+
+    Main features:
+
+    
+
+    Wingspan: It reaches
+    between 7 and 9 cm , being a medium-sized butterfly.
+
+    Coloration: It has
+    a distinctive pattern on its wings, with grayish and brown colors on the upper
+    side, which helps it camouflage itself against tree trunks. However, in some
+    varieties, a reddish hue may be noticeable on the underside of its wings.
+
+    It
+    has a peculiar behavior: it rests on tree trunks with its wings fully open, blending
+    in with the bark.'
   prefabButterfly: {fileID: 5523758805550789290, guid: 25011fa5ed491524b878fb1351a24a2c, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 57ebe69236a89d94c9fd45e223b9310d, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Hamadryas
   flightSpeed: 10
   turnSpeed: 4
