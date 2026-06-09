@@ -24,6 +24,10 @@ public class MariposarioSpawner : MonoBehaviour
     public TextMeshProUGUI textPlantCorrect;   // Texto que indica si la planta es correcta
     public TextMeshProUGUI textPlantIncorrect; // Texto que indica si la planta es incorrecta
 
+    [Header("UI - Nectar")]
+    public Button nectarButton;          // Boton "Comer" para nectariferas
+    public TextMeshProUGUI textNectar;   // Texto "Planta nectarifera identificada"
+
     // ── Instancia activa ───────────────────────────────────────────
     private ButterflyController _activeButterfly;
     public ButterflyController ActiveButterfly => _activeButterfly;

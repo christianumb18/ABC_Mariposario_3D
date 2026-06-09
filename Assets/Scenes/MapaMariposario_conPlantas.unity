@@ -252,6 +252,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902871}
   m_CullTransparentMesh: 1
+--- !u!1 &27935556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5394463832747690069, guid: cf5873207174ca346a83faa34bb19be5, type: 3}
+  m_PrefabInstance: {fileID: 2115078041}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &27935560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27935556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &27935561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27935556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &27935562
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27935556}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049186703
+  m_Center: {x: -0.000005340553, y: 0.000000457745, z: 0.0000028992067}
 --- !u!1 &33187624 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8557084090002346356, guid: 3fa9341ede6249a49a353d08e60064e7, type: 3}
@@ -431,6 +489,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40654537}
   m_CullTransparentMesh: 1
+--- !u!1 &57655909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+  m_PrefabInstance: {fileID: 1720515582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &57655913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57655909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &57655914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57655909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &57655915
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57655909}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004928742
+  m_Center: {x: -0.0000009918004, y: -2.2665572e-14, z: -0.0000053367116}
 --- !u!1001 &61916573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -486,7 +602,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1293550784830478288, guid: 4668f1dc89a032e4996cfe6b7a656c5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244500684}
+    - targetCorrespondingSourceObject: {fileID: 1293550784830478288, guid: 4668f1dc89a032e4996cfe6b7a656c5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244500683}
+    - targetCorrespondingSourceObject: {fileID: 1293550784830478288, guid: 4668f1dc89a032e4996cfe6b7a656c5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1244500682}
   m_SourcePrefab: {fileID: 100100000, guid: 4668f1dc89a032e4996cfe6b7a656c5e, type: 3}
 --- !u!1001 &64714931
 PrefabInstance:
@@ -715,7 +840,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2209757479211648014, guid: 899626061f969534a932a272c325793d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1104584720}
+    - targetCorrespondingSourceObject: {fileID: 2209757479211648014, guid: 899626061f969534a932a272c325793d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1104584719}
+    - targetCorrespondingSourceObject: {fileID: 2209757479211648014, guid: 899626061f969534a932a272c325793d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1104584718}
   m_SourcePrefab: {fileID: 100100000, guid: 899626061f969534a932a272c325793d, type: 3}
 --- !u!1001 &115949612
 PrefabInstance:
@@ -784,8 +918,138 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8017740415292768977, guid: 250ab88da39fe4741b5d9b593dbd35b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350688428}
+    - targetCorrespondingSourceObject: {fileID: 8017740415292768977, guid: 250ab88da39fe4741b5d9b593dbd35b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350688427}
+    - targetCorrespondingSourceObject: {fileID: 8017740415292768977, guid: 250ab88da39fe4741b5d9b593dbd35b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 350688426}
   m_SourcePrefab: {fileID: 100100000, guid: 250ab88da39fe4741b5d9b593dbd35b8, type: 3}
+--- !u!1 &118286286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 118286287}
+  - component: {fileID: 118286289}
+  - component: {fileID: 118286288}
+  - component: {fileID: 118286290}
+  m_Layer: 5
+  m_Name: NectarButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &118286287
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118286286}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 465533032}
+  m_Father: {fileID: 917014437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 482.2625, y: 38.18008}
+  m_SizeDelta: {x: 324.605, y: 153.739}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &118286288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118286286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 085185b08a40a924985bc0e4176edea6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &118286289
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118286286}
+  m_CullTransparentMesh: 1
+--- !u!114 &118286290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118286286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.3
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 118286288}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &145700187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4236492273920789344, guid: 065f4b59cad260448b5e6983d19fa366, type: 3}
@@ -1430,6 +1694,64 @@ MonoBehaviour:
   hostPlantID: 
   displayName: 
   iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &204077940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 970236812544594274, guid: e9518536702c61f46be01fc4a5aadb4b, type: 3}
+  m_PrefabInstance: {fileID: 258186799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204077944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204077940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &204077945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204077940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &204077946
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204077940}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004898225
+  m_Center: {x: 0.00000039814057, y: -0.00000030524123, z: 0.0000016784761}
 --- !u!1001 &216616007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,7 +2018,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 970236812544594274, guid: e9518536702c61f46be01fc4a5aadb4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 204077946}
+    - targetCorrespondingSourceObject: {fileID: 970236812544594274, guid: e9518536702c61f46be01fc4a5aadb4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 204077945}
+    - targetCorrespondingSourceObject: {fileID: 970236812544594274, guid: e9518536702c61f46be01fc4a5aadb4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 204077944}
   m_SourcePrefab: {fileID: 100100000, guid: e9518536702c61f46be01fc4a5aadb4b, type: 3}
 --- !u!1 &258542923
 GameObject:
@@ -1965,7 +2296,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6868390811180587782, guid: 724997920fd218e4bb2eddc38d31df40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217540148}
+    - targetCorrespondingSourceObject: {fileID: 6868390811180587782, guid: 724997920fd218e4bb2eddc38d31df40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217540147}
+    - targetCorrespondingSourceObject: {fileID: 6868390811180587782, guid: 724997920fd218e4bb2eddc38d31df40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217540146}
   m_SourcePrefab: {fileID: 100100000, guid: 724997920fd218e4bb2eddc38d31df40, type: 3}
 --- !u!1001 &294091010
 PrefabInstance:
@@ -2300,6 +2640,64 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5011782
   m_Center: {x: -0.00031337168, y: 0.00007262833, z: -0.00017635533}
+--- !u!1 &350688422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8017740415292768977, guid: 250ab88da39fe4741b5d9b593dbd35b8, type: 3}
+  m_PrefabInstance: {fileID: 115949612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &350688426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350688422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &350688427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350688422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &350688428
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350688422}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049032597
+  m_Center: {x: -0.0000025939664, y: 0.0000018309805, z: 0.00000061036553}
 --- !u!1001 &367539800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2355,7 +2753,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 83625843996339782, guid: 83053136d46f2c34eb59a1c16ba1e0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473689465}
+    - targetCorrespondingSourceObject: {fileID: 83625843996339782, guid: 83053136d46f2c34eb59a1c16ba1e0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473689464}
+    - targetCorrespondingSourceObject: {fileID: 83625843996339782, guid: 83053136d46f2c34eb59a1c16ba1e0da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1473689463}
   m_SourcePrefab: {fileID: 100100000, guid: 83053136d46f2c34eb59a1c16ba1e0da, type: 3}
 --- !u!1 &368535809
 GameObject:
@@ -2529,7 +2936,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9125938984089661267, guid: 91d758502fbc44141a001b3d0abd6f29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871710803}
+    - targetCorrespondingSourceObject: {fileID: 9125938984089661267, guid: 91d758502fbc44141a001b3d0abd6f29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871710802}
+    - targetCorrespondingSourceObject: {fileID: 9125938984089661267, guid: 91d758502fbc44141a001b3d0abd6f29, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1871710801}
   m_SourcePrefab: {fileID: 100100000, guid: 91d758502fbc44141a001b3d0abd6f29, type: 3}
 --- !u!1001 &428890155
 PrefabInstance:
@@ -2646,6 +3062,201 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5001298
   m_Center: {x: 0.0008704665, y: 0.0011620224, z: 0.0010185838}
+--- !u!1 &465533031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465533032}
+  - component: {fileID: 465533034}
+  - component: {fileID: 465533033}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &465533032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465533031}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 118286287}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &465533033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465533031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Comer
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: fad1e628092afee439f9d0640a3ace4a, type: 2}
+  m_sharedMaterial: {fileID: 21037965732074340, guid: fad1e628092afee439f9d0640a3ace4a, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 35
+  m_fontSizeBase: 35
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &465533034
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465533031}
+  m_CullTransparentMesh: 1
+--- !u!1 &468843035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4925052452360571378, guid: d49de18a6f334b14c92802aa6da118d9, type: 3}
+  m_PrefabInstance: {fileID: 1645688249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &468843039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468843035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &468843040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468843035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &468843041
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468843035}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.49053955
+  m_Center: {x: 0.00013732912, y: 0.00030517575, z: -0.00012207034}
 --- !u!1 &477568269 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1989279068754888840, guid: dd761233fceb6ac4f81e5d709e1aadd2, type: 3}
@@ -3096,6 +3707,122 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86263e8355f96ba4ab9fdf4e96c2090f, type: 3}
+--- !u!1 &636672876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 245825966750066027, guid: ffa632eacd39acd40ba53a32d83a3718, type: 3}
+  m_PrefabInstance: {fileID: 1670727327}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &636672880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636672876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &636672881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636672876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &636672882
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636672876}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004922332
+  m_Center: {x: 0.0000059509184, y: -0.000002593966, z: 0.00000022893039}
+--- !u!1 &653854129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2736458268238219157, guid: d77257db5be5fe443b2476a6ad54ac17, type: 3}
+  m_PrefabInstance: {fileID: 753448715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &653854133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653854129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &653854134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653854129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &653854135
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653854129}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049101273
+  m_Center: {x: 0.0000018310967, y: -0.0000016617704, z: -0.0000019834843}
 --- !u!1001 &673658062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3262,6 +3989,64 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1531726345}
   m_SourcePrefab: {fileID: 100100000, guid: 784324abd37c0b04ab472c832ca6e695, type: 3}
+--- !u!1 &681756046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2873434295074329565, guid: 2f86fee87363a5c42aaa4342660ce2e4, type: 3}
+  m_PrefabInstance: {fileID: 1472095172}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &681756050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681756046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &681756051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681756046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &681756052
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681756046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0048982254
+  m_Center: {x: 0.0000014496036, y: -0.000004789792, z: 0.00000045774573}
 --- !u!1 &700432638 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 355583991273197876, guid: aa50aebdcc9ec8747ac7b24491f86431, type: 3}
@@ -3541,7 +4326,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3827042720609367624, guid: 44e3d13182c02d44aa30f1d2d089f5b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946259866}
+    - targetCorrespondingSourceObject: {fileID: 3827042720609367624, guid: 44e3d13182c02d44aa30f1d2d089f5b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946259865}
+    - targetCorrespondingSourceObject: {fileID: 3827042720609367624, guid: 44e3d13182c02d44aa30f1d2d089f5b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1946259864}
   m_SourcePrefab: {fileID: 100100000, guid: 44e3d13182c02d44aa30f1d2d089f5b9, type: 3}
 --- !u!1001 &722281907
 PrefabInstance:
@@ -3827,7 +4621,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2736458268238219157, guid: d77257db5be5fe443b2476a6ad54ac17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 653854135}
+    - targetCorrespondingSourceObject: {fileID: 2736458268238219157, guid: d77257db5be5fe443b2476a6ad54ac17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 653854134}
+    - targetCorrespondingSourceObject: {fileID: 2736458268238219157, guid: d77257db5be5fe443b2476a6ad54ac17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 653854133}
   m_SourcePrefab: {fileID: 100100000, guid: d77257db5be5fe443b2476a6ad54ac17, type: 3}
 --- !u!1 &801528923 stripped
 GameObject:
@@ -3986,7 +4789,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960597840}
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960597839}
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1960597838}
   m_SourcePrefab: {fileID: 100100000, guid: 6652f47777885da4eb57628615d4e109, type: 3}
 --- !u!1 &917014433
 GameObject:
@@ -4086,7 +4898,9 @@ RectTransform:
   - {fileID: 2114102200}
   - {fileID: 1902872}
   - {fileID: 1703802902}
+  - {fileID: 118286287}
   - {fileID: 1207703686}
+  - {fileID: 1000581398}
   - {fileID: 40654538}
   - {fileID: 314134735}
   - {fileID: 2009166042}
@@ -4273,6 +5087,201 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1976704527}
   m_SourcePrefab: {fileID: 100100000, guid: 8a6c83e0a298bd54e839686a0936c4c6, type: 3}
+--- !u!1 &1000581395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1000581398}
+  - component: {fileID: 1000581397}
+  - component: {fileID: 1000581396}
+  m_Layer: 5
+  m_Name: TextNectar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1000581396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000581395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Planta nectar\xEDfera identificada"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: fad1e628092afee439f9d0640a3ace4a, type: 2}
+  m_sharedMaterial: {fileID: 21037965732074340, guid: fad1e628092afee439f9d0640a3ace4a, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4282251519
+  m_fontColor: {r: 1, g: 0.97166187, b: 0.24056602, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 60.69
+  m_fontSizeBase: 60.69
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 9
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1000581397
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000581395}
+  m_CullTransparentMesh: 1
+--- !u!224 &1000581398
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000581395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 917014437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -7.146393, y: -190.5707}
+  m_SizeDelta: {x: 1019.454, y: 123.58}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1029697269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1940528538493353876, guid: f4d079704f250ed41b505c66c46923ec, type: 3}
+  m_PrefabInstance: {fileID: 1116209192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1029697273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029697269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1029697274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029697269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1029697275
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029697269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0048951735
+  m_Center: {x: 0.0000010681108, y: -0.0000019837175, z: 1.330186e-13}
 --- !u!1001 &1044211000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4330,6 +5339,64 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8f8660f45621a4a804df622b985183, type: 3}
+--- !u!1 &1047808893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+  m_PrefabInstance: {fileID: 1117281830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047808894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047808893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1047808895
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047808893}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004906464
+  m_Center: {x: 0.000007934635, y: 0.0000013732348, z: 0.000004272442}
+--- !u!114 &1047808899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047808893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1062729881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4566,6 +5633,64 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1963587219}
   m_SourcePrefab: {fileID: 100100000, guid: 75c45c11fff80db43b10d3e9add94a8c, type: 3}
+--- !u!1 &1104584714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2209757479211648014, guid: 899626061f969534a932a272c325793d, type: 3}
+  m_PrefabInstance: {fileID: 112416062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1104584718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104584714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1104584719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104584714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1104584720
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104584714}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004920197
+  m_Center: {x: 0.00000007625203, y: -0.000003967318, z: -0.0000025790653}
 --- !u!1001 &1110428102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4727,7 +5852,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1940528538493353876, guid: f4d079704f250ed41b505c66c46923ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1029697275}
+    - targetCorrespondingSourceObject: {fileID: 1940528538493353876, guid: f4d079704f250ed41b505c66c46923ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1029697274}
+    - targetCorrespondingSourceObject: {fileID: 1940528538493353876, guid: f4d079704f250ed41b505c66c46923ec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1029697273}
   m_SourcePrefab: {fileID: 100100000, guid: f4d079704f250ed41b505c66c46923ec, type: 3}
 --- !u!1001 &1117281830
 PrefabInstance:
@@ -4784,7 +5918,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1047808895}
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1047808894}
+    - targetCorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1047808899}
   m_SourcePrefab: {fileID: 100100000, guid: 6652f47777885da4eb57628615d4e109, type: 3}
 --- !u!1001 &1126158922
 PrefabInstance:
@@ -5046,6 +6189,64 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 934590587}
   m_SourcePrefab: {fileID: 100100000, guid: 4281e742bf3fbc54fa1f25f36e07c7ad, type: 3}
+--- !u!1 &1185653815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7961658331907252268, guid: b372b3f0c3280e942810ac54042bc202, type: 3}
+  m_PrefabInstance: {fileID: 2106072558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1185653819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185653815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1185653820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185653815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1185653821
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185653815}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004899598
+  m_Center: {x: -0.000002169574, y: 0.0000008859209, z: -0.0000010681107}
 --- !u!1 &1207703685
 GameObject:
   m_ObjectHideFlags: 0
@@ -5226,6 +6427,64 @@ MonoBehaviour:
   hostPlantID: 
   displayName: 
   iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1217540142 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6868390811180587782, guid: 724997920fd218e4bb2eddc38d31df40, type: 3}
+  m_PrefabInstance: {fileID: 273175910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1217540146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217540142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1217540147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217540142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1217540148
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217540142}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049182116
+  m_Center: {x: -0.0000035095725, y: -0.0000032044475, z: 0.0000042726742}
 --- !u!1001 &1233983390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5301,6 +6560,64 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1910306978}
   m_SourcePrefab: {fileID: 100100000, guid: 3434ba549d8ae7a4b9817d1625737a92, type: 3}
+--- !u!1 &1244500678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1293550784830478288, guid: 4668f1dc89a032e4996cfe6b7a656c5e, type: 3}
+  m_PrefabInstance: {fileID: 61916573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244500682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244500678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1244500683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244500678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1244500684
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244500678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004904023
+  m_Center: {x: -0.0000024414614, y: -0.0000006103657, z: -0.0000035392586}
 --- !u!1 &1246775319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6061791185983304405, guid: b8cf97532d5544345ba5dc6ddc144931, type: 3}
@@ -5399,7 +6716,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6131379822439144444, guid: 1f0efb0cd2fdce449a7d249a528bf29c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551952106}
+    - targetCorrespondingSourceObject: {fileID: 6131379822439144444, guid: 1f0efb0cd2fdce449a7d249a528bf29c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551952105}
+    - targetCorrespondingSourceObject: {fileID: 6131379822439144444, guid: 1f0efb0cd2fdce449a7d249a528bf29c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1551952104}
   m_SourcePrefab: {fileID: 100100000, guid: 1f0efb0cd2fdce449a7d249a528bf29c, type: 3}
 --- !u!1001 &1273618062
 PrefabInstance:
@@ -5824,7 +7150,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9043849129815324881, guid: 0571a512db0a48b42904678453b2f1c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724120327}
+    - targetCorrespondingSourceObject: {fileID: 9043849129815324881, guid: 0571a512db0a48b42904678453b2f1c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724120326}
+    - targetCorrespondingSourceObject: {fileID: 9043849129815324881, guid: 0571a512db0a48b42904678453b2f1c6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1724120325}
   m_SourcePrefab: {fileID: 100100000, guid: 0571a512db0a48b42904678453b2f1c6, type: 3}
 --- !u!1001 &1350242333
 PrefabInstance:
@@ -6159,6 +7494,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419272442}
   m_CullTransparentMesh: 1
+--- !u!1 &1432598943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+  m_PrefabInstance: {fileID: 1574046144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1432598947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432598943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1432598948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432598943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1432598949
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432598943}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004928744
+  m_Center: {x: -0.0000009918008, y: -0.000000029801665, z: -0.0000053404383}
 --- !u!1 &1436518154 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1212080487567307124, guid: 684a7e65f498df24f806871e5771edae, type: 3}
@@ -6311,8 +7704,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2873434295074329565, guid: 2f86fee87363a5c42aaa4342660ce2e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 681756052}
+    - targetCorrespondingSourceObject: {fileID: 2873434295074329565, guid: 2f86fee87363a5c42aaa4342660ce2e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 681756051}
+    - targetCorrespondingSourceObject: {fileID: 2873434295074329565, guid: 2f86fee87363a5c42aaa4342660ce2e4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 681756050}
   m_SourcePrefab: {fileID: 100100000, guid: 2f86fee87363a5c42aaa4342660ce2e4, type: 3}
+--- !u!1 &1473689459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 83625843996339782, guid: 83053136d46f2c34eb59a1c16ba1e0da, type: 3}
+  m_PrefabInstance: {fileID: 367539800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1473689463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473689459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1473689464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473689459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1473689465
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473689459}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004860537
+  m_Center: {x: -0.0007650757, y: -0.0000013733732, z: -0.000007383739}
 --- !u!1 &1486299046 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8595388476853189149, guid: 85045f3875b594242bf17153206294fc, type: 3}
@@ -6531,6 +7991,64 @@ MonoBehaviour:
   hostPlantID: 
   displayName: 
   iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1551952100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6131379822439144444, guid: 1f0efb0cd2fdce449a7d249a528bf29c, type: 3}
+  m_PrefabInstance: {fileID: 1262011704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1551952104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551952100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1551952105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551952100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1551952106
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551952100}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004893645
+  m_Center: {x: -0.000000762986, y: -0.0000056456765, z: 0.0000022887248}
 --- !u!1001 &1553812091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6740,7 +8258,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432598949}
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432598948}
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1432598947}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
 --- !u!1 &1600262068 stripped
 GameObject:
@@ -6818,7 +8345,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4925052452360571378, guid: d49de18a6f334b14c92802aa6da118d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 468843041}
+    - targetCorrespondingSourceObject: {fileID: 4925052452360571378, guid: d49de18a6f334b14c92802aa6da118d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 468843040}
+    - targetCorrespondingSourceObject: {fileID: 4925052452360571378, guid: d49de18a6f334b14c92802aa6da118d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 468843039}
   m_SourcePrefab: {fileID: 100100000, guid: d49de18a6f334b14c92802aa6da118d9, type: 3}
 --- !u!1 &1662277563 stripped
 GameObject:
@@ -6896,7 +8432,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 245825966750066027, guid: ffa632eacd39acd40ba53a32d83a3718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 636672882}
+    - targetCorrespondingSourceObject: {fileID: 245825966750066027, guid: ffa632eacd39acd40ba53a32d83a3718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 636672881}
+    - targetCorrespondingSourceObject: {fileID: 245825966750066027, guid: ffa632eacd39acd40ba53a32d83a3718, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 636672880}
   m_SourcePrefab: {fileID: 100100000, guid: ffa632eacd39acd40ba53a32d83a3718, type: 3}
 --- !u!1 &1703802901
 GameObject:
@@ -7086,8 +8631,75 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57655915}
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57655914}
+    - targetCorrespondingSourceObject: {fileID: 4755711346907433172, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 57655913}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6197fc89687ec4baef07dd094f0bdb, type: 3}
+--- !u!1 &1724120321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9043849129815324881, guid: 0571a512db0a48b42904678453b2f1c6, type: 3}
+  m_PrefabInstance: {fileID: 1335102951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1724120325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724120321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1724120326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724120321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1724120327
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724120321}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0048991395
+  m_Center: {x: 0.0000018309804, y: 0.0000057651196, z: -0.0000011015219}
 --- !u!1001 &1732128199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7498,6 +9110,8 @@ MonoBehaviour:
   layEggButton: {fileID: 1703802903}
   textPlantCorrect: {fileID: 1207703687}
   textPlantIncorrect: {fileID: 40654539}
+  nectarButton: {fileID: 118286290}
+  textNectar: {fileID: 1000581396}
 --- !u!114 &1800814760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8033,6 +9647,64 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3929661
   m_Center: {x: 0.00017155705, y: 0.00005483626, z: 0.0005952865}
+--- !u!1 &1856655546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238118730522884065, guid: 22ef0ce3e194f2a42a4d3625ea45f13f, type: 3}
+  m_PrefabInstance: {fileID: 2130218766}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1856655550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856655546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1856655551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856655546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1856655552
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856655546}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0048934952
+  m_Center: {x: -0.000005874667, y: 0.000007019147, z: -0.0000010681098}
 --- !u!1001 &1869497594
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8090,6 +9762,64 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f36916143c7509543b1b8d40091baa24, type: 3}
+--- !u!1 &1871710797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9125938984089661267, guid: 91d758502fbc44141a001b3d0abd6f29, type: 3}
+  m_PrefabInstance: {fileID: 388507583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1871710801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871710797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1871710802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871710797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1871710803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871710797}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049093626
+  m_Center: {x: -0.0000016784761, y: -0.0000012207311, z: -0.0000045774505}
 --- !u!1001 &1879815699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8509,6 +10239,64 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 504790598}
   m_SourcePrefab: {fileID: 100100000, guid: b7a79acb70c200a40834586e893fd9da, type: 3}
+--- !u!1 &1946259860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3827042720609367624, guid: 44e3d13182c02d44aa30f1d2d089f5b9, type: 3}
+  m_PrefabInstance: {fileID: 712130521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1946259864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946259860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1946259865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946259860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1946259866
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946259860}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049110404
+  m_Center: {x: -0.0000017380227, y: -0.0000075101852, z: 0.00000076298574}
 --- !u!1001 &1948034444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8667,6 +10455,64 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.3928312
   m_Center: {x: 0.00034815073, y: 0.00022031367, z: -0.00026133657}
+--- !u!1 &1960597834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3171758751309107060, guid: 6652f47777885da4eb57628615d4e109, type: 3}
+  m_PrefabInstance: {fileID: 886371227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960597838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960597834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d5aa845242ba048a49888a94d37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinimapTarget
+  type: 1
+  hostPlantID: 
+  displayName: 
+  iconColorOverride: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &1960597839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960597834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a309a757087a5c459bdc0912b31ba0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
+  spawner: {fileID: 1800814759}
+  nectarPoints: 20
+  proximityRadius: 0.005
+  eatAnimationDuration: 1.5
+--- !u!135 &1960597840
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960597834}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.0049064644
+  m_Center: {x: 0.000007934636, y: 0.0000013732342, z: 0.0000042724423}
 --- !u!1 &1963587215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3602481071237820026, guid: 75c45c11fff80db43b10d3e9add94a8c, type: 3}
@@ -9347,7 +11193,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7961658331907252268, guid: b372b3f0c3280e942810ac54042bc202, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185653821}
+    - targetCorrespondingSourceObject: {fileID: 7961658331907252268, guid: b372b3f0c3280e942810ac54042bc202, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185653820}
+    - targetCorrespondingSourceObject: {fileID: 7961658331907252268, guid: b372b3f0c3280e942810ac54042bc202, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1185653819}
   m_SourcePrefab: {fileID: 100100000, guid: b372b3f0c3280e942810ac54042bc202, type: 3}
 --- !u!1 &2114102196
 GameObject:
@@ -9496,7 +11351,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5394463832747690069, guid: cf5873207174ca346a83faa34bb19be5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 27935562}
+    - targetCorrespondingSourceObject: {fileID: 5394463832747690069, guid: cf5873207174ca346a83faa34bb19be5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 27935561}
+    - targetCorrespondingSourceObject: {fileID: 5394463832747690069, guid: cf5873207174ca346a83faa34bb19be5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 27935560}
   m_SourcePrefab: {fileID: 100100000, guid: cf5873207174ca346a83faa34bb19be5, type: 3}
 --- !u!1 &2122822305 stripped
 GameObject:
@@ -9593,7 +11457,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 238118730522884065, guid: 22ef0ce3e194f2a42a4d3625ea45f13f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856655552}
+    - targetCorrespondingSourceObject: {fileID: 238118730522884065, guid: 22ef0ce3e194f2a42a4d3625ea45f13f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856655551}
+    - targetCorrespondingSourceObject: {fileID: 238118730522884065, guid: 22ef0ce3e194f2a42a4d3625ea45f13f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1856655550}
   m_SourcePrefab: {fileID: 100100000, guid: 22ef0ce3e194f2a42a4d3625ea45f13f, type: 3}
 --- !u!1 &9876543210
 GameObject:
