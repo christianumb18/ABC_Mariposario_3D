@@ -38,7 +38,7 @@ public class ScoreHUD : MonoBehaviour
     private GameObject    _panel;
     private TMP_Text      _scoreText;
     private TMP_Text      _speciesText;
-    private Image[]       _hearts = new Image[6];
+    private Image[]       _hearts = new Image[3];
     private float         _flashUntil;
     private float         _resetFlashUntil;
     private static Sprite _heartSprite;
@@ -179,7 +179,7 @@ public class ScoreHUD : MonoBehaviour
         _speciesText.outlineColor = new Color(0f, 0f, 0f, 0.9f);
 
         // Corazones (abajo, fila horizontal)
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             var hGO = new GameObject($"Heart{i}");
             hGO.transform.SetParent(_panel.transform, false);

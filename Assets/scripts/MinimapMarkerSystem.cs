@@ -117,6 +117,7 @@ public class MinimapMarkerSystem : MonoBehaviour
             // ─── Filtro por especie ───────────────────────────────────
             bool speciesMatch =
                 m.type == MinimapTargetType.Predator
+                || m.type == MinimapTargetType.Nectar
                 || !filterHostAndNectarBySpecies
                 || (!string.IsNullOrEmpty(currentHostID)
                     && !string.IsNullOrEmpty(m.hostPlantID)

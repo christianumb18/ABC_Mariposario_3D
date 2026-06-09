@@ -13,7 +13,7 @@ public class SpeciesProgress
     public string speciesID;                           // ButterflyData.speciesName
     public int    score;
     public int    highScore;
-    public int    lives = 6;
+    public int    lives = 3;
     public int    totalDeaths;
     public bool   videoSeen;
     public List<string> discoveredTargets = new();

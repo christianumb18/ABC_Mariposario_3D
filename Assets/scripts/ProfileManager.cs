@@ -329,6 +329,18 @@ public class ProfileManager : MonoBehaviour
         return false;
     }
 
+    /// <summary>Suma 1 vida hasta un máximo de 6. Devuelve true si efectivamente subió.</summary>
+    public bool GainLife(string speciesID)
+    {
+        if (Active == null || string.IsNullOrEmpty(speciesID)) return false;
+        var sp = Active.GetOrCreate(speciesID);
+        if (sp.lives >= 3) return false;            // ya está al tope, no hace nada
+        sp.lives = Mathf.Min(3, sp.lives + 1);
+        OnLifeLost?.Invoke(speciesID, sp.lives);    // reusa el evento para refrescar el HUD
+        SaveToDisk();
+        return true;
+    }
+
     /// <summary>Pone score=0, videoSeen=false, discoveredTargets vacío, lives=3.
     /// El highScore y totalDeaths NO se borran.</summary>
     public void ResetSpeciesProgress(string speciesID)
@@ -338,7 +350,7 @@ public class ProfileManager : MonoBehaviour
         sp.score = 0;
         sp.videoSeen = false;
         sp.discoveredTargets.Clear();
-        sp.lives = 6;
+        sp.lives = 3;
         Active.RecomputeTotalScore();
         SaveToDisk();
         OnSpeciesReset?.Invoke(speciesID);
