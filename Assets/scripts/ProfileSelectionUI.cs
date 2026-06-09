@@ -20,6 +20,11 @@ using TMPro;
 /// </summary>
 public class ProfileSelectionUI : MonoBehaviour
 {
+    public static ProfileSelectionUI Instance { get; private set; }
+
+    /// <summary>Se dispara cuando el usuario elige un perfil (cierre + switch confirmado).</summary>
+    public event System.Action OnProfileChosen;
+
     [Header("Comportamiento")]
     [Tooltip("Si está activado, se muestra automáticamente al iniciar.")]
     public bool showOnStart = true;
@@ -41,6 +46,17 @@ public class ProfileSelectionUI : MonoBehaviour
     private TMP_Text      _titleText;
 
     // ═════════════════════════════════════════════════════════════════
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) { Instance = this; }
+        else Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
 
     private void Start()
     {
@@ -76,15 +92,22 @@ public class ProfileSelectionUI : MonoBehaviour
         foreach (var p in profiles)
         {
             string profName = p.userName;
+            string displayName = string.IsNullOrEmpty(profName) ? "(sin nombre)" : profName;
             string subtitle = $"{p.totalScore} pts  ·  {p.CountSpeciesWithVideoSeen()}/{ProfileManager.Instance.TotalSpecies} especies";
             bool   isActive = profName == activeName;
 
-            var row = CreateButton(_listContainer, profName,
+            var capturedProfile = p;
+            var row = CreateButton(_listContainer, displayName,
                 isActive ? buttonColor : buttonAltColor,
-                () => { ProfileManager.Instance.SwitchProfile(profName); Close(); });
+                () => {
+                    if (!string.IsNullOrEmpty(capturedProfile.userName))
+                        ProfileManager.Instance.SwitchProfile(capturedProfile.userName);
+                    Close();
+                    OnProfileChosen?.Invoke();
+                });
             AddSubtitle(row, subtitle);
 
-            AddDeleteButton(row, profName);
+            AddDeleteButton(row, capturedProfile);
         }
 
         var createBtn = CreateButton(_listContainer, "+ Crear nuevo perfil",
@@ -108,6 +131,7 @@ public class ProfileSelectionUI : MonoBehaviour
         {
             _createPanel.SetActive(false);
             Close();
+            OnProfileChosen?.Invoke();
         }
         else
         {
@@ -280,7 +304,7 @@ public class ProfileSelectionUI : MonoBehaviour
             18f, FontStyles.Italic, TextAlignmentOptions.MidlineLeft);
     }
 
-    private void AddDeleteButton(GameObject parent, string profileName)
+    private void AddDeleteButton(GameObject parent, ProfileData profile)
     {
         var go = new GameObject("Delete");
         go.transform.SetParent(parent.transform, false);
@@ -291,11 +315,14 @@ public class ProfileSelectionUI : MonoBehaviour
 
         var img = go.AddComponent<Image>();
         img.color = buttonDangerCol;
+        img.raycastTarget = true;
         var btn = go.AddComponent<Button>();
         btn.targetGraphic = img;
         btn.onClick.AddListener(() =>
         {
-            ProfileManager.Instance.DeleteProfile(profileName);
+            if (ProfileManager.Instance == null) return;
+            bool ok = ProfileManager.Instance.DeleteProfile(profile);
+            Debug.Log($"[ProfileSelectionUI] DeleteProfile(ref) -> {ok}");
             RefreshList();
         });
 

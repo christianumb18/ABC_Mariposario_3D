@@ -58,6 +58,17 @@ public class ButterflySelectionUI : MonoBehaviour
         btnBack.onClick.AddListener(OnBack);
 
         ShowSpecies(_currentIndex, instant: true);
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged += RefreshLabels;
+    }
+
+    private void RefreshLabels()
+    {
+        if (species == null || species.Count == 0) return;
+        var data = species[_currentIndex];
+        if (confirmLabel != null && LocalizationManager.Instance != null)
+            confirmLabel.text = string.Format(LocalizationManager.Instance.Get("selection.fly_as"), data.speciesName);
     }
 
     // ── Navegacion ─────────────────────────────────────────────────
@@ -88,7 +99,10 @@ public class ButterflySelectionUI : MonoBehaviour
 
         // Actualiza UI
         if (nameText != null) nameText.text = data.speciesName;
-        if (confirmLabel != null) confirmLabel.text = $"Volar como {data.speciesName}";
+        if (confirmLabel != null)
+            confirmLabel.text = LocalizationManager.Instance != null
+                ? string.Format(LocalizationManager.Instance.Get("selection.fly_as"), data.speciesName)
+                : $"Volar como {data.speciesName}";
 
         // Flechas: oculta si solo hay una especie
         bool multipleSpecies = species.Count > 1;
@@ -169,7 +183,10 @@ public class ButterflySelectionUI : MonoBehaviour
         _currentIndex = newIndex;
         ButterflyData data = species[_currentIndex];
         if (nameText != null) nameText.text = data.speciesName;
-        if (confirmLabel != null) confirmLabel.text = $"Volar como {data.speciesName}";
+        if (confirmLabel != null)
+            confirmLabel.text = LocalizationManager.Instance != null
+                ? string.Format(LocalizationManager.Instance.Get("selection.fly_as"), data.speciesName)
+                : $"Volar como {data.speciesName}";
 
         // 3. Instancia la nueva y la hace entrar
         if (data.prefabButterfly != null)
@@ -290,5 +307,8 @@ public class ButterflySelectionUI : MonoBehaviour
             Destroy(_activeInstanceButterfly);
         if (_activeInstancePlant != null)
             Destroy(_activeInstancePlant);
+
+        if (LocalizationManager.Instance != null)
+            LocalizationManager.Instance.OnLanguageChanged -= RefreshLabels;
     }
 }

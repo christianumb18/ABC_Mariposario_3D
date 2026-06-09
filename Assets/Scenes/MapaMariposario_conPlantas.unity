@@ -8863,38 +8863,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 917014437}
     m_Modifications:
     - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 85
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -8923,14 +8891,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 650
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 460
-      objectReference: {fileID: 0}
-    - target: {fileID: 1230317440666091548, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -8945,22 +8905,6 @@ PrefabInstance:
     - target: {fileID: 2937874909585188080, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937874909585188080, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11500000, guid: 69fa49d99e62f27478ba8baf07e3ea0d, type: 3}
-    - target: {fileID: 2937874909585188080, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937874909585188080, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SettingsPanel, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2937874909585188080, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6707447802686400331, guid: 045d9f21267abc34684d07cabc17d9ee, type: 3}
       propertyPath: m_Pivot.x

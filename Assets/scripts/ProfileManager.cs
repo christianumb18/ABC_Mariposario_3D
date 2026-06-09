@@ -192,14 +192,32 @@ public class ProfileManager : MonoBehaviour
     {
         var p = _store.FindByName(name);
         if (p == null) return false;
-        _store.profiles.Remove(p);
-        if (_store.activeProfileName == name)
+        return DeleteProfile(p);
+    }
+
+    /// <summary>Borra por referencia. Funciona aunque el perfil no tenga nombre.</summary>
+    public bool DeleteProfile(ProfileData profile)
+    {
+        if (profile == null) return false;
+        if (!_store.profiles.Contains(profile)) return false;
+
+        bool wasActive = (_store.activeProfileName == profile.userName);
+        _store.profiles.Remove(profile);
+        if (wasActive)
             _store.activeProfileName = _store.profiles.Count > 0 ? _store.profiles[0].userName : null;
         SaveToDisk();
         OnProfileSwitched?.Invoke();
         OnNameChanged?.Invoke();
         OnProgressChanged?.Invoke();
         return true;
+    }
+
+    /// <summary>Borra por índice. Útil cuando hay perfiles con el mismo nombre.</summary>
+    public bool DeleteProfileAt(int index)
+    {
+        var all = GetAllProfiles();
+        if (index < 0 || index >= all.Count) return false;
+        return DeleteProfile(all[index]);
     }
 
     // ═════════════════════════════════════════════════════════════════

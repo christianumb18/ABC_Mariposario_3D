@@ -94,7 +94,10 @@ public class ScoreHUD : MonoBehaviour
         int score = sp != null ? sp.score : 0;
         int lives = sp != null ? sp.lives : 3;
 
-        _scoreText.text   = $"PUNTOS  <b>{score}</b>";
+        string puntos = LocalizationManager.Instance != null
+            ? LocalizationManager.Instance.Get("hud.points")
+            : "PUNTOS";
+        _scoreText.text   = $"{puntos}  <b>{score}</b>";
         _speciesText.text = string.IsNullOrEmpty(speciesID) ? "—" : speciesID;
 
         // Color del texto: flash si daño/reset
@@ -142,24 +145,38 @@ public class ScoreHUD : MonoBehaviour
         rt.anchorMin        = new Vector2(0f, 1f);
         rt.anchorMax        = new Vector2(0f, 1f);
         rt.pivot            = new Vector2(0f, 1f);
-        rt.sizeDelta        = panelSize;
+        rt.sizeDelta        = new Vector2(panelSize.x, 78f);   // mas chico, sin la fila de especie
         rt.anchoredPosition = anchoredPosition;
 
         var bg = _panel.AddComponent<Image>();
         bg.color = panelColor;
         bg.raycastTarget = false;
 
-        // Texto de la especie (arriba)
-        _speciesText = CreateText("Species",
+        // Score (arriba del panel, ahora sin especie)
+        _scoreText = CreateText("Score",
             new Vector2(10f, -8f), new Vector2(0f, 1f), new Vector2(1f, 1f),
-            new Vector2(-10f, -34f), textSize * 0.8f, FontStyles.Italic,
+            new Vector2(-10f, -40f), textSize, FontStyles.Bold,
             TextAlignmentOptions.MidlineLeft);
 
-        // Score (centro)
-        _scoreText = CreateText("Score",
-            new Vector2(10f, -34f), new Vector2(0f, 1f), new Vector2(1f, 1f),
-            new Vector2(-10f, -64f), textSize, FontStyles.Bold,
-            TextAlignmentOptions.MidlineLeft);
+        // Texto de la especie — CENTRADO ARRIBA en pantalla completa
+        var speciesGO = new GameObject("SpeciesNameTopCenter");
+        speciesGO.transform.SetParent(canvasGO.transform, false);
+        var srt = speciesGO.AddComponent<RectTransform>();
+        srt.anchorMin = new Vector2(0.5f, 1f);
+        srt.anchorMax = new Vector2(0.5f, 1f);
+        srt.pivot     = new Vector2(0.5f, 1f);
+        srt.anchoredPosition = new Vector2(0f, -30f);   // 30px desde arriba
+        srt.sizeDelta = new Vector2(700f, 60f);
+
+        _speciesText = speciesGO.AddComponent<TextMeshProUGUI>();
+        _speciesText.fontSize  = 40f;
+        _speciesText.fontStyle = FontStyles.Bold | FontStyles.Italic;
+        _speciesText.color     = textColor;
+        _speciesText.alignment = TextAlignmentOptions.Center;
+        _speciesText.raycastTarget = false;
+        _speciesText.enableWordWrapping = false;
+        _speciesText.outlineWidth = 0.2f;
+        _speciesText.outlineColor = new Color(0f, 0f, 0f, 0.9f);
 
         // Corazones (abajo, fila horizontal)
         for (int i = 0; i < 6; i++)

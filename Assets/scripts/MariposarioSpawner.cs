@@ -32,11 +32,26 @@ public class MariposarioSpawner : MonoBehaviour
     /// <summary>
     /// Reasigna la mariposa activa cuando el jugador cambia de personaje a una NPC.
     /// Usado por GameStateManager.OnChooseBecomeButterfly para que HostPlant valide
-    /// la especie correcta tras el swap.
+    /// la especie correcta tras el swap. NO instancia nada — solo actualiza la
+    /// referencia al controller ya existente y redirige camara/minimapa.
     /// </summary>
+    public void SetActiveButterfly(ButterflyController controller)
+    {
+        if (controller == null) return;
+
+        _activeButterfly = controller;
+        _activeAnimator  = controller.GetComponent<ButterflyAnimator>();
+
+        if (cameraInput != null)        cameraInput.SetTarget(_activeButterfly);
+        if (minimapController != null)  minimapController.SetTarget(_activeButterfly.transform);
+    }
+
+    /// <summary>Overload que mantiene compatibilidad con el codigo anterior.
+    /// Si recibe Data en vez de Controller, busca el controller mas reciente del jugador.</summary>
     public void SetActiveButterfly(ButterflyData butterfly)
     {
-        SpawnButterfly(butterfly);
+        // No spawnear: solo es un fallback que no hace nada si no se pasa el controller.
+        Debug.LogWarning("[MariposarioSpawner] SetActiveButterfly(Data) deprecated: pasa el ButterflyController directamente.");
     }
 
     // ═══════════════════════════════════════════════════════════════

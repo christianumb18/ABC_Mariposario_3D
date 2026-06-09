@@ -82,8 +82,8 @@ public class ButterflyLibrary : MonoBehaviour
         instanceButterfly(data);
 
         // Actualiza UI
-        if (nameText != null) nameText.text = data.speciesName;
-        if (descriptionText != null) descriptionText.text = data.description;
+        if (nameText != null) nameText.text = data.GetLocalizedSpeciesName();
+        if (descriptionText != null) descriptionText.text = data.GetLocalizedDescription();
 
         // Flechas: oculta si solo hay una especie
         bool multipleSpecies = species.Count > 1;
@@ -140,8 +140,8 @@ public class ButterflyLibrary : MonoBehaviour
         // 2. Actualiza textos mientras el prefab no es visible
         _currentIndex = newIndex;
         ButterflyData data = species[_currentIndex];
-        if (nameText != null) nameText.text = data.speciesName;
-        if (descriptionText != null) descriptionText.text = data.description;
+        if (nameText != null) nameText.text = data.GetLocalizedSpeciesName();
+        if (descriptionText != null) descriptionText.text = data.GetLocalizedDescription();
 
         // 3. Instancia la nueva y la hace entrar
         if (data.prefabButterfly != null)

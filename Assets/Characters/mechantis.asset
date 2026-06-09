@@ -12,15 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: mechantis
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Mechanitis lysimnia
-  description: "Una mariposa tropical de alas anaranjadas con patrones negros, famosa
-    por su elegante vuelo lento. Sus colores brillantes advierten a los depredadores
-    que puede ser desagradable al gusto, ayud\xE1ndole a sobrevivir en la naturaleza.\n\nDato
-    curioso:\nForma parte de un grupo de mariposas que imitan colores similares entre
-    especies para protegerse de depredadores."
+  speciesName: Mariposa Mechanitis lysimnia
+  description: "La Mechanitis lysimnia, conocida como mariposa tigre jaspeada, pertenece
+    a la familia Nymphalidae y al subgrupo de las mariposas Ithomiini, conocidas
+    por su aspecto transl\xFAcido y su relaci\xF3n con plantas t\xF3xicas. Esta mariposa
+    es un excelente ejemplo de mimetismo m\xFClleriano, ya que comparte patrones
+    de color con otras especies t\xF3xicas para reforzar la se\xF1al de advertencia
+    contra los depredadores.\r\n\r\nCaracter\xEDsticas principales:\r\n\r\nEnvergadura:
+    Alcanza entre 5 y 7 cm, siendo una mariposa de tama\xF1o mediano.\r\nColoraci\xF3n:
+    Sus alas son de un tono anaranjado con marcas negras y detalles en amarillo y
+    blanco, lo que le da un aspecto similar al de otras mariposas \xABtigre\xBB.\r\nMimetismo:
+    Como otras mariposas Ithomiini, es t\xF3xica para los depredadores y su coloraci\xF3n
+    act\xFAa como una advertencia.\nDato curioso:\nForma parte de un grupo de mariposas
+    que imitan colores similares entre especies para protegerse de depredadores."
+  speciesNameEn: Butterfly Mechanitis lysimnia
+  descriptionEn: "The Mechanitis lysimnia , known as the marbled tiger butterfly
+    , belongs to the Nymphalidae family and the Ithomiini subgroup of butterflies
+    , known for their translucent appearance and association with toxic plants. This
+    butterfly is an excellent example of M\xFCllerian mimicry , as it shares color
+    patterns with other toxic species to reinforce the warning signal against predators.\r\n\r\nMain
+    features:\r\n\r\nWingspan: It reaches between 5 and 7 cm , being a medium-sized
+    butterfly.\r\nColoration: Its wings are an orange hue with black markings and
+    details in yellow and white, giving it a similar appearance to other \"tiger\"
+    butterflies.\r\nMimicry: Like other Ithomiini butterflies, it is toxic to predators
+    and its coloration acts as a warning."
   prefabButterfly: {fileID: 633458905928733921, guid: 2c77abeb74a33894eb66465f46bc2936, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 5efe0a8d6cf3fc44c84907089db4966e, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Mechantis
   flightSpeed: 10
   turnSpeed: 4

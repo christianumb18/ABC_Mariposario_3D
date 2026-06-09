@@ -13,14 +13,40 @@ MonoBehaviour:
   m_Name: Colobura
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
   speciesName: Colobura dirce
-  description: "Una mariposa tropical famosa por el incre\xEDble patr\xF3n en la
-    parte inferior de sus alas, que parece el n\xFAmero \u201C88\u201D. Vive en bosques
-    h\xFAmedos y suele posarse sobre frutas maduras o troncos.\n\nDato curioso:\nEl
-    dise\xF1o \u201C88\u201D en sus alas ayuda a distinguirla f\xE1cilmente entre
-    muchas especies tropicales."
+  description: "La Colobura dirce, com\xFAnmente conocida como la mariposa de las
+    hojas ca\xEDdas, es una mariposa perteneciente a la familia Nymphalidae y al
+    g\xE9nero Colobura.\r\n\r\nCaracter\xEDsticas principales:\r\n\r\nLa Colobura
+    dirce es una mariposa de tama\xF1o mediano, con una envergadura de 4 a 5 cm.\r\nTiene
+    una coloraci\xF3n marr\xF3n o gris en el dorso de sus alas, lo que le proporciona
+    un excelente camuflaje con el entorno, ya que imita la apariencia de hojas secas
+    o descompuestas.\r\nLas alas inferiores son de color marr\xF3n con patrones en
+    tonos de blanco y gris que se asemejan a las venas de las hojas, ayudando a que
+    la mariposa se confunda con el follaje cuando est\xE1 en reposo."
+  speciesNameEn: Colobura moth dirce
+  descriptionEn: 'The Colobura dirce , commonly known as the leaf-fall butterfly
+    , is a butterfly belonging to the Nymphalidae family and the Colobura genus .
+
+    
+
+    Main
+    features:
+
+    
+
+    The Colobura dirce is a medium-sized butterfly, with a
+    wingspan of 4 to 5 cm .
+
+    It has a brown or gray coloration on the back of
+    its wings, which provides excellent camouflage with the environment, as it mimics
+    the appearance of dry or decomposed leaves.
+
+    The lower wings are brown with
+    patterns in shades of white and gray that resemble the veins of leaves, helping
+    the butterfly to blend in with the foliage when at rest.'
   prefabButterfly: {fileID: 7855499619355327458, guid: 915c0c81f3715ca4093bf369b151933f, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 561b3c5d78f2a5847ac7151e64092f62, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Colobura
   flightSpeed: 10
   turnSpeed: 4

@@ -12,16 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Morpho
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Morpho helenor
-  description: "Una espectacular mariposa tropical famosa por el intenso brillo azul
-    met\xE1lico de sus alas. Cuando vuela entre los \xE1rboles, los destellos azules
-    aparecen y desaparecen, confundiendo a los depredadores. Es una de las especies
-    m\xE1s llamativas de los bosques tropicales.\n\nDato curioso:\nEl color azul
-    de sus alas no proviene de pigmentos, sino de estructuras microsc\xF3picas que
-    reflejan la luz."
+  speciesName: Mariposa Morpho helenor peleides
+  description: "La Morpho helenor peleides, com\xFAnmente conocida como mariposa
+    Morpho azul, es una subespecie de Morpho helenor, perteneciente a la familia
+    Nymphalidae y al g\xE9nero Morpho. Es una de las mariposas m\xE1s llamativas
+    debido a su intenso color azul met\xE1lico. Esta mariposa es famosa por su espectacular
+    color azul, el cual no proviene de pigmentos, sino de la estructura microsc\xF3pica
+    de sus escamas, que reflejan la luz y crean el efecto de iridiscencia.\r\n\r\nCaracter\xEDsticas
+    principales:\r\n\r\nEnvergadura: Puede alcanzar entre 10 y 15 cm, siendo una
+    mariposa de gran tama\xF1o.\r\nColoraci\xF3n: El dorso de sus alas es de un azul
+    iridiscente, mientras que el reverso es marr\xF3n con patrones de ojos falsos
+    (ocelos) que le sirven de camuflaje para confundir a depredadores.\r\nEs una
+    mariposa diurna, activa principalmente durante el d\xEDa en busca de alimento
+    y lugares soleados."
+  speciesNameEn: Butterfly Morpho helenor peleides
+  descriptionEn: 'The Morpho helenor peleides , commonly known as the Blue Morpho
+    butterfly , is a subspecies of Morpho helenor , belonging to the Nymphalidae
+    family and the Morpho genus . It is one of the most striking butterflies due
+    to its intense metallic blue color. This butterfly is famous for its spectacular
+    blue hue, which does not come from pigments, but from the microscopic structure
+    of its scales , which reflect light and create the iridescent effect.
+
+    
+
+    Main
+    features:
+
+    
+
+    Wingspan: It can reach between 10 and 15 cm , making it
+    a large butterfly.
+
+    Coloration: The back of its wings is iridescent blue
+    , while the reverse is brown with false eye patterns (ocelli) that serve as camouflage
+    to confuse predators.
+
+    It is a diurnal butterfly, active mainly during the
+    day in search of food and sunny places.'
   prefabButterfly: {fileID: 3109968336678517971, guid: 272893b6d4266bd4a8158d3e9ea7184d, type: 3}
   prefabPlant: {fileID: 6209031737948153394, guid: 2acd3bb0a55ad08448a8a5e3c452a168, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Morpho
   flightSpeed: 10
   turnSpeed: 4

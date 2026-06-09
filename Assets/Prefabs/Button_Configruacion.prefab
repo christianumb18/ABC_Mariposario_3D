@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 5213786593011889684}
   - component: {fileID: 6162938867070852275}
   - component: {fileID: 2937874909585188080}
+  - component: {fileID: 6162938867070852276}
   m_Layer: 5
   m_Name: Button_Configruacion
   m_TagString: Untagged
@@ -171,10 +172,10 @@ RectTransform:
   - {fileID: 6707447802686400331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 700, y: 440}
-  m_SizeDelta: {x: 85, y: 85}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -240, y: -65}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5213786593011889684
 CanvasRenderer:
@@ -257,16 +258,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6162938867070852275}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsPanel, Assembly-CSharp
-        m_MethodName: Open
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &6162938867070852276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784465622346775109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c95d3fa8c35f1488fee1b67682cf3d, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::OpenSettingsButton

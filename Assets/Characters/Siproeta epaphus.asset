@@ -12,15 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cbec52d5dfe5645b37517880f20ef5, type: 3}
   m_Name: Siproeta epaphus
   m_EditorClassIdentifier: Assembly-CSharp::ButterflyData
-  speciesName: Siproeta epaphus epaphus
-  description: "Una elegante mariposa tropical reconocida por las brillantes franjas
-    verdes que cruzan sus alas oscuras. Su vuelo es r\xE1pido y \xE1gil, y suele
-    descansar con las alas abiertas para absorber calor del sol.\n\nDato curioso:\nSus
-    colores verdes ayudan a camuflarse entre hojas y plantas, dificultando que los
-    depredadores la detecten."
+  speciesName: Mariposa Siproeta epaphus epaphus
+  description: "La Siproeta epaphus epaphus, tambi\xE9n conocida como la mariposa
+    de las patas largas, es una mariposa perteneciente a la familia Nymphalidae y
+    al g\xE9nero Siproeta.\r\n\r\nCaracter\xEDsticas principales:\r\n\r\nEs una mariposa
+    de tama\xF1o medio, con una envergadura de aproximadamente 5 a 7 cm.\r\nSu coloraci\xF3n
+    var\xEDa, pero generalmente presenta alas de color marr\xF3n con manchas y patrones
+    en tonos naranjas, amarillos y blancos en el reverso de las alas.\r\nEn el dorso
+    de sus alas, tiene un dise\xF1o bastante distintivo con l\xEDneas y puntos que
+    le ayudan a camuflarse entre la vegetaci\xF3n."
+  speciesNameEn: Butterfly Siproeta epaphus epaphus
+  descriptionEn: 'The Siproeta epaphus epaphus , also known as the long-legged butterfly
+    , is a butterfly belonging to the Nymphalidae family and the genus Siproeta .
+
+    
+
+    Main
+    features:
+
+    
+
+    It is a medium-sized butterfly, with a wingspan of approximately
+    5 to 7 cm .
+
+    Its coloration varies, but it generally has brown wings with
+    spots and patterns in shades of orange, yellow and white on the underside of
+    the wings.
+
+    On the back of its wings, it has a rather distinctive design
+    with lines and dots that help it camouflage itself among the vegetation.'
   prefabButterfly: {fileID: 2712945845587232095, guid: 53022ab479c60a04aa7ee92b43114f0e, type: 3}
   prefabPlant: {fileID: 919132149155446097, guid: 891735bc8ac7ef9408e7c5dea39a124a, type: 3}
   scale: 0.25
+  videoClip: {fileID: 0}
   hostPlantID: Epaphus
   flightSpeed: 10
   turnSpeed: 4
