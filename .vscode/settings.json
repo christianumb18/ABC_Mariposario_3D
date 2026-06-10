@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Mariposario.slnx"
+    "dotnet.defaultSolution": "ABC_Mariposario_3D.slnx"
 }
