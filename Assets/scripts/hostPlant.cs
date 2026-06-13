@@ -18,6 +18,12 @@ public class HostPlant : MonoBehaviour
     [Tooltip("Debe coincidir exactamente con ButterflyData.hostPlantID de la especie correcta")]
     public string hostPlantID = "";
 
+    [Header("Nombre visible (para la UI)")]
+    [Tooltip("Nombre comun o cientifico que se muestra al jugador al detectarla.")]
+    public string displayName = "";
+    [Tooltip("Traduccion en ingles. Si esta vacio se usa displayName.")]
+    public string displayNameEn = "";
+
     private float proximityRadius = 0.5f;
 
     [Header("Referencias")]
@@ -55,16 +61,20 @@ public class HostPlant : MonoBehaviour
         {
             _correctSpeciesNearby = true;
             SetButtonVisible(true);
+            // IMPORTANTE: activar PRIMERO (dispara LocalizedText.OnEnable que
+            // sobrescribe el texto con la clave localizada), y DESPUES inyectar
+            // el nombre de la planta — asi nuestro texto queda al final.
             SetTextVisible(true, spawner.textPlantCorrect);
             SetTextVisible(false, spawner.textPlantIncorrect);
+            UpdateCorrectText();
         }
         else
         {
-            // Especie incorrecta: no muestra el boton
             _correctSpeciesNearby = false;
             SetButtonVisible(false);
             SetTextVisible(false, spawner.textPlantCorrect);
             SetTextVisible(true, spawner.textPlantIncorrect);
+            UpdateIncorrectText();
         }
     }
 
@@ -125,6 +135,40 @@ public class HostPlant : MonoBehaviour
     {
         if (text == null) return;
         text.gameObject.SetActive(visible);
+    }
+
+    // ── Inyecta el nombre de la planta en el texto correcto ───────
+    private void UpdateCorrectText()
+    {
+        if (spawner.textPlantCorrect == null) return;
+        string name = GetLocalizedName();
+        bool en = LocalizationManager.Instance != null
+                  && LocalizationManager.Instance.CurrentLanguage == 1;
+        string prefix = en ? "Host plant identified" : "Planta hospedera identificada";
+        spawner.textPlantCorrect.text = string.IsNullOrEmpty(name)
+            ? prefix
+            : $"{prefix}: <b>{name}</b>";
+    }
+
+    // ── Inyecta el nombre en el texto incorrecto ──────────────────
+    private void UpdateIncorrectText()
+    {
+        if (spawner.textPlantIncorrect == null) return;
+        string name = GetLocalizedName();
+        bool en = LocalizationManager.Instance != null
+                  && LocalizationManager.Instance.CurrentLanguage == 1;
+        string prefix = en ? "Not its host plant" : "No es su planta hospedera";
+        spawner.textPlantIncorrect.text = string.IsNullOrEmpty(name)
+            ? prefix
+            : $"{prefix}: <b>{name}</b>";
+    }
+
+    private string GetLocalizedName()
+    {
+        bool en = LocalizationManager.Instance != null
+                  && LocalizationManager.Instance.CurrentLanguage == 1;
+        if (en && !string.IsNullOrEmpty(displayNameEn)) return displayNameEn;
+        return displayName;
     }
 
     // ── Gizmo para visualizar el rango en el editor ───────────────

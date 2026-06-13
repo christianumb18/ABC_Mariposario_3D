@@ -286,6 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Isertia (Isertia haenkeana)
+  displayNameEn: Isertia (Isertia haenkeana)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -523,6 +525,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Cinco negritos (Lantana camara)
+  displayNameEn: Lantana (Lantana camara)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -763,6 +767,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Morpho
+  displayName: Guamo (Inga sp.)
+  displayNameEn: Ice-cream Bean (Inga sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &111760980
 SphereCollider:
@@ -1237,6 +1243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Caligo
+  displayName: Heliconia (Heliconia sp.)
+  displayNameEn: Heliconia (Heliconia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &150139439
 SphereCollider:
@@ -1349,6 +1357,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Hamadryas
+  displayName: Dalechampia (Dalechampia sp.)
+  displayNameEn: Dalechampia (Dalechampia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &160600425
 SphereCollider:
@@ -1728,6 +1738,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Flor del jardín
+  displayNameEn: Garden flower
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -1861,6 +1873,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Caligo
+  displayName: Heliconia (Heliconia sp.)
+  displayNameEn: Heliconia (Heliconia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &216616010
 SphereCollider:
@@ -1901,6 +1915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Steleness
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &226407704
 SphereCollider:
@@ -1941,6 +1957,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Colobura
+  displayName: Yarumo (Cecropia sp.)
+  displayNameEn: Trumpet tree (Cecropia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &242253086
 SphereCollider:
@@ -2578,6 +2596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Steleness
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &322692367
 SphereCollider:
@@ -2618,6 +2638,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Steleness
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &322814044
 SphereCollider:
@@ -2674,6 +2696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Botón blanco (Melanthera nivea)
+  displayNameEn: Snow squarestem (Melanthera nivea)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -3040,6 +3064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Hamadryas
+  displayName: Dalechampia (Dalechampia sp.)
+  displayNameEn: Dalechampia (Dalechampia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &460846466
 SphereCollider:
@@ -3233,6 +3259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Mejorana azul (Ageratum)
+  displayNameEn: Floss flower (Ageratum)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -3741,6 +3769,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Gonzalagunia (G. panamensis)
+  displayNameEn: Gonzalagunia (G. panamensis)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -3799,6 +3829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Escobilla (Melochia parvifolia)
+  displayNameEn: Melochia (Melochia parvifolia)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -4023,6 +4055,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Girasol mexicano (Tithonia)
+  displayNameEn: Mexican sunflower (Tithonia)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -4893,6 +4927,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &904768908
 SphereCollider:
@@ -5065,6 +5101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Mechantis
+  displayName: Friegaplatos (Solanum sp.)
+  displayNameEn: Nightshade (Solanum sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &934590588
 SphereCollider:
@@ -5105,6 +5143,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Mechantis
+  displayName: Friegaplatos (Solanum sp.)
+  displayNameEn: Nightshade (Solanum sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &942816636
 SphereCollider:
@@ -5373,6 +5413,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Bejuco de oro (Pseudogynoxys)
+  displayNameEn: Mexican flame vine (Pseudogynoxys)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -5472,6 +5514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Verbena azul (Stachytarpheta)
+  displayNameEn: Blue porterweed (Stachytarpheta)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -5782,6 +5826,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Flor blanca
+  displayNameEn: White flower
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -6266,6 +6312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1134931092
 SphereCollider:
@@ -6306,6 +6354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Danaus
+  displayName: Algodoncillo (Asclepias sp.)
+  displayNameEn: Milkweed (Asclepias sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1158917222
 SphereCollider:
@@ -6453,6 +6503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Flor morada
+  displayNameEn: Purple flower
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -6691,6 +6743,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Santa Rita (Ixora coccinea)
+  displayNameEn: Jungle geranium (Ixora coccinea)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -6824,6 +6878,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Pluma dorada (Pachystachys lutea)
+  displayNameEn: Golden shrimp plant (Pachystachys)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -7758,6 +7814,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Cinco negritos (Lantana camara)
+  displayNameEn: Lantana (Lantana camara)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -7800,6 +7858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Hamadryas
+  displayName: Dalechampia (Dalechampia sp.)
+  displayNameEn: Dalechampia (Dalechampia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1436518159
 SphereCollider:
@@ -7979,6 +8039,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Helicteres pentandra
+  displayNameEn: Helicteres pentandra
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -8021,6 +8083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Danaus
+  displayName: Algodoncillo (Asclepias sp.)
+  displayNameEn: Milkweed (Asclepias sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1486299051
 SphereCollider:
@@ -8136,6 +8200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1491206299
 SphereCollider:
@@ -8370,6 +8436,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Coralito (Hamelia patens)
+  displayNameEn: Firebush (Hamelia patens)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -9021,6 +9089,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Aphelandra pulcherrima
+  displayNameEn: Aphelandra pulcherrima
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -9564,6 +9634,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Colobura
+  displayName: Yarumo (Cecropia sp.)
+  displayNameEn: Trumpet tree (Cecropia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1822282787
 SphereCollider:
@@ -9970,6 +10042,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Colobura
+  displayName: Yarumo (Cecropia sp.)
+  displayNameEn: Trumpet tree (Cecropia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1853498724
 SphereCollider:
@@ -10026,6 +10100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Pasionaria (Passiflora foetida)
+  displayNameEn: Stinking passionflower
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -10141,6 +10217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Verbena (Stachytarpheta microphylla)
+  displayNameEn: Verbena (Stachytarpheta microphylla)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -10444,6 +10522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Caligo
+  displayName: Heliconia (Heliconia sp.)
+  displayNameEn: Heliconia (Heliconia sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1902729979
 SphereCollider:
@@ -10618,6 +10698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Mussaenda roja (Mussaenda)
+  displayNameEn: Red flag bush (Mussaenda)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -10778,6 +10860,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Mechantis
+  displayName: Friegaplatos (Solanum sp.)
+  displayNameEn: Nightshade (Solanum sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &1952781983
 SphereCollider:
@@ -10834,6 +10918,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NectarPlant
   spawner: {fileID: 1800814759}
+  displayName: Verbena azul (Stachytarpheta)
+  displayNameEn: Blue porterweed (Stachytarpheta)
   nectarPoints: 20
   proximityRadius: 0.005
   eatAnimationDuration: 1.5
@@ -11322,6 +11408,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Morpho
+  displayName: Guamo (Inga sp.)
+  displayNameEn: Ice-cream Bean (Inga sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &2079003066
 SphereCollider:
@@ -11362,6 +11450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Danaus
+  displayName: Algodoncillo (Asclepias sp.)
+  displayNameEn: Milkweed (Asclepias sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &2087698768
 SphereCollider:
@@ -11669,6 +11759,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Morpho
+  displayName: Guamo (Inga sp.)
+  displayNameEn: Ice-cream Bean (Inga sp.)
   spawner: {fileID: 1800814759}
 --- !u!135 &2122822310
 SphereCollider:

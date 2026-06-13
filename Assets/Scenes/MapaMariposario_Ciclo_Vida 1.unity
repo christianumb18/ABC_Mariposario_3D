@@ -3041,6 +3041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 0}
 --- !u!135 &928072595
 SphereCollider:
@@ -3979,6 +3981,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 0}
 --- !u!135 &1202056202
 SphereCollider:
@@ -6130,6 +6134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HostPlant
   hostPlantID: Epaphus
+  displayName: Polvo de estrella (Ruellia)
+  displayNameEn: Ruellia (Ruellia sp.)
   spawner: {fileID: 0}
 --- !u!135 &1815957933
 SphereCollider:

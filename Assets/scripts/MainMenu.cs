@@ -113,6 +113,20 @@ public class MainMenu : MonoBehaviour
         Debug.Log("[MainMenu] Logros aun no implementados.");
     }
 
+    public void OpenCreditos()
+    {
+        if (CreditsPanel.Instance != null)
+        {
+            CreditsPanel.Instance.Open();
+        }
+        else
+        {
+            Debug.LogWarning("[MainMenu] CreditsPanel.Instance no existe en la escena. " +
+                            "Asegurate de que el Canvas_Creditos este en la escena Menu_3D " +
+                            "y tenga el script CreditsPanel adjunto.");
+        }
+    }
+
     public void OpenMensaje()
     {
         Debug.Log("");
