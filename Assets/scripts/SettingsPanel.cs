@@ -185,6 +185,34 @@ public class SettingsPanel : MonoBehaviour
             LocalizationManager.Instance.OnLanguageChanged += RebuildQualityOptions;
 
         BuildLeftHandedToggleIfMissing();
+        PositionLeftHandedToggleUnderQuality();
+    }
+
+    // Posiciona el toggle "Modo zurdo" justo debajo del dropdown de Graficos,
+    // con la misma X y un ancho proporcional. Se llama una vez al iniciar y
+    // sobreescribe la posicion anterior si toggleLeftHanded ya existe.
+    private void PositionLeftHandedToggleUnderQuality()
+    {
+        if (toggleLeftHanded == null || dropdownQuality == null) return;
+
+        var srcRT = (RectTransform)dropdownQuality.transform;
+        var rt = (RectTransform)toggleLeftHanded.transform;
+
+        // Reparentar como hermano del dropdown (si no lo es ya)
+        if (rt.parent != srcRT.parent)
+            rt.SetParent(srcRT.parent, false);
+
+        rt.anchorMin = srcRT.anchorMin;
+        rt.anchorMax = srcRT.anchorMax;
+        rt.pivot = srcRT.pivot;
+
+        // Mismo ancho que el dropdown, altura compacta
+        float h = 32f;
+        rt.sizeDelta = new Vector2(srcRT.sizeDelta.x, h);
+
+        // Justo debajo: misma X, bajamos altura del dropdown + 15px de gap
+        rt.anchoredPosition = srcRT.anchoredPosition
+            + new Vector2(0f, -(srcRT.sizeDelta.y + 15f));
     }
 
     // Construye el toggle "Modo zurdo" automaticamente si no esta asignado.
