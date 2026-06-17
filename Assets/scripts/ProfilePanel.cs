@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 /// <summary>
@@ -65,6 +66,10 @@ public class ProfilePanel : MonoBehaviour
     [Header("Acciones")]
     public Button btnBorrar;              // borra el nombre
     public Button btnResetear;            // borra stats (no nombre)
+    [Tooltip("Boton para cambiar de perfil. Si esta vacio se autoarma al abrir el panel.")]
+    public Button btnCambiarPerfil;
+    [Tooltip("Nombre exacto de la escena del menu principal en Build Settings.")]
+    public string menuSceneName = "Menu_3D";
 
     // ── Info / link externo ────────────────────────────────────────
     [Header("Red ABC")]
@@ -144,6 +149,7 @@ public class ProfilePanel : MonoBehaviour
         if (btnBorrar != null) btnBorrar.onClick.AddListener(OnBorrarPressed);
         if (btnResetear != null) btnResetear.onClick.AddListener(OnResetearPressed);
         if (btnRedABC != null) btnRedABC.onClick.AddListener(OnRedABCPressed);
+        if (btnCambiarPerfil != null) btnCambiarPerfil.onClick.AddListener(OnCambiarPerfilPressed);
     }
 
     private void ConfigureInput()
@@ -164,6 +170,7 @@ public class ProfilePanel : MonoBehaviour
     {
         if (panelRoot == null) return;
         panelRoot.SetActive(true);
+        EnsureCambiarPerfilButton();
         RefreshAll();
         SetEditingState(false);   // siempre abrimos en REPOSO
     }
@@ -267,6 +274,104 @@ public class ProfilePanel : MonoBehaviour
             return;
         }
         Application.OpenURL(redABCUrl);
+    }
+
+    // ── Cambiar perfil ─────────────────────────────────────────────
+    // En la escena del menu, ProfileSelectionUI.Instance existe y la
+    // abrimos directo. En cualquier otra escena (mariposario, ciclo),
+    // cargamos Menu_3D — alli ProfileSelectionUI se muestra al iniciar.
+    private void OnCambiarPerfilPressed()
+    {
+        Close();
+
+        if (ProfileSelectionUI.Instance != null)
+        {
+            ProfileSelectionUI.Instance.Open();
+            return;
+        }
+
+        if (string.IsNullOrEmpty(menuSceneName))
+        {
+            Debug.LogWarning("[ProfilePanel] menuSceneName esta vacio.");
+            return;
+        }
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(menuSceneName);
+    }
+
+    // Si el Inspector no tiene asignado el boton "Cambiar perfil", lo
+    // creamos al vuelo. Si btnResetear esta asignado, lo clonamos para
+    // que herede tamano, color y estilo, y lo colocamos justo debajo.
+    private void EnsureCambiarPerfilButton()
+    {
+        if (btnCambiarPerfil != null) return;
+        if (panelRoot == null) return;
+
+        // Caso A: tenemos btnResetear como referencia visual → clonamos
+        if (btnResetear != null)
+        {
+            var clone = Instantiate(btnResetear.gameObject, btnResetear.transform.parent);
+            clone.name = "Btn_CambiarPerfil";
+
+            // Limpiar listeners heredados
+            var btnClone = clone.GetComponent<Button>();
+            btnClone.onClick.RemoveAllListeners();
+            btnClone.onClick.AddListener(OnCambiarPerfilPressed);
+
+            // Posicion: centrado igual que Resetear, justo debajo con gap.
+            // Ancho 1.8x el original para que "Cambiar perfil" entre bien.
+            var srcRT = (RectTransform)btnResetear.transform;
+            var rt = (RectTransform)clone.transform;
+            rt.anchorMin = srcRT.anchorMin;
+            rt.anchorMax = srcRT.anchorMax;
+            rt.pivot = srcRT.pivot;
+            rt.sizeDelta = new Vector2(srcRT.sizeDelta.x * 1.8f, srcRT.sizeDelta.y);
+            rt.anchoredPosition = srcRT.anchoredPosition
+                + new Vector2(0f, -(srcRT.sizeDelta.y + 10f));
+
+            // Color azul (sobreescribe el amarillo heredado)
+            var img = clone.GetComponent<Image>();
+            if (img != null) img.color = new Color(0.20f, 0.45f, 0.80f, 1f);
+
+            // Texto: cambiarlo y ponerlo en blanco para contraste
+            var tmp = clone.GetComponentInChildren<TMP_Text>(true);
+            if (tmp != null)
+            {
+                tmp.text = "Cambiar perfil";
+                tmp.color = Color.white;
+            }
+
+            btnCambiarPerfil = btnClone;
+            return;
+        }
+
+        // Caso B: fallback — boton azul abajo del panel
+        var go = new GameObject("Btn_CambiarPerfil",
+            typeof(RectTransform), typeof(Image), typeof(Button));
+        go.transform.SetParent(panelRoot.transform, false);
+
+        var rt2 = (RectTransform)go.transform;
+        rt2.anchorMin = new Vector2(0.5f, 0f);
+        rt2.anchorMax = new Vector2(0.5f, 0f);
+        rt2.pivot = new Vector2(0.5f, 0f);
+        rt2.anchoredPosition = new Vector2(0f, 30f);
+        rt2.sizeDelta = new Vector2(224f, 48f);
+
+        go.GetComponent<Image>().color = new Color(0.20f, 0.45f, 0.80f, 1f);
+        btnCambiarPerfil = go.GetComponent<Button>();
+        btnCambiarPerfil.onClick.AddListener(OnCambiarPerfilPressed);
+
+        var lblGO = new GameObject("Label", typeof(RectTransform));
+        lblGO.transform.SetParent(go.transform, false);
+        var lblRT = (RectTransform)lblGO.transform;
+        lblRT.anchorMin = Vector2.zero; lblRT.anchorMax = Vector2.one;
+        lblRT.offsetMin = Vector2.zero; lblRT.offsetMax = Vector2.zero;
+        var tmpf = lblGO.AddComponent<TextMeshProUGUI>();
+        tmpf.text = "Cambiar perfil";
+        tmpf.alignment = TextAlignmentOptions.Center;
+        tmpf.fontSize = 19;
+        tmpf.fontStyle = FontStyles.Bold;
+        tmpf.color = Color.white;
     }
 
     // ═══════════════════════════════════════════════════════════════

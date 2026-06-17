@@ -20,6 +20,12 @@ public class NectarPlant : MonoBehaviour
     [Header("Referencias")]
     public MariposarioSpawner spawner;
 
+    [Header("Nombre visible (para la UI)")]
+    [Tooltip("Nombre comun o cientifico que se muestra al jugador al detectarla.")]
+    public string displayName = "";
+    [Tooltip("Traduccion en ingles. Si esta vacio se usa displayName.")]
+    public string displayNameEn = "";
+
     [Header("Configuracion")]
     [Tooltip("Puntos que otorga al comer")]
     public int nectarPoints = 20;
@@ -55,7 +61,10 @@ public class NectarPlant : MonoBehaviour
 
         _butterflyNearby = true;
         SetButtonVisible(true);
+        // Activar PRIMERO (dispara LocalizedText.OnEnable que pondria la clave
+        // base), DESPUES inyectar el nombre — asi nuestro texto queda al final.
         SetTextVisible(true);
+        UpdateNectarText();
 
         // El boton ejecuta Eat() al pulsarlo
         if (spawner != null && spawner.nectarButton != null)
@@ -137,6 +146,19 @@ public class NectarPlant : MonoBehaviour
     {
         if (spawner == null || spawner.textNectar == null) return;
         spawner.textNectar.gameObject.SetActive(visible);
+    }
+
+    // ── Inyecta el nombre de la planta en el texto ────────────────
+    private void UpdateNectarText()
+    {
+        if (spawner == null || spawner.textNectar == null) return;
+        bool en = LocalizationManager.Instance != null
+                  && LocalizationManager.Instance.CurrentLanguage == 1;
+        string name = (en && !string.IsNullOrEmpty(displayNameEn)) ? displayNameEn : displayName;
+        string prefix = en ? "Nectar plant identified" : "Planta nectarífera identificada";
+        spawner.textNectar.text = string.IsNullOrEmpty(name)
+            ? prefix
+            : $"{prefix}: <b>{name}</b>";
     }
 
     // ── Gizmo para ver el rango en el editor ──────────────────────
