@@ -277,12 +277,14 @@ public class ProfilePanel : MonoBehaviour
     }
 
     // ── Cambiar perfil ─────────────────────────────────────────────
-    // En la escena del menu, ProfileSelectionUI.Instance existe y la
-    // abrimos directo. En cualquier otra escena (mariposario, ciclo),
-    // cargamos Menu_3D — alli ProfileSelectionUI se muestra al iniciar.
+    // Estrategia: si ProfileSelectionUI ya esta en la escena lo abrimos.
+    // Si no existe lo creamos al vuelo (BuildUI se ejecuta en Start y
+    // se autocontiene en su propio Canvas). Asi funciona en cualquier
+    // escena sin tener que cargar Menu_3D ni depender del Inspector.
     private void OnCambiarPerfilPressed()
     {
         Close();
+        Time.timeScale = 1f;
 
         if (ProfileSelectionUI.Instance != null)
         {
@@ -290,13 +292,9 @@ public class ProfilePanel : MonoBehaviour
             return;
         }
 
-        if (string.IsNullOrEmpty(menuSceneName))
-        {
-            Debug.LogWarning("[ProfilePanel] menuSceneName esta vacio.");
-            return;
-        }
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(menuSceneName);
+        var go = new GameObject("ProfileSelector_AutoCreated");
+        var selector = go.AddComponent<ProfileSelectionUI>();
+        selector.showOnStart = true;
     }
 
     // Si el Inspector no tiene asignado el boton "Cambiar perfil", lo
